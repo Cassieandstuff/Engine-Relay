@@ -1,0 +1,6 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Injured_TouchDown
+stateId: 0
+generator: MG_Land_Injured_Touchdown
+enterNotifyEvents:
+  - event: FlightLanded

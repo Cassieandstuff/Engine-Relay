@@ -1,0 +1,5 @@
+class: BSEventOnDeactivateModifier
+name: BSEventOnDeactivateModifier_StaggerStop
+userData: 3
+event:
+  event: staggerStop

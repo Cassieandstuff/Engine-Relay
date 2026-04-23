@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Perch_RockL02_Approach
+stateId: 0
+generator: BLD_Land_Injured_Approach
+transitions:
+  - event: BeginLand
+    toState: ST_Land_Perch_RockL02_Touchdown
+    transition: BTE_Land_Approach_to_Land_Touchdown

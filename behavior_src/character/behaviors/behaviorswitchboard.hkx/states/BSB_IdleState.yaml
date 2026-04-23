@@ -1,0 +1,10 @@
+# Permanent idle state for BSB_SwitchboardSM.
+# BSB_SwitchboardSM starts at stateId 1 (BSB_State_TrueFlight) in the
+# Option-B validation build, so this state is not entered immediately.
+# It serves as the "no sub-behavior active" resting point for re-entry
+# after a hover-land cycle (e.g. land → BSB_IdleState → TF_EnterFlight →
+# BSB_State_TrueFlight again via the wildcard in BSB_SwitchboardSM.yaml).
+class: hkbStateMachineStateInfo
+name: BSB_IdleState
+stateId: 0
+generator: BSB_Idle

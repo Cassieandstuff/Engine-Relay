@@ -1,0 +1,5 @@
+class: hkbStateMachine
+name: BHR_Furniture_Trap_Idle_Default
+startStateId: 0
+states:
+  - ST_Furniture_Trap_Idle_Default

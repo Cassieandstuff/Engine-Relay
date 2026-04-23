@@ -1,0 +1,6 @@
+class: hkbModifierList
+name: ML_Perch_TowerAttack_Shout
+userData: 1
+modifiers:
+  - ML_Shout
+  - EEM_DisableLookAtTarget

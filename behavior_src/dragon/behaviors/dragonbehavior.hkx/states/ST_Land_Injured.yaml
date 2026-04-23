@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Injured
+stateId: 2
+generator: BHR_Land_Injured

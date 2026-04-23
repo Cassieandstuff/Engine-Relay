@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Furniture_Trap_Shout_Inhale_Fireball
+animationName: Animations\Ground_Inhale.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000

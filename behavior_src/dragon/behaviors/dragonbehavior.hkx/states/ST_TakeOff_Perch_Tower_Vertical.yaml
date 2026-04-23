@@ -1,0 +1,7 @@
+class: hkbStateMachineStateInfo
+name: ST_TakeOff_Perch_Tower_Vertical
+stateId: 6
+generator: CLIP_TakeOff_Perch_Tower_Vertical
+enterNotifyEvents:
+  - event: FlightTakeOff
+  - event: idleChairGetUp

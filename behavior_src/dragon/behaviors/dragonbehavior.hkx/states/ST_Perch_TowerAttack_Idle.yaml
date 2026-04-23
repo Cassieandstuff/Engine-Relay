@@ -1,0 +1,12 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_TowerAttack_Idle
+stateId: 2
+generator: MG_Perch_Tower_Attack_Idle
+transitions:
+  - event: shoutStart
+    toState: ST_Perch_TowerAttack_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+  - event: PerchTowerAttackSmashBite
+    toState: ST_Perch_TowerAttack_SmashBite
+    transition: shortTransitionEffect

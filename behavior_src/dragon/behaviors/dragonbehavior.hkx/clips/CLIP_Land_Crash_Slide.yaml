@@ -1,0 +1,31 @@
+class: hkbClipGenerator
+name: CLIP_Land_Crash_Slide
+animationName: Animations\MTLand_CrashLong.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: DragonKnockbackEvent
+  - localTime: 0.000000
+    event: To_Crash_Land_Recover
+    relativeToEndOfClip: true
+  - localTime: 0.500000
+    event: DragonKnockbackEvent
+  - localTime: 1.000000
+    event: DragonKnockbackEvent
+  - localTime: 1.494000
+    event: DragonKnockbackEvent
+  - localTime: 2.000000
+    event: DragonKnockbackEvent
+  - localTime: 2.500000
+    event: DragonKnockbackEvent
+  - localTime: 3.000000
+    event: DragonKnockbackEvent
+  - localTime: 3.504000
+    event: DragonKnockbackEvent
+  - localTime: 4.000000
+    event: DragonKnockbackEvent
+  - localTime: 4.503000
+    event: DragonKnockbackEvent
+  - localTime: 5.000000
+    event: DragonKnockbackEvent

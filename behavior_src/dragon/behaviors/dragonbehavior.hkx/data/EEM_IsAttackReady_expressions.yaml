@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_IsAttackReady
+expressionsData:
+  - expression: "IsAttackReady = (!IsIdle) && (!IsShouting) && (!IsBusy)"

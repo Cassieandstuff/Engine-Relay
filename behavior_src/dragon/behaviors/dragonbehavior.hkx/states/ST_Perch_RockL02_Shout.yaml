@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_RockL02_Shout
+stateId: 2
+generator: MG_Perch_RockL02_Shout
+transitions:
+  - event: shoutStop
+    toState: ST_Perch_RockL02_Idle
+    transition: defaultTransitionEffect

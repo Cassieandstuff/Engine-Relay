@@ -1,0 +1,7 @@
+class: hkbStateMachine
+name: BHR_BleedOut2
+startStateId: 0
+states:
+  - ST_BleedOut2_Enter
+  - ST_BleedOut2_Idle
+  - ST_BleedOut2_Exit

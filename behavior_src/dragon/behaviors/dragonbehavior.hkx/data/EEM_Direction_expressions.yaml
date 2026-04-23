@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_Direction
+expressionsData:
+  - expression: "iDirectionForward = ((Direction <= 0.45) || (Direction >= 0.55))"

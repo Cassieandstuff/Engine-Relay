@@ -1,0 +1,7 @@
+class: hkbExpressionDataArray
+name: EEM_LipSync
+expressionsData:
+  - expression: "PhonemeBlendTarget = cond ( ( LipBigAah > 0 ) || ( LipDST > 0 ) || ( LipEee > 0 ) || ( LipFV > 0 ) || ( LipK > 0 ) || ( LipL > 0 ) || ( LipR > 0 ) || ( LipTh > 0 ), 1 , 0 ) * !bWantCastVoice"
+  - expression: "PhonemeBlend = clamp( PhonemeBlend + LipAcc* TimeStep * (PhonemeBlendTarget - PhonemeBlend), 0, 1 )"
+  - expression: "InvPhonemeBlend = 1 - PhonemeBlend"
+  - expression: "fPhonemeDefaultWeight = cond( LipBigAahDamped || LipDSTDamped || LipEeeDamped || LipFVDamped || LipKDamped || LipLDamped || LipRDamped || LipThDamped, 0, 1 )"

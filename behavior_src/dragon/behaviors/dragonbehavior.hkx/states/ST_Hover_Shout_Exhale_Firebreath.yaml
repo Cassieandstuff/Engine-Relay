@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Hover_Shout_Exhale_Firebreath
+stateId: 3
+generator: CLIP_Hover_Shout_Exhale_Firebreath

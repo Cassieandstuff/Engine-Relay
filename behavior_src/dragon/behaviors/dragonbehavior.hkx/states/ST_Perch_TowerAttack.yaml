@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_TowerAttack
+stateId: 3
+generator: BHR_Perch_TowerAttack

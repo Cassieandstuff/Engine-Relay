@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Perch_Tower_Stagger
+userData: 1
+modifier: ML_Perch_Stagger
+generator: CLIP_Perch_Tower_Stagger

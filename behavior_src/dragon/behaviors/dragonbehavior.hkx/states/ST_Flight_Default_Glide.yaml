@@ -1,0 +1,11 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight_Default_Glide
+stateId: 2
+generator: MG_Flight_Default_Glide
+transitions:
+  - event: Flap
+    toState: ST_Flight_Default_Flap
+    transition: BTE_Glide_Exit
+  - event: Feather
+    toState: ST_Flight_Default_Feather
+    transition: BTE_Glide_Exit

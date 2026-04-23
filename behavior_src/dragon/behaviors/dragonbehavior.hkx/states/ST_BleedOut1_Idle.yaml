@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_BleedOut1_Idle
+stateId: 1
+generator: CLIP_BleedOut1_Idle

@@ -1,0 +1,9 @@
+class: hkbClipGenerator
+name: CLIP_Ground_Combat_Attack_Bite_Right
+animationName: Animations\Ground_BiteRight.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: endGroundAttack
+    relativeToEndOfClip: true

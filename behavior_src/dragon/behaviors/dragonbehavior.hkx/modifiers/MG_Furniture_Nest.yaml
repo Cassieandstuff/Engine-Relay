@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Furniture_Nest
+userData: 1
+modifier: EEM_EnableLookAtTarget_Default
+generator: BHR_Furniture_Nest

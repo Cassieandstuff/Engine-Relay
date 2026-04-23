@@ -1,0 +1,6 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Default_TouchDown
+stateId: 0
+generator: MG_Land_Default_Vertical_TouchDown
+enterNotifyEvents:
+  - event: FlightLanded

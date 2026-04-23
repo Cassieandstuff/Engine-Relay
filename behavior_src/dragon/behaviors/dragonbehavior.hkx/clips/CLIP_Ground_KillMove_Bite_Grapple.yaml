@@ -1,0 +1,25 @@
+class: hkbClipGenerator
+name: CLIP_Ground_KillMove_Bite_Grapple
+animationName: ..\SharedKillMoves\Human&Dragon\Paired_BiteGrapple.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: 2_PairEnd
+    relativeToEndOfClip: true
+  - localTime: 0.037000
+    event: 2_SoundPlay.NPCDragonKillRoarB
+  - localTime: 0.426000
+    event: 2_SoundPlay.NPCDragonAttackBiteSD
+  - localTime: 1.125000
+    event: 2_SoundPlay.NPCKillStruggle
+  - localTime: 1.799000
+    event: 2_SoundPlay.NPCDragonKillRoarA
+  - localTime: 2.497000
+    event: 2_SoundPlay.NPCKillStruggle
+  - localTime: 3.031000
+    event: 2_SoundPlay.NPCKillStruggle
+  - localTime: 3.229000
+    event: 2_SoundPlay.NPCDragonKillRoarC
+  - localTime: 3.229000
+    event: 2_SoundPlay.NPCDragonInjuredSD

@@ -1,0 +1,7 @@
+class: hkbEvaluateExpressionModifier
+name: EEM_PitchDeltaDamped
+userData: 2
+bindings:
+  - memberPath: enable
+    variable: bFullyMotionDriven
+expressions: null

@@ -1,0 +1,6 @@
+class: hkbModifierList
+name: ML_Shout
+userData: 1
+modifiers:
+  - BSEventOnDeactivateModifier_Shouting
+  - BSIsActiveModifier_IsBusy

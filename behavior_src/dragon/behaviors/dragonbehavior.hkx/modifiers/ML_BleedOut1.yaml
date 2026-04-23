@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_BleedOut1
+userData: 1
+modifiers:
+  - EEM_DisableLookAtTarget

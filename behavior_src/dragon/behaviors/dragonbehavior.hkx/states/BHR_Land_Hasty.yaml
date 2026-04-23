@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Land_Hasty
+startStateId: 1
+states:
+  - ST_Land_Hasty_TouchDown
+  - ST_Land_Hasty_Approach

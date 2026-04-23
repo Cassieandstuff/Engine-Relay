@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Default
+stateId: 0
+generator: MG_Ground_Default

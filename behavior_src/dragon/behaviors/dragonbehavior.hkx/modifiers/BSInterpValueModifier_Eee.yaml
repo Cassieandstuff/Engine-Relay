@@ -1,0 +1,16 @@
+class: BSInterpValueModifier
+name: BSInterpValueModifier_Eee
+userData: 2
+bindings:
+  - memberPath: source
+    variable: LipEeeDamped
+  - memberPath: target
+    variable: LipEee
+  - memberPath: result
+    variable: LipEeeDamped
+  - memberPath: gain
+    variable: LipGain
+source: 0.000000
+target: 0.000000
+result: 0.000000
+gain: 0.000000

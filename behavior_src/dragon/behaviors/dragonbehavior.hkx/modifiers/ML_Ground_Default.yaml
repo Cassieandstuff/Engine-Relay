@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Ground_Default
+userData: 1
+modifiers:
+  - EEM_iState_Ground
+  - EEM_Turn
+  - EEM_Move
+  - BSLimbIKModifier_Tail

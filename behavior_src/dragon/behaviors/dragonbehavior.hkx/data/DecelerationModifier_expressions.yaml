@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: DecelerationModifier
+expressionsData:
+  - expression: "Speed = clamp(Speed - (MaxDec * TimeStep), min(Speed, TargetSpeedDamped), Speed)"

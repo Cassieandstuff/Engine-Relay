@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Ground_Locomotion_Forward_TurnLeft
+animationName: Animations\MTForwardGround_Left45.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Hover_Enter_Default
+stateId: 1
+generator: MG_Hover_Enter_Default
+transitions:
+  - event: HoverIdle
+    toState: ST_Hover_Idle
+    transition: defaultTransitionEffect

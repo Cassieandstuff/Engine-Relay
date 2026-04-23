@@ -1,0 +1,33 @@
+class: hkbStateMachine
+name: DragonPairedKillBehavior
+startStateId: 3
+bindings:
+  - memberPath: isActive
+    variable: bIsSynced
+transitions:
+  - event: KillMove1HMDragonRodeoSlash
+    toState: KillMove1HMDragonRodeoSlash
+    transition: defaultTransitionEffect
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: KillMove2HMDragonSlash
+    toState: KillMove2HMDragonSlash
+    transition: defaultTransitionEffect
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: KillMove2HWDragonSlash
+    toState: KillMove2HWDragonSlash
+    transition: defaultTransitionEffect
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: KillMove1HMDragonRodeoStabShort
+    toState: KillMove1HMDragonRodeoStabShort
+    transition: defaultTransitionEffect
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: KillMove2HWDragonRodeoSlash
+    toState: KillMove2HWDragonRodeoSlash
+    transition: defaultTransitionEffect
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+states:
+  - KillMove2HWDragonRodeoSlash
+  - KillMove1HMDragonRodeoSlash
+  - KillMove2HMDragonSlash
+  - KillMove2HWDragonSlash
+  - KillMove1HMDragonRodeoStabShort

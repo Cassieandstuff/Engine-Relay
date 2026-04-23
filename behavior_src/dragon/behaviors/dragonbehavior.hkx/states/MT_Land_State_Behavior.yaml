@@ -1,0 +1,19 @@
+class: hkbStateMachine
+name: MT_Land_State_Behavior
+startStateId: 0
+states:
+  - ST_Land_Default
+  - ST_Land_Default_Vertical
+  - ST_Land_Injured
+  - ST_Land_Injured_Vertical
+  - ST_Land_Hasty
+  - ST_Land_Crash
+  - ST_Land_Perch_Tower_Vertical
+  - ST_Land_Hasty_Vertical
+  - ST_Land_Perch_Tower
+  - ST_Land_Perch_TowerAttack
+  - ST_Land_Perch_Amp
+  - ST_Land_Perch_RockL02
+  - ST_Land_Perch_Amp_Vertical
+  - ST_Land_Perch_RockL02_Vertical
+  - ST_Land_Perch_LakeDive

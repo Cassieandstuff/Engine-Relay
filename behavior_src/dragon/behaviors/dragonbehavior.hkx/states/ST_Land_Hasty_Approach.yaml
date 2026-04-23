@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Hasty_Approach
+stateId: 1
+generator: MG_Land_Hasty_Approach
+transitions:
+  - event: BeginLand
+    toState: ST_Land_Hasty_TouchDown
+    transition: null

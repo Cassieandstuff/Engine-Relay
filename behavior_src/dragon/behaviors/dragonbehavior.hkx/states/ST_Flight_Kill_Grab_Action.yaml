@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight_Kill_Grab_Action
+stateId: 0
+generator: MG_Flight_Kill_Grab_Action

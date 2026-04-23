@@ -1,0 +1,15 @@
+class: hkbStateMachineStateInfo
+name: ST_Hover_Stagger
+stateId: 6
+generator: MG_Hover_Stagger
+transitions:
+  - event: HoverIdle
+    toState: ST_Hover_Idle
+    transition: null
+    flags: FLAG_DISABLE_CONDITION|FLAG_DELAY_STATE_CHANGE
+  - event: HoverStopVertical
+    toState: ST_Hover_Exit_Vertical
+    transition: defaultTransitionEffect
+  - event: HoverStop
+    toState: ST_Hover_Exit_Default
+    transition: defaultTransitionEffect

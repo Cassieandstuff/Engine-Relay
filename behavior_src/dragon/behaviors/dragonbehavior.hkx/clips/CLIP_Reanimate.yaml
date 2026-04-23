@@ -1,0 +1,13 @@
+class: hkbClipGenerator
+name: CLIP_Reanimate
+animationName: Animations\Special_ResurrectionExit.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: -0.013000
+    event: GetUpEnd
+    relativeToEndOfClip: true
+  - localTime: 5.500000
+    event: Reanimated
+  - localTime: 5.504000
+    event: AddCharacterControllerToWorld

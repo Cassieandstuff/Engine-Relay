@@ -1,0 +1,10 @@
+class: hkbModifierList
+name: ML_TakeOff
+userData: 1
+modifiers:
+  - EEM_iState_Flight
+  - EEM_DisableLookAtTarget
+  - BSIsActiveModifier_bIsSynced
+  - BSIsActiveModifier_IsBusy
+  - BSIsActiveModifier_NoFootIK
+  - BSEventOnDeactivateModifier_ResetTween

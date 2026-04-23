@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Flight_Kill_Grab_Failed
+userData: 1
+modifiers:
+  - BSIsActiveModifier_FlightKillGrabAction

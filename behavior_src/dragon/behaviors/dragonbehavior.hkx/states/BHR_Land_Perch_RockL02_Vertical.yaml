@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Land_Perch_RockL02_Vertical
+startStateId: 0
+states:
+  - ST_Land_Perch_RockL02_Vertical_Approach
+  - ST_Land_Perch_RockL02_Vertical_Touchdown

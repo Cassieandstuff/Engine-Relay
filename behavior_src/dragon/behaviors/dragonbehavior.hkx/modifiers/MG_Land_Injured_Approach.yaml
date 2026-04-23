@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Land_Injured_Approach
+userData: 1
+modifier: ML_Tweening_Landing
+generator: BLD_Land_Injured_Approach

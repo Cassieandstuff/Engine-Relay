@@ -1,0 +1,9 @@
+class: hkbExpressionDataArray
+name: EEM_Turn
+expressionsData:
+  - expression: "turnLeft if (TurnDelta > TurnMin) && (!IsTurningLeft)"
+    eventMode: EVENT_MODE_SEND_ON_TRUE
+  - expression: "turnRight if (TurnDelta < -(TurnMin) )  && (!IsTurningRight)"
+    eventMode: EVENT_MODE_SEND_ON_TRUE
+  - expression: "turnStop if (fabs(TurnDelta) <= TurnMin)  && ((IsTurningLeft) || (IsTurningRight))"
+    eventMode: EVENT_MODE_SEND_ON_TRUE

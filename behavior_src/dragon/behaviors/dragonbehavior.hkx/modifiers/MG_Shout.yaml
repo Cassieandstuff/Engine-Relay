@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Shout
+userData: 1
+modifier: ML_Shout
+generator: BHR_Shout

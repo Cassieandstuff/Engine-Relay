@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Trap_Shout_Inhale_Fireball
+stateId: 1
+generator: CLIP_Furniture_Trap_Shout_Inhale_Fireball
+transitions:
+  - event: shoutRelease
+    toState: ST_Furniture_Trap_Shout_Exhale_Fireball
+    transition: BTE_Shout_InhaleToExhale

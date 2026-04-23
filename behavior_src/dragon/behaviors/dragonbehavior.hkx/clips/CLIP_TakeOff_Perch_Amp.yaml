@@ -1,0 +1,10 @@
+class: hkbClipGenerator
+name: CLIP_TakeOff_Perch_Amp
+animationName: Animations\Special_PerchWordWallLaunch.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+flags: 1
+triggers:
+  - localTime: 0.000000
+    event: TakeOff_to_WingState
+    relativeToEndOfClip: true

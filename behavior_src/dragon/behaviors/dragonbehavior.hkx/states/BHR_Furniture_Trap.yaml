@@ -1,0 +1,12 @@
+class: hkbStateMachine
+name: BHR_Furniture_Trap
+startStateId: 0
+transitions:
+  - event: EnterFurnitureTrapInstant
+    toState: ST_Furniture_Trap_Idle
+    transition: null
+    flags: FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+states:
+  - ST_Furniture_Trap_Enter
+  - ST_Furniture_Trap_Idle
+  - ST_Furniture_Trap_Exit

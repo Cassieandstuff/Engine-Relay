@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Flight_Default_FeatherStop
+userData: 1
+modifier: ML_Flight_Default_FeatherStop
+generator: CLIP_Flight_Default_FeatherStop

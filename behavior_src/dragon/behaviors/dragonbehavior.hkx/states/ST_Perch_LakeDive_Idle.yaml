@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_LakeDive_Idle
+stateId: 2
+generator: MG_Perch_LakeDive_Idle

@@ -1,0 +1,7 @@
+class: hkbEvaluateExpressionModifier
+name: EEM_PathAngle
+userData: 2
+bindings:
+  - memberPath: enable
+    variable: bFullyMotionDriven
+expressions: null

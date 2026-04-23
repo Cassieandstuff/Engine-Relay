@@ -1,0 +1,14 @@
+class: BSInterpValueModifier
+name: BSInterpValueModifier_TweenEntryDirectonFlightKillGrab
+userData: 2
+bindings:
+  - memberPath: source
+    variable: TweenEntryDirectionFlightKillGrab
+  - memberPath: target
+    variable: TweenEntryDirectionCur
+  - memberPath: result
+    variable: TweenEntryDirectionFlightKillGrab
+source: 0.000000
+target: 0.000000
+result: 0.000000
+gain: 1.000000

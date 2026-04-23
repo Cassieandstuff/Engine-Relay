@@ -1,0 +1,9 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight_Injure
+stateId: 12
+generator: MG_Flight_Injure
+transitions:
+  - event: injureStop
+    toState: ST_Flight_Default
+    transition: defaultTransitionEffect
+    flags: FLAG_DISABLE_CONDITION|FLAG_DELAY_STATE_CHANGE

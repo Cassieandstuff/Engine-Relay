@@ -1,0 +1,48 @@
+# Build output
+build/
+build-*/
+out/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+_deps/
+*.cmake
+!CMakeLists.txt
+!cmake/*.cmake
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+
+# Rider / JetBrains
+.idea/
+cmake-build-*/
+
+# VS Code
+.vscode/
+
+# Compiled output
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.dll
+*.exe
+
+# vcpkg
+vcpkg_installed/
+
+# CommonLibSSE submodule — populated locally, not committed
+external/CommonLibSSE/
+
+# OS
+Thumbs.db
+.DS_Store

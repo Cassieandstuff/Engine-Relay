@@ -1,0 +1,4 @@
+class: hkbBlendingTransitionEffect
+name: TE_HoverToCruise
+duration: 0.300000
+flags: FLAG_IGNORE_TO_WORLD_FROM_MODEL

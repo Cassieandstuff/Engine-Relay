@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Combat_Default_Locomotion
+stateId: 1
+generator: MG_Ground_Locomotion
+transitions:
+  - event: moveStop
+    toState: ST_Ground_Combat_Default_Standing
+    transition: defaultTransitionEffect

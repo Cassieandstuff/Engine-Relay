@@ -1,0 +1,14 @@
+class: hkbModifierList
+name: ML_Phenome
+userData: 1
+modifiers:
+  - BSGetTimeStepModifier
+  - BSInterpValueModifier_BigAah
+  - BSInterpValueModifier_DST
+  - BSInterpValueModifier_Eee
+  - BSInterpValueModifier_FV
+  - BSInterpValueModifier_K
+  - BSInterpValueModifier_L
+  - BSInterpValueModifier_R
+  - BSInterpValueModifier_Th
+  - BSModifyOnceModifier_Reset_Lip

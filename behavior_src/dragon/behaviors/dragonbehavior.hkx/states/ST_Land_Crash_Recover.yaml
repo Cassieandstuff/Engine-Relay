@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Crash_Recover
+stateId: 2
+generator: MG_Land_Crash_Recover

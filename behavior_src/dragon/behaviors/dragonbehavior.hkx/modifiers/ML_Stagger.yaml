@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Stagger
+userData: 1
+modifiers:
+  - EEM_DisableLookAtTarget
+  - BSIsActiveModifier_IsBusy
+  - BSIsActiveModifier_bAnimationDriven
+  - BSEventOnDeactivateModifier_StaggerStop

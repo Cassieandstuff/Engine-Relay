@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Flight_Shout
+userData: 1
+modifier: BSEventOnDeactivateModifier_Shouting
+generator: BHR_Flight_Shout

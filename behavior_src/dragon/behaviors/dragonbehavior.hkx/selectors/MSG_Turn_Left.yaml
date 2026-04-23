@@ -1,0 +1,8 @@
+class: hkbManualSelectorGenerator
+name: MSG_Turn_Left
+bindings:
+  - memberPath: selectedGeneratorIndex
+    variable: iInjured
+generators:
+  - CLIP_Ground_Standing_Turn_Left
+  - CLIP_Ground_Standing_Injured_Turn_Left

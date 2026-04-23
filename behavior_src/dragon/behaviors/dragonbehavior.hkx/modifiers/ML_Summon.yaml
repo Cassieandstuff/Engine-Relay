@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Summon
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bAnimationDriven
+  - BSIsActiveModifier_IsBusy
+  - BSIsActiveModifier_bEquipOK
+  - EEM_DisableLookAtTarget

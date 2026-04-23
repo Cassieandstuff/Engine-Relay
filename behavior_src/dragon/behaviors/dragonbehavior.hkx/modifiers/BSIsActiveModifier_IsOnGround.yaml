@@ -1,0 +1,6 @@
+class: BSIsActiveModifier
+name: BSIsActiveModifier_IsOnGround
+userData: 2
+bindings:
+  - memberPath: bIsActive0
+    variable: IsOnGround

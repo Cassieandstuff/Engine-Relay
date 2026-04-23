@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Hover_Exit_Default
+stateId: 3
+generator: MG_Hover_Exit_Default

@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Land_Perch_Tower
+startStateId: 0
+states:
+  - ST_Land_Perch_Tower_Approach
+  - ST_Land_Perch_Tower_Touchdown

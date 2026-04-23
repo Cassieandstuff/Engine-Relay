@@ -1,0 +1,6 @@
+class: hkbBlendingTransitionEffect
+name: defaultTransitionEffect
+duration: 0.000000
+bindings:
+  - memberPath: duration
+    variable: defaultBlend

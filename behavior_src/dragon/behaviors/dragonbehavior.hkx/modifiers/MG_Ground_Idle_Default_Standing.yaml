@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_Idle_Default_Standing
+userData: 1
+modifier: ML_Ground_Idle_Default_Standing
+generator: CLIP_Ground_Idle_Default_Standing

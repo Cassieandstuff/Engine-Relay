@@ -1,0 +1,6 @@
+class: BSIsActiveModifier
+name: BSIsActiveModifier_bAllowRotation
+userData: 2
+bindings:
+  - memberPath: bIsActive0
+    variable: bAllowRotation

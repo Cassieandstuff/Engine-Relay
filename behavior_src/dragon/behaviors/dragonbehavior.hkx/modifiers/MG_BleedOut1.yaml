@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_BleedOut1
+userData: 1
+modifier: ML_BleedOut1
+generator: BHR_BleedOut1

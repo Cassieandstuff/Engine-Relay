@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_Amp
+stateId: 1
+generator: BHR_Perch_Amp

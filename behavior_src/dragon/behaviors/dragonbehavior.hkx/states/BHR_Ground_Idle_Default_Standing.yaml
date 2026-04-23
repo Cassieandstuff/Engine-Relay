@@ -1,0 +1,13 @@
+class: hkbStateMachine
+name: BHR_Ground_Idle_Default_Standing
+startStateId: 1
+transitions:
+  - event: Reset
+    toState: ST_Ground_Idle_Default_Standing_Default
+    transition: defaultTransitionEffect
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+states:
+  - ST_Ground_Idle_Default_Standing_TurnRight
+  - ST_Ground_Idle_Default_Standing_Default
+  - ST_Ground_Idle_Default_Standing_TurnLeft
+  - ST_Ground_Idle_Default_Standing_Shout

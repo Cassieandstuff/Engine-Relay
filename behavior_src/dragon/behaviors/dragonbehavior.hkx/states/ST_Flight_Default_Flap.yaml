@@ -1,0 +1,19 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight_Default_Flap
+stateId: 1
+generator: MG_Flight_Default_Flap
+transitions:
+  - event: Glide
+    toState: ST_Flight_Default_Glide
+    transition: BTE_Flap_Exit
+    flags: FLAG_DISABLE_CONDITION|FLAG_USE_TRIGGER_INTERVAL
+    triggerInterval:
+      enterEvent: AllowFlapExit_Begin
+      exitEvent: AllowFlapExit_End
+  - event: Feather
+    toState: ST_Flight_Default_Feather
+    transition: BTE_Flap_Exit
+    flags: FLAG_DISABLE_CONDITION|FLAG_USE_TRIGGER_INTERVAL
+    triggerInterval:
+      enterEvent: AllowFlapExit_Begin
+      exitEvent: AllowFlapExit_End

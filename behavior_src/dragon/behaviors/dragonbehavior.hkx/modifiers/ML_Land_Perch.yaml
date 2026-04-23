@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Land_Perch
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bIsSynced
+  - BSIsActiveModifier_IsBusy
+  - BSEventOnDeactivateModifier_ResetTween
+  - BSTweenerModifier_Land_Perch

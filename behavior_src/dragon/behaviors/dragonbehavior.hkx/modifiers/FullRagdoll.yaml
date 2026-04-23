@@ -1,0 +1,6 @@
+class: hkbEventDrivenModifier
+name: FullRagdoll
+userData: 1
+modifier: PoweredRagdoll No Matching
+deactivateEvent: GetUpBegin
+activeByDefault: true

@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: AccelerationModifier
+expressionsData:
+  - expression: "Speed = clamp(Speed + (MaxAcc * TimeStep), Speed, max(Speed, TargetSpeedDamped * TargetSpeedMaxScale))"

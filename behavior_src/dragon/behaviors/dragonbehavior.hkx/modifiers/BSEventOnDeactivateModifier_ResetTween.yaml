@@ -1,0 +1,5 @@
+class: BSEventOnDeactivateModifier
+name: BSEventOnDeactivateModifier_ResetTween
+userData: 3
+event:
+  event: ResetTween

@@ -1,0 +1,6 @@
+class: hkbStateMachineStateInfo
+name: ST_Death_Agony
+stateId: 1
+generator: BHR_Death_Agony
+exitNotifyEvents:
+  - event: deathStop

@@ -1,0 +1,8 @@
+class: hkbClipGenerator
+name: CLIP_Th
+animationName: Animations\Phoneme_Th.HKX
+mode: MODE_USER_CONTROLLED
+playbackSpeed: 1.000000
+bindings:
+  - memberPath: userControlledTimeFraction
+    variable: LipTh

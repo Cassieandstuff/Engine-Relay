@@ -1,0 +1,16 @@
+class: BSInterpValueModifier
+name: BSInterpValueModifier_Th
+userData: 2
+bindings:
+  - memberPath: source
+    variable: LipThDamped
+  - memberPath: target
+    variable: LipTh
+  - memberPath: result
+    variable: LipThDamped
+  - memberPath: gain
+    variable: LipGain
+source: 0.000000
+target: 0.000000
+result: 0.000000
+gain: 0.000000

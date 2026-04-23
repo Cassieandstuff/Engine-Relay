@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Injured_Approach
+stateId: 1
+generator: MG_Land_Injured_Approach
+transitions:
+  - event: BeginLand
+    toState: ST_Land_Injured_TouchDown
+    transition: null

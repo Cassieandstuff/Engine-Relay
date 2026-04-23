@@ -1,0 +1,23 @@
+class: hkbBlenderGenerator
+name: BLD_Land_Default_Vertical_Approach
+flags: 49
+subtractLastChild: false
+bindings:
+  - memberPath: blendParameter
+    variable: TweenEntryDirection
+children:
+  - generator: CLIP_Land_Default_Vertical_Approach
+    weight: 0.000000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Land_Default_Vertical_Approach_Right90
+    weight: 0.250000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Land_Default_Vertical_Approach_Right180
+    weight: 0.490000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Land_Default_Vertical_Approach_Left180
+    weight: 0.500000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Land_Default_Vertical_Approach_Left90
+    weight: 0.750000
+    worldFromModelWeight: 1.000000

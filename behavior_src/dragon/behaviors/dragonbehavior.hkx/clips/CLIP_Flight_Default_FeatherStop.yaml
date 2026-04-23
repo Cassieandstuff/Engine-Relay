@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Flight_Default_FeatherStop
+animationName: Animations\MTFeatherLoop.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

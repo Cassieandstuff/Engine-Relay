@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Perch_RockL02_Shout
+userData: 1
+modifier: ML_Perch_RockL02_Shout
+generator: BHR_Perch_RockL02_Shout

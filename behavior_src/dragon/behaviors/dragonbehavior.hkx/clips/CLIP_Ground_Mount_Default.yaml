@@ -1,0 +1,17 @@
+class: hkbClipGenerator
+name: CLIP_Ground_Mount_Default
+animationName: ..\SharedKillMoves\Human&Dragon\Paired_DragonMount.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: PairEnd
+    relativeToEndOfClip: true
+  - localTime: 3.961000
+    event: 2_SoundPlay.NPCDragonWingFlapTakeoff
+  - localTime: 4.733000
+    event: 2_SoundPlay.NPCDragonWingFlap
+  - localTime: 6.704000
+    event: 2_SoundPlay.NPCDragonWingFlap
+  - localTime: 7.795000
+    event: 2_SoundPlay.NPCDragonWingFlap

@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Stagger
+userData: 1
+modifier: ML_Stagger
+generator: CLIP_Ground_Stagger

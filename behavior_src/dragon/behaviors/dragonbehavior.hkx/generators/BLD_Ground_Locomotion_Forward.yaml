@@ -1,0 +1,17 @@
+class: hkbBlenderGenerator
+name: BLD_Ground_Locomotion_Forward
+flags: 49
+subtractLastChild: false
+bindings:
+  - memberPath: blendParameter
+    variable: DirectionDamped
+children:
+  - generator: CLIP_Ground_Locomotion_Forward
+    weight: 0.000000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Ground_Locomotion_Forward_TurnLeft
+    weight: 0.875000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Ground_Locomotion_Forward_TurnRight
+    weight: 0.125000
+    worldFromModelWeight: 1.000000

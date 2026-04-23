@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Furniture_Trap_Idle_Neck
+startStateId: 0
+states:
+  - ST_Furniture_Trap_Idle_Neck_Default
+  - ST_Furniture_Trap_Idle_Neck_Shout

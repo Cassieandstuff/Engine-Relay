@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Death_Agony_Start
+stateId: 0
+generator: CLIP_Death_Agony_Start
+transitions:
+  - event: to_Death_End
+    toState: ST_Death_Agony_End
+    transition: null

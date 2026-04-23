@@ -1,0 +1,20 @@
+# Root state machine for BehaviorSwitchboard.hkb.
+#
+# State 0: BSB_IdleState — permanent neutral state. The SM starts here.
+#
+# Sub-behavior states and their wildcard transitions are NOT declared here.
+# They are generated dynamically at kDataLoaded by BehaviorGenerator, based
+# on BSB_API registrations, and incorporated into a generated HKX that is
+# served via the CreateFileW redirect in BehaviorFileInterceptor.
+#
+# This YAML represents the "empty base" that is compiled into the fallback
+# BehaviorSwitchboard.hkx (deployed in Data\Meshes). If HKBuild generation
+# fails at runtime, Havok loads this fallback instead.
+#
+# For multi-mod use, always ensure HKBuild generation succeeds at startup.
+class: hkbStateMachine
+name: BSB_SwitchboardSM
+startStateId: 0
+selfTransitionMode: SELF_TRANSITION_MODE_NO_TRANSITION
+states:
+  - BSB_IdleState

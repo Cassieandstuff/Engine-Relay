@@ -1,0 +1,7 @@
+class: hkbExpressionDataArray
+name: EEM_Move
+expressionsData:
+  - expression: "moveStart if (Speed >= fMinSpeed) && (!IsBusy) && (!IsMoving)"
+    eventMode: EVENT_MODE_SEND_ON_TRUE
+  - expression: "moveStop if (Speed < fMinSpeed) && (IsMoving)"
+    eventMode: EVENT_MODE_SEND_ON_TRUE

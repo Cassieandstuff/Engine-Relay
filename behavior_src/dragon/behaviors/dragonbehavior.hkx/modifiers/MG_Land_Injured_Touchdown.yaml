@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Land_Injured_Touchdown
+userData: 1
+modifier: BSIsActiveModifier_IsOnGround
+generator: CLIP_Land_Injured_Vertical_TouchDown

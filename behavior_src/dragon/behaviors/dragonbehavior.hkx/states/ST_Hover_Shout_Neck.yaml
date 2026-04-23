@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Hover_Shout_Neck
+stateId: 1
+generator: MG_Hover_Shout
+transitions:
+  - event: shoutStop
+    toState: ST_Hover_Idle_Neck
+    transition: defaultTransitionEffect

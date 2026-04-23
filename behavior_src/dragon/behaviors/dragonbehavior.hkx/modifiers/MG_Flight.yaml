@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Flight
+userData: 1
+modifier: ML_Flight
+generator: BHR_Flight

@@ -1,0 +1,23 @@
+class: hkbBlenderGenerator
+name: BLD_Land_Perch_LakeDive
+flags: 49
+subtractLastChild: false
+bindings:
+  - memberPath: blendParameter
+    variable: TweenEntryDirection
+children:
+  - generator: CLIP_Land_Perch_LakeDive
+    weight: 0.000000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Land_Perch_LakeDive_Right90
+    weight: 0.250000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Land_Perch_LakeDive_Right180
+    weight: 0.499999
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Land_Perch_LakeDive_Left180
+    weight: 0.500000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Land_Perch_LakeDive_Left90
+    weight: 0.750000
+    worldFromModelWeight: 1.000000

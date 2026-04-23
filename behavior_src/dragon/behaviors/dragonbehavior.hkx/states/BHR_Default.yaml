@@ -1,0 +1,50 @@
+class: hkbStateMachine
+name: BHR_Default
+startStateId: 3
+transitions:
+  # ── Behavior Switchboard entry ───────────────────────────────────────────
+  # Generic entry event fired by BSB (C++ calls SetPendingBSBEvent first).
+  # One wildcard covers ALL registered dragon sub-behaviors — no per-mod
+  # changes to this file are needed as new mods register with BSB.
+  - event: BSB_DragonEnter
+    toState: ST_DragonBSBContainer
+    transition: null
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+  # ── Vanilla transitions (unchanged) ─────────────────────────────────────
+  - event: FlyStartCruise
+    toState: ST_Flight
+    transition: null
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: FlyStartHover
+    toState: ST_Hover
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: IdleFurnitureTrapEnter
+    toState: ST_Furniture
+    transition: defaultTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: IdleFurnitureNestEnter
+    toState: ST_Furniture
+    transition: defaultTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+    toNestedStateId: 2
+  - event: to_Flight_Kill_Grab_Action
+    toState: ST_Flight_Kill_Grab
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: to_Flight_Kill_Grab_Action_Failed
+    toState: ST_Flight_Kill_Grab
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+    toNestedStateId: 2
+states:
+  - DragonPairedKillState
+  - ST_Flight
+  - ST_Ground
+  - ST_TakeOff
+  - ST_Hover
+  - ST_Land
+  - ST_Perch
+  - ST_Furniture
+  - ST_Flight_Kill_Grab
+  - ST_DragonBSBContainer

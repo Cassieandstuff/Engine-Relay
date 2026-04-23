@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Idle_Default
+stateId: 0
+generator: BLD_Ground_Idle_Default

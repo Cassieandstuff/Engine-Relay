@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_TakeOff_Ground
+userData: 1
+modifiers:
+  - FootIKModifier_TakeOff

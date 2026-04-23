@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Perch_RockL02_Idle
+animationName: Animations\Special_PerchRockL02Idle.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

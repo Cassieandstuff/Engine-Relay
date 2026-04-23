@@ -1,0 +1,14 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Idle_Default_Standing_Shout
+stateId: 3
+generator: BHR_Shout
+transitions:
+  - event: shoutStop
+    toState: ST_Ground_Idle_Default_Standing_Default
+    transition: defaultTransitionEffect
+  - event: shoutStop
+    toState: ST_Ground_Idle_Default_Standing_TurnRight
+    transition: defaultTransitionEffect
+  - event: shoutStop
+    toState: ST_Ground_Idle_Default_Standing_TurnLeft
+    transition: defaultTransitionEffect

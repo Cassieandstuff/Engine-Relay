@@ -1,0 +1,11 @@
+class: BSSynchronizedClipGenerator
+name: pa_DragonMountExit
+pClipGenerator: CLIP_Ground_Dismount_Actor
+SyncAnimPrefix: 2_
+bSyncClipIgnoreMarkPlacement: false
+fGetToMarkTime: 0.000000
+fMarkErrorThreshold: 0.100000
+bLeadCharacter: true
+bReorientSupportChar: true
+bApplyMotionFromRoot: false
+sAnimationBindingIndex: -1

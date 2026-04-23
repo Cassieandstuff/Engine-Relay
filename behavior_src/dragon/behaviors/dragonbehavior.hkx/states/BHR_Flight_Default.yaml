@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Flight_Default
+startStateId: 0
+states:
+  - ST_Flight_Default_Cruise
+  - ST_Flight_Default_FeatherStop

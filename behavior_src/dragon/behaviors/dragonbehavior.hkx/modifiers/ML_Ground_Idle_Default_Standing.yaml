@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Ground_Idle_Default_Standing
+userData: 1
+modifiers:
+  - EEM_EnableLookAtTarget_Default

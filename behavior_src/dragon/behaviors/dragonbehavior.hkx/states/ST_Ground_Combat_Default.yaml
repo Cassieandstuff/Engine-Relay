@@ -1,0 +1,29 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Combat_Default
+stateId: 5
+generator: BLD_Ground_Combat_Default
+transitions:
+  - event: attackStartBite
+    toState: ST_Ground_Combat_Attack_Bite
+    transition: defaultTransitionEffect
+  - event: attackStartTail
+    toState: ST_Ground_Combat_Attack_Tail
+    transition: defaultTransitionEffect
+  - event: attackStartTailLeft
+    toState: ST_Ground_Combat_Attack_Tail_Left
+    transition: defaultTransitionEffect
+  - event: attackStartTailRight
+    toState: ST_Ground_Combat_Attack_Tail_Right
+    transition: defaultTransitionEffect
+  - event: attackStartWingRight
+    toState: ST_Ground_Combat_Attack_Wing_Right
+    transition: defaultTransitionEffect
+  - event: attackStartWingLeft
+    toState: ST_Ground_Combat_Attack_Wing_Left
+    transition: defaultTransitionEffect
+  - event: attackStartBiteLeft
+    toState: ST_Ground_Combat_Attack_Bite_Left
+    transition: defaultTransitionEffect
+  - event: attackStartBiteRight
+    toState: ST_Ground_Combat_Attack_Bite_Right
+    transition: defaultTransitionEffect

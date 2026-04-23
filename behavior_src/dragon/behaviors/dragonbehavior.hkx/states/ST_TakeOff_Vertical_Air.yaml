@@ -1,0 +1,6 @@
+class: hkbStateMachineStateInfo
+name: ST_TakeOff_Vertical_Air
+stateId: 1
+generator: MG_TakeOff_Vertical_Air
+enterNotifyEvents:
+  - event: FlightTakeOff

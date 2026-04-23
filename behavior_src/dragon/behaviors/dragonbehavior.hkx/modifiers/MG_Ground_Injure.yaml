@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_Injure
+userData: 1
+modifier: ML_Ground_Injure
+generator: CLIP_Ground_Injure

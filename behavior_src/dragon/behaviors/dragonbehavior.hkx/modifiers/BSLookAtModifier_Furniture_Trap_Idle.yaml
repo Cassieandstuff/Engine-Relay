@@ -1,0 +1,49 @@
+class: BSLookAtModifier
+name: BSLookAtModifier_Furniture_Trap_Idle
+bindings:
+  - memberPath: lookAtTarget
+    variable: bHeadTracking
+  - memberPath: targetLocation
+    variable: TargetLocation
+  - memberPath: targetOutsideLimits
+    variable: LookAtOutOfRange
+  - memberPath: lookAtCameraX
+    variable: camerafromx
+  - memberPath: lookAtCameraY
+    variable: camerafromy
+  - memberPath: lookAtCameraZ
+    variable: camerafromz
+lookAtTarget: true
+bones:
+  - index: 60
+    fwdAxisLS: (0.985299 -0.170840 0.000000 0.000000)
+    limitAngleDegrees: 45.000000
+    onGain: 0.050000
+    offGain: 0.050000
+    enabled: true
+  - index: 61
+    fwdAxisLS: (0.983452 0.181170 0.000000 0.000000)
+    limitAngleDegrees: 45.000000
+    onGain: 0.050000
+    offGain: 0.050000
+    enabled: true
+  - index: 63
+    fwdAxisLS: (0.993884 0.110430 0.000000 0.000000)
+    limitAngleDegrees: 45.000000
+    onGain: 0.050000
+    offGain: 0.050000
+    enabled: true
+limitAngleDegrees: 90.000000
+limitAngleThresholdDegrees: 10.000000
+continueLookOutsideOfLimit: false
+onGain: 0.050000
+offGain: 0.025000
+useBoneGains: false
+targetLocation: (0.000000 0.000000 0.000000 0.000000)
+targetOutsideLimits: false
+targetOutOfLimitEvent:
+  id: -1
+lookAtCamera: false
+lookAtCameraX: 0.000000
+lookAtCameraY: 0.000000
+lookAtCameraZ: 0.000000

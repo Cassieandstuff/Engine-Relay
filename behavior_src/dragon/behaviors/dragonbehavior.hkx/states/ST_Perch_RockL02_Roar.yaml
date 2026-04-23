@@ -1,0 +1,17 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_RockL02_Roar
+stateId: 4
+generator: MG_Perch_RockL02_Roar
+transitions:
+  - event: to_Perch_Idle
+    toState: ST_Perch_RockL02_Idle
+    transition: defaultTransitionEffect
+  - event: shoutStart
+    toState: ST_Perch_RockL02_Shout
+    transition: defaultTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+  - event: shoutStartFireball
+    toState: ST_Perch_RockL02_Shout
+    transition: defaultTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1

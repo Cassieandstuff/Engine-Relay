@@ -1,0 +1,11 @@
+class: BSSynchronizedClipGenerator
+name: Ground_Mount_Dragon
+pClipGenerator: CLIP_Ground_Mount_Default
+SyncAnimPrefix: 2_
+bSyncClipIgnoreMarkPlacement: false
+fGetToMarkTime: 0.000000
+fMarkErrorThreshold: 0.500000
+bLeadCharacter: true
+bReorientSupportChar: true
+bApplyMotionFromRoot: true
+sAnimationBindingIndex: -1

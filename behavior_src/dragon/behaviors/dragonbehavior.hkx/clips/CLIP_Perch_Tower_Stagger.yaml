@@ -1,0 +1,9 @@
+class: hkbClipGenerator
+name: CLIP_Perch_Tower_Stagger
+animationName: Animations\Stagger_Furn_Tower.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: -0.002000
+    event: staggerStop
+    relativeToEndOfClip: true

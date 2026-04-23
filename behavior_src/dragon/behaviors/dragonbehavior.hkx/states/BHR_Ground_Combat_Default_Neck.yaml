@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Ground_Combat_Default_Neck
+startStateId: 1
+states:
+  - ST_Ground_Combat_Default_Neck_Shout
+  - ST_Ground_Combat_Default_Neck

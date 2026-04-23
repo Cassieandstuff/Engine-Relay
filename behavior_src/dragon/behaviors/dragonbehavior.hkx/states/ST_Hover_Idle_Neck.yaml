@@ -1,0 +1,14 @@
+class: hkbStateMachineStateInfo
+name: ST_Hover_Idle_Neck
+stateId: 0
+generator: BHR_Hover_Idle
+transitions:
+  - event: shoutStart
+    toState: ST_Hover_Shout_Neck
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1
+  - event: shoutStartFireball
+    toState: ST_Hover_Shout_Neck
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION

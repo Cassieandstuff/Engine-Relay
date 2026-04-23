@@ -1,0 +1,9 @@
+class: hkbClipGenerator
+name: CLIP_Land_Perch_RockL02_Touchdown
+animationName: Animations\MTLandVertical_RockL02.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: -0.001000
+    event: PerchLandEnd
+    relativeToEndOfClip: true

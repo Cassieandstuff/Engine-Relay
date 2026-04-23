@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: DragonPairedKillState
+stateId: 19
+generator: DragonPairedKillBehavior

@@ -1,0 +1,16 @@
+class: BSInterpValueModifier
+name: BSInterpValueModifier_FV
+userData: 2
+bindings:
+  - memberPath: source
+    variable: LipFVDamped
+  - memberPath: target
+    variable: LipFV
+  - memberPath: result
+    variable: LipFVDamped
+  - memberPath: gain
+    variable: LipGain
+source: 0.000000
+target: 0.000000
+result: 0.000000
+gain: 0.000000

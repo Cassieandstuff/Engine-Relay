@@ -1,0 +1,9 @@
+class: hkbClipGenerator
+name: CLIP_BleedOut2_Exit
+animationName: Animations\MTSubdued_Exit.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: to_BleedOut_Exit
+    relativeToEndOfClip: true

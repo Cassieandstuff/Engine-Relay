@@ -1,0 +1,6 @@
+class: hkbModifierList
+name: ML_BleedOut2
+userData: 1
+modifiers:
+  - EEM_EnableLookAtTarget_Default
+  - BSIsActiveModifier_bAnimationDriven

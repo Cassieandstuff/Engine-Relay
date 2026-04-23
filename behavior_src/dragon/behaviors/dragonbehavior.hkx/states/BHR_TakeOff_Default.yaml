@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_TakeOff_Default
+startStateId: 0
+states:
+  - ST_TakeOff_Default_Ground
+  - ST_TakeOff_Default_Air

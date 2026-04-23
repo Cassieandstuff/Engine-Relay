@@ -1,0 +1,5 @@
+class: hkbExpressionDataArray
+name: EEM_PitchDeltaDamped
+expressionsData:
+  - expression: "PitchDeltaTarget = PitchDelta * TimeStep * TurnDeltaScale"
+  - expression: "PitchDeltaTarget = clamp(PitchDeltaTarget, -25, 25)"

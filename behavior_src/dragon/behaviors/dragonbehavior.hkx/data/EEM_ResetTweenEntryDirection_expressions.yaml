@@ -1,0 +1,6 @@
+class: hkbExpressionDataArray
+name: EEM_ResetTweenEntryDirection
+expressionsData:
+  - expression: "TweenEntryDirection = 0"
+  - expression: "EndResetTween if (1)"
+    eventMode: EVENT_MODE_SEND_ON_TRUE

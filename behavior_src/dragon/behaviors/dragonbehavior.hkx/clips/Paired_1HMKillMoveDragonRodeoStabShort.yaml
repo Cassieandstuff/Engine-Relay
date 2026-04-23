@@ -1,0 +1,32 @@
+class: hkbClipGenerator
+name: Paired_1HMKillMoveDragonRodeoStabShort
+animationName: ..\SharedKillMoves\Human&Dragon\Paired_1HMKillMoveDragonRodeoStabShort.hkx
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: 2_KillMoveStart
+  - localTime: 0.419000
+    event: 2_SoundPlay.NPCDragonKillRoarB
+  - localTime: 1.104000
+    event: 2_SoundPlay.NPCDragonKillRoarA
+  - localTime: 1.854000
+    event: 2_SoundPlay.NPCDragonInjuredSD
+  - localTime: 2.980000
+    event: 2_SoundPlay.FSTDirtJumpDownSD
+  - localTime: 3.498000
+    event: 2_SoundPlay.NPCDragonAttackBiteSD
+  - localTime: 4.260000
+    event: 2_SoundPlay.NPCDragonKillRoarA
+  - localTime: 5.308000
+    event: 2_SoundPlay.NPCDragonKillRoarC
+  - localTime: 6.345000
+    event: 2_SoundPlay.NPCDragonAttackBiteSD
+  - localTime: 9.049000
+    event: 2_SoundPlay.NPCDragonDeathSD
+  - localTime: 11.117000
+    event: 2_KillActor
+  - localTime: 11.117000
+    event: 2_PairEnd
+  - localTime: 11.117000
+    event: 2_KillMoveEnd

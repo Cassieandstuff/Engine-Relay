@@ -1,0 +1,28 @@
+class: hkbStateMachine
+name: BHR_Master
+startStateId: 24
+bindings:
+  - memberPath: isActive
+    variable: bDisableInterp
+transitions:
+  - event: deathStart
+    toState: ST_KeyframeToRagdoll
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: deathStartAgony
+    toState: ST_KeyframeToRagdoll
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1
+  - event: Ragdoll
+    toState: ST_FullyRagdoll
+    transition: RagdollBlendingTransition
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: RagdollInstant
+    toState: ST_FullyRagdoll
+    transition: null
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION
+states:
+  - ST_FullyRagdoll
+  - ST_Default
+  - ST_KeyframeToRagdoll

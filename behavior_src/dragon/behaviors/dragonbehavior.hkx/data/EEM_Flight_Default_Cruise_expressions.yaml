@@ -1,0 +1,7 @@
+class: hkbExpressionDataArray
+name: EEM_Flight_Default_Cruise
+expressionsData:
+  - expression: "TurnDeltaDamped = 0"
+  - expression: "PitchDeltaDamped = 0"
+  - expression: "FlightPitchBlend = 0"
+  - expression: "PathAngle = 0"

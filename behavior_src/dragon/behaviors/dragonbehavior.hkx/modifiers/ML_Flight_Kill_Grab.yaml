@@ -1,0 +1,9 @@
+class: hkbModifierList
+name: ML_Flight_Kill_Grab
+userData: 1
+modifiers:
+  - EEM_iState_Flight
+  - EEM_DisableLookAtTarget
+  - BSIsActiveModifier_bIsSynced
+  - BSIsActiveModifier_IsBusy
+  - TransformVectorModifier_ConstraintOffset_Grab

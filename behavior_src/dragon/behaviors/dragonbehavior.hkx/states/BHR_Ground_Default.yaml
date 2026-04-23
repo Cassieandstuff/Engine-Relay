@@ -1,0 +1,15 @@
+class: hkbStateMachine
+name: BHR_Ground_Default
+startStateId: 0
+bindings:
+  - memberPath: startStateId
+    variable: iCombat
+transitions:
+  - event: pa_KillMove_Ground_Bite_Grapple
+    toState: ST_Ground_KillMove
+    transition: defaultTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_IS_LOCAL_WILDCARD|FLAG_DISABLE_CONDITION|FLAG_UNINTERRUPTIBLE_WHILE_PLAYING
+states:
+  - ST_Ground_Idle
+  - ST_Ground_Combat
+  - ST_Ground_KillMove

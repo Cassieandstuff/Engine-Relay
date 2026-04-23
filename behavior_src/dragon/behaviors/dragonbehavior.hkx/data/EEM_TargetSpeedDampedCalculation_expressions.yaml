@@ -1,0 +1,9 @@
+class: hkbExpressionDataArray
+name: EEM_TargetSpeedDampedCalculation
+expressionsData:
+  - expression: "MaxSpeedCurrent = clamp(MaxSpeed * (1.0 - InjuredScaleCurrent), MinSpeed, MaxSpeed)"
+  - expression: "PathAngle = fabs(TurnDelta) + fabs(PitchDelta)"
+  - expression: "MaxSpeedDamped = MinSpeed + ( ( MaxSpeedCurrent - MinSpeed ) * ( PathAngleThreshold- clamp(PathAngle, 0, PathAngleThreshold) ) / PathAngleThreshold )"
+  - expression: "TargetSpeedDamped = clamp(TargetSpeed, 0, MaxSpeedDamped)"
+  - expression: "TweenSpeedDamped = cond( TweenSpeed < TweenSpeedMin, TweenSpeedMin, TweenSpeed )"
+  - expression: "TargetSpeedDamped = cond( (HasTweenSpeed) && (DistToGoal < 2048),  TweenSpeedDamped, TargetSpeedDamped)"

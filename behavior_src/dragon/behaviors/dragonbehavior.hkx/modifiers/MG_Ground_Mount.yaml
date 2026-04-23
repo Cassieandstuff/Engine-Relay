@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_Mount
+userData: 1
+modifier: ML_Ground_Mount
+generator: BHR_Ground_Mount

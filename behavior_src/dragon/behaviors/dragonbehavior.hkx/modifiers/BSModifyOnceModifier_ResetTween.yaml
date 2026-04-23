@@ -1,0 +1,5 @@
+class: BSModifyOnceModifier
+name: BSModifyOnceModifier_ResetTween
+userData: 3
+pOnActivateModifier: EEM_ResetTweenEntryDirection
+pOnDeactivateModifier: null

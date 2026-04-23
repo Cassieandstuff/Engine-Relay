@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Idle_Default_Neck_Shout
+stateId: 1
+generator: MG_Shout
+transitions:
+  - event: shoutStop
+    toState: ST_Ground_Idle_Default_Neck
+    transition: TE_Shout_to_Default

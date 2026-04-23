@@ -1,0 +1,5 @@
+class: BSModifyOnceModifier
+name: BSModifyOnceModifier_Flight_Default_Cruise
+userData: 3
+pOnActivateModifier: EEM_Flight_Default_Cruise
+pOnDeactivateModifier: null

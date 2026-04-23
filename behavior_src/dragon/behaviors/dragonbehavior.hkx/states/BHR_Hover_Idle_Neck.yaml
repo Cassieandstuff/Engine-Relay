@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Hover_Idle_Neck
+startStateId: 0
+states:
+  - ST_Hover_Idle_Neck
+  - ST_Hover_Shout_Neck

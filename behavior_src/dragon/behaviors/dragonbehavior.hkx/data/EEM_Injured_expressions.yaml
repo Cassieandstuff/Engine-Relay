@@ -1,0 +1,7 @@
+class: hkbExpressionDataArray
+name: EEM_Injured
+expressionsData:
+  - expression: "iInjured = Injured"
+  - expression: "injureStart if (Injured)"
+    eventMode: EVENT_MODE_SEND_ON_FALSE_TO_TRUE
+  - expression: "InjuredScaleCurrent = InjuredScale * Injured"

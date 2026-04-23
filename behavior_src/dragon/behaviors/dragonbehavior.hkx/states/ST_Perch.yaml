@@ -1,0 +1,66 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch
+stateId: 13
+generator: MG_Perch
+enterNotifyEvents:
+  - event: FlightPerching
+  - event: idleChairSitting
+transitions:
+  - event: TakeOff
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 1
+    toNestedStateId: 2
+  - event: TakeOff
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 2
+    toNestedStateId: 3
+  - event: TakeOff
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 4
+  - event: TakeOff_Vertical
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 1
+    toNestedStateId: 5
+  - event: TakeOff_Vertical
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 6
+  - event: TakeOff_Vertical
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 2
+    toNestedStateId: 3
+  - event: TakeOff
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 3
+    toNestedStateId: 7
+  - event: TakeOff_Vertical
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 3
+    toNestedStateId: 7
+  - event: TakeOff
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 4
+    toNestedStateId: 8
+  - event: TakeOff_Vertical
+    toState: ST_TakeOff
+    transition: TE_Perch_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 4
+    toNestedStateId: 8

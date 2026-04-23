@@ -1,0 +1,12 @@
+class: hkbClipGenerator
+name: CLIP_Land_Injured_Vertical_TouchDown
+animationName: Animations\MTLand_CrashShort.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: FlightLandEnd
+    relativeToEndOfClip: true
+  - localTime: 0.000000
+    event: LandEnd
+    relativeToEndOfClip: true

@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_TakeOff
+userData: 1
+modifier: ML_TakeOff
+generator: BHR_TakeOff

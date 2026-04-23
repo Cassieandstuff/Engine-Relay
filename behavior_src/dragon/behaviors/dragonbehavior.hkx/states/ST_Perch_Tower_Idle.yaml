@@ -1,0 +1,17 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_Tower_Idle
+stateId: 0
+generator: MG_Perch_Tower_Idle
+transitions:
+  - event: shoutStart
+    toState: ST_Perch_Tower_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+  - event: shoutStartFireball
+    toState: ST_Perch_Tower_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1
+  - event: to_Perch_Roar
+    toState: ST_Perch_Tower_Roar
+    transition: defaultTransitionEffect

@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Perch_TowerAttack_SmashBite
+userData: 1
+modifiers:
+  - EEM_DisableLookAtTarget

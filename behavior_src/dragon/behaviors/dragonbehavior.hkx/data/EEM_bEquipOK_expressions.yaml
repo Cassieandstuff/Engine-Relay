@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_bEquipOK
+expressionsData:
+  - expression: "bEquipOK = (!IsShouting) && (!IsBusy)"

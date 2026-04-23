@@ -1,0 +1,12 @@
+class: hkbClipGenerator
+name: CLIP_Perch_TowerAttack_SmashBite
+animationName: Animations\Special_AlduinTowerSmashBite.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: -0.002000
+    event: End_Tower_Smash
+    relativeToEndOfClip: true
+  - localTime: -0.002000
+    event: to_Perch_Idle
+    relativeToEndOfClip: true

@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Summon_Dispel
+stateId: 0
+generator: CLIP_Summon_Dispel

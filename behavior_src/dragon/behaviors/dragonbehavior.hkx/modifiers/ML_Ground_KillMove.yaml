@@ -1,0 +1,10 @@
+class: hkbModifierList
+name: ML_Ground_KillMove
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bIsSynced
+  - BSIsActiveModifier_bAnimationDriven
+  - BSIsActiveModifier_IsBusy
+  - EEM_DisableLookAtTarget
+  - BSEventOnDeactivateModifier_attackStop
+  - BSEventOnDeactivateModifier_KilllMoveEnd

@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Mound
+stateId: 1
+generator: MG_Furniture_Mound

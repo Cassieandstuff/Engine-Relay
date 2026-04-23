@@ -1,0 +1,10 @@
+class: hkbClipGenerator
+name: CLIP_TakeOff_Vertical_Perch_RockL02
+animationName: Animations\MTTakeOffVertical_RockL02.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+flags: 1
+triggers:
+  - localTime: -1.167000
+    event: TakeOff_to_WingState
+    relativeToEndOfClip: true

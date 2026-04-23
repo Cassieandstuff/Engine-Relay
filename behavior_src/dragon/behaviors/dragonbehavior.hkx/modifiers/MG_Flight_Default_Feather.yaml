@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Flight_Default_Feather
+userData: 1
+modifier: ML_Flight_Default_Feather
+generator: MSG_Flight_Default_Feather

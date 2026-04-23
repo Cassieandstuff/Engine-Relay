@@ -1,0 +1,6 @@
+class: hkbModifierList
+name: ML_Perch_Amp_Idle
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bAllowRotation
+  - EEM_EnableLookAtTarget_Default

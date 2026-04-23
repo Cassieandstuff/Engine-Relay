@@ -1,0 +1,21 @@
+class: hkbModifierList
+name: ML_Flight_Default_Cruise
+userData: 1
+modifiers:
+  - BSModifyOnceModifier_Flight_Default_Cruise
+  - BSDecomposeVectorModifier_MovementDirection
+  - EEM_EnableLookAtTarget_Combat_Flight
+  - EEM_PathAngle
+  - EEM_TargetSpeedDampedCalculation
+  - EDM_Flap
+  - EDM_Feather
+  - EEM_Drag
+  - EEM_Wing_State
+  - EEM_TurnDeltaDamped
+  - BSInterpValueModifier_TurnDeltaDamped
+  - EEM_PitchDeltaDamped
+  - BSInterpValueModifier_PitchDeltaDamped
+  - TWIST_PitchDeltaDamped_Upper
+  - TWIST_PitchDeltaDamped_Lower
+  - EEM_FlightPitchBlendTarget
+  - BSInterpValueModifier_FlightPitchBlend

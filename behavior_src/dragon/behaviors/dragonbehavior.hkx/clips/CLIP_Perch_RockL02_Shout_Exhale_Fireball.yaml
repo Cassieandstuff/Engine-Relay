@@ -1,0 +1,9 @@
+class: hkbClipGenerator
+name: CLIP_Perch_RockL02_Shout_Exhale_Fireball
+animationName: Animations\Shout_RockL02ExhaleFireball.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: shoutStop
+    relativeToEndOfClip: true

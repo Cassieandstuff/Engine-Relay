@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_FullyRagdoll
+userData: 1
+modifiers:
+  - FullRagdoll

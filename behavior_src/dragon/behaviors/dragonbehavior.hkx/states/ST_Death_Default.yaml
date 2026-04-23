@@ -1,0 +1,6 @@
+class: hkbStateMachineStateInfo
+name: ST_Death_Default
+stateId: 0
+generator: CLIP_Death_Default
+exitNotifyEvents:
+  - event: deathStop

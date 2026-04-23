@@ -1,0 +1,13 @@
+class: hkbTwistModifier
+name: TWIST_PitchDeltaDamped_Upper
+userData: 1
+bindings:
+  - memberPath: twistAngle
+    variable: PitchDeltaDamped
+axisOfRotation: (-1.000000 0.000000 0.000000 0.000000)
+twistAngle: 0.000000
+startBoneIndex: 2
+endBoneIndex: 63
+setAngleMethod: LINEAR
+rotationAxisCoordinates: ROTATION_AXIS_IN_MODEL_COORDINATES
+isAdditive: true

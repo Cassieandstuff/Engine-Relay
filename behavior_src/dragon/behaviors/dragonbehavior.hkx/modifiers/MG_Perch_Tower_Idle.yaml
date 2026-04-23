@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Perch_Tower_Idle
+userData: 1
+modifier: ML_Perch_Tower_Idle
+generator: CLIP_Perch_Tower_Idle

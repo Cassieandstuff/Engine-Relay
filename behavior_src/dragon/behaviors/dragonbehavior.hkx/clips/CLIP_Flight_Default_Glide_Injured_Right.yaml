@@ -1,0 +1,10 @@
+class: hkbClipGenerator
+name: CLIP_Flight_Default_Glide_Injured_Right
+animationName: Animations\MTForward_GlideHurtBankRight.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: FeatherEnd
+  - localTime: 0.000000
+    event: FlapThrustEnd

@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Land_Perch_RockL02_Vertical
+userData: 1
+modifier: ML_Land_Perch
+generator: BHR_Land_Perch_RockL02_Vertical

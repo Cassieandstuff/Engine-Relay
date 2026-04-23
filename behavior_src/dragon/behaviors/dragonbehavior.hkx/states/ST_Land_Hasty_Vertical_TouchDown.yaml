@@ -1,0 +1,6 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Hasty_Vertical_TouchDown
+stateId: 1
+generator: MG_Land_Hasty_Touchdown
+enterNotifyEvents:
+  - event: FlightLanded

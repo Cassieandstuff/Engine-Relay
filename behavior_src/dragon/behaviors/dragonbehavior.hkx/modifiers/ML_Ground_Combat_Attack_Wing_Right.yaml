@@ -1,0 +1,7 @@
+class: hkbModifierList
+name: ML_Ground_Combat_Attack_Wing_Right
+userData: 1
+modifiers:
+  - EEM_EnableLookAtTarget_Combat_Default
+  - BSIsActiveModifier_bAnimationDriven
+  - BSIsActiveModifier_IsBusy

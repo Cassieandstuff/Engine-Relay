@@ -1,0 +1,14 @@
+class: hkbClipGenerator
+name: CLIP_Flight_Default_Flap_Ascend
+animationName: Animations\MTAscend_Climb.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000
+triggers:
+  - localTime: -0.167000
+    event: AllowFlapExit_Begin
+    relativeToEndOfClip: true
+  - localTime: 0.000000
+    event: AllowFlapExit_End
+    relativeToEndOfClip: true
+  - localTime: 0.000000
+    event: FeatherEnd

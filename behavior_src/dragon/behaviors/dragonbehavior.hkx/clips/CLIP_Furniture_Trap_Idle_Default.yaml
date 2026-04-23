@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Furniture_Trap_Idle_Default
+animationName: Animations\Special_TrapIdle.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

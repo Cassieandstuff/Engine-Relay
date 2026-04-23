@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_Tower_Shout
+stateId: 2
+generator: MG_Perch_Tower_Shout
+transitions:
+  - event: shoutStop
+    toState: ST_Perch_Tower_Idle
+    transition: defaultTransitionEffect

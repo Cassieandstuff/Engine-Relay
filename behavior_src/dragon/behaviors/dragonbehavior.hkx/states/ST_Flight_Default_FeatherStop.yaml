@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight_Default_FeatherStop
+stateId: 1
+generator: MG_Flight_Default_FeatherStop
+transitions:
+  - event: FlightFeatherStopToCruise
+    toState: ST_Flight_Default_Cruise
+    transition: TE_FlightCruiseToFeatherStop

@@ -1,0 +1,14 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_Amp_Idle
+stateId: 0
+generator: MG_Perch_Amp_Idle
+transitions:
+  - event: shoutStart
+    toState: ST_Perch_Amp_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+  - event: shoutStartFireball
+    toState: ST_Perch_Amp_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1

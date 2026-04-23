@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Hover_TurnRight
+userData: 1
+modifiers:
+  - BSIsActiveModifier_IsTurningRight

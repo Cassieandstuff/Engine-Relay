@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_TimeTravel
+userData: 1
+modifier: EEM_DisableLookAtTarget
+generator: CLIP_TimeTravel

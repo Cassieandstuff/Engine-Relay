@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Default
+stateId: 24
+generator: BLD_Default

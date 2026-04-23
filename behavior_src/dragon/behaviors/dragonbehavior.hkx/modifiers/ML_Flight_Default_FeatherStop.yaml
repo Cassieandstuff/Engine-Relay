@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Flight_Default_FeatherStop
+userData: 1
+modifiers:
+  - EEM_DisableLookAtTarget

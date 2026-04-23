@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_Locomotion_Forward
+userData: 1
+modifier: ML_Ground_Locomotion_Forward
+generator: BLD_Ground_Locomotion_Forward

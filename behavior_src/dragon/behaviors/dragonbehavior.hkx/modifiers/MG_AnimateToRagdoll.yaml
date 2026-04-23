@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_AnimateToRagdoll
+userData: 1
+modifier: ML_AnimateToRagdoll
+generator: BHR_Death

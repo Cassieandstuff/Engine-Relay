@@ -1,0 +1,11 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight_Default
+stateId: 6
+generator: MG_Flight_Default
+transitions:
+  - event: staggerStart
+    toState: ST_Flight_Stagger
+    transition: null
+  - event: injureStart
+    toState: ST_Flight_Injure
+    transition: null

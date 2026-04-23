@@ -1,0 +1,97 @@
+class: hkbBlenderGenerator
+name: BLD_Ground_Combat_Default
+flags: 0
+subtractLastChild: false
+children:
+  - generator: BHR_Ground_Combat_Default
+    weight: 1.000000
+    worldFromModelWeight: 1.000000
+    boneWeights:
+      named:
+        "NPC Root [Root]": 1.000000
+        "NPC COM": 1.000000
+        "NPC Pelvis": 1.000000
+        "NPC LLegThigh": 1.000000
+        "NPC LLegCalf": 1.000000
+        "NPC LLegFoot": 1.000000
+        "NPC LLegToe5": 1.000000
+        "NPC LLegToe6": 1.000000
+        "NPC LLegToe3": 1.000000
+        "NPC LLegToe4": 1.000000
+        "NPC LLegToe1": 1.000000
+        "NPC LLegToe2": 1.000000
+        "NPC RLegThigh": 1.000000
+        "NPC RLegCalf": 1.000000
+        "NPC RLegFoot": 1.000000
+        "NPC RLegToe5": 1.000000
+        "NPC RLegToe6": 1.000000
+        "NPC RLegToe3": 1.000000
+        "NPC RLegToe4": 1.000000
+        "NPC RLegToe1": 1.000000
+        "NPC RLegToe2": 1.000000
+        "NPC Spine1": 1.000000
+        "NPC Spine2": 1.000000
+        "NPC Spine3": 1.000000
+        "NPC Hub01": 1.000000
+        "NPC LCollarbone": 1.000000
+        "NPC LUpArm1": 1.000000
+        "NPC LUpArm2": 1.000000
+        "NPC LElbow": 1.000000
+        "NPC LForearm1": 1.000000
+        "NPC LForearm2": 1.000000
+        "NPC LHand": 1.000000
+        "NPC LThumb1": 1.000000
+        "NPC LFinger11": 1.000000
+        "NPC LFinger12": 1.000000
+        "NPC LFinger21": 1.000000
+        "NPC LFinger22": 1.000000
+        "NPC LFinger31": 1.000000
+        "NPC LFinger32": 1.000000
+        "NPC LFinger41": 1.000000
+        "NPC LFinger42": 1.000000
+        "NPC RCollarbone": 1.000000
+        "NPC RUpArm1": 1.000000
+        "NPC RUpArm2": 1.000000
+        "NPC RElbow": 1.000000
+        "NPC RForearm1": 1.000000
+        "NPC RForearm2": 1.000000
+        "NPC RHand": 1.000000
+        "NPC RThumb1": 1.000000
+        "NPC RFinger11": 1.000000
+        "NPC RFinger12": 1.000000
+        "NPC RFinger21": 1.000000
+        "NPC RFinger22": 1.000000
+        "NPC RFinger31": 1.000000
+        "NPC RFinger32": 1.000000
+        "NPC RFinger41": 1.000000
+        "NPC RFinger42": 1.000000
+        "NPC Tail1": 1.000000
+        "NPC Tail2": 1.000000
+        "NPC Tail3": 1.000000
+        "NPC Tail4": 1.000000
+        "NPC Tail5": 1.000000
+        "NPC Tail6": 1.000000
+        "NPC Tail7": 1.000000
+        "NPC Tail8": 1.000000
+        "NPC TailHub": 1.000000
+  - generator: BHR_Ground_Combat_Default_Neck
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Neck1": 1.000000
+        "NPC Neck2": 1.000000
+        "NPC Neck3": 1.000000
+        "NPC Neck4": 1.000000
+        "NPC Neck5": 1.000000
+        "NPC NeckHub": 1.000000
+        "NPC Head": 1.000000
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC LLBrow": 1.000000
+        "NPC LUBrow": 1.000000
+        "NPC RUpLip": 1.000000
+        "NPC RUBrow": 1.000000
+        "NPC RLBrow": 1.000000

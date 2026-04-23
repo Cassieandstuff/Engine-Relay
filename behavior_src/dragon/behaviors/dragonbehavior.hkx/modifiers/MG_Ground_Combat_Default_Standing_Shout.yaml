@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_Combat_Default_Standing_Shout
+userData: 1
+modifier: ML_Ground_Combat_Default_Standing_Shout
+generator: MG_Shout

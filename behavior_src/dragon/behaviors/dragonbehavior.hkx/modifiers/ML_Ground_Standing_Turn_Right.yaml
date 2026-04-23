@@ -1,0 +1,6 @@
+class: hkbModifierList
+name: ML_Ground_Standing_Turn_Right
+userData: 1
+modifiers:
+  - EEM_EnableLookAtTarget_Combat_Default
+  - BSIsActiveModifier_IsTurningRight

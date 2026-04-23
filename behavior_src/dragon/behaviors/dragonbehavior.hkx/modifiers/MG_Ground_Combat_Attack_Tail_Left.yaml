@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_Combat_Attack_Tail_Left
+userData: 1
+modifier: ML_Ground_Combat_Attack_Tail_Left
+generator: CLIP_Ground_Combat_Attack_Tail_Left

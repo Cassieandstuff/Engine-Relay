@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Nest
+stateId: 2
+generator: MG_Furniture_Nest

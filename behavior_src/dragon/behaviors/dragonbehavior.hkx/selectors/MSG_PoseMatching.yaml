@@ -1,0 +1,8 @@
+class: hkbManualSelectorGenerator
+name: MSG_PoseMatching
+bindings:
+  - memberPath: selectedGeneratorIndex
+    variable: iGetUpType
+generators:
+  - PMG_Reanimate
+  - PMG_Get Up

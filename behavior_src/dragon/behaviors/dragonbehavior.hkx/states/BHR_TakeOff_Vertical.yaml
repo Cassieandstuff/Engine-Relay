@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_TakeOff_Vertical
+startStateId: 0
+states:
+  - ST_TakeOff_Vertical_Ground
+  - ST_TakeOff_Vertical_Air

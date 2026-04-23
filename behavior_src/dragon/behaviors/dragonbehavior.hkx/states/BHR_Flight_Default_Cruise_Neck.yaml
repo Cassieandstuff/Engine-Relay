@@ -1,0 +1,7 @@
+class: hkbStateMachine
+name: BHR_Flight_Default_Cruise_Neck
+startStateId: 0
+states:
+  - Flight_Default_Cruise_Neck_Idle
+  - Flight_Default_Cruise_Neck_Shout
+  - Flight_Default_Cruise_Neck_Roar

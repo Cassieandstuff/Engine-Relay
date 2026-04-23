@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_TakeOff_Vertical
+stateId: 1
+generator: BHR_TakeOff_Vertical

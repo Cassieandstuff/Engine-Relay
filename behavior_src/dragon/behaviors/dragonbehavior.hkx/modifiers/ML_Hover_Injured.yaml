@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Hover_Injured
+userData: 1
+modifiers:
+  - EEM_iState_Hovering
+  - EEM_DisableLookAtTarget
+  - BSIsActiveModifier_IsBusy
+  - BSIsActiveModifier_bAnimationDriven

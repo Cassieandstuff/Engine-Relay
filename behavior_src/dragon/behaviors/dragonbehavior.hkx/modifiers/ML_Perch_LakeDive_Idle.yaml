@@ -1,0 +1,6 @@
+class: hkbModifierList
+name: ML_Perch_LakeDive_Idle
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bAllowRotation
+  - EEM_DisableLookAtTarget

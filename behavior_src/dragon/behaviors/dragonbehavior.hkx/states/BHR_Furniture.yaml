@@ -1,0 +1,7 @@
+class: hkbStateMachine
+name: BHR_Furniture
+startStateId: 0
+states:
+  - ST_Furniture_Trap
+  - ST_Furniture_Mound
+  - ST_Furniture_Nest

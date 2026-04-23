@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Ground_Locomotion_Forward
+animationName: Animations\MTForwardGround.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

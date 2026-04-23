@@ -1,0 +1,14 @@
+class: hkbBlenderGenerator
+name: BLD_Flight_Default_Flap
+flags: 17
+subtractLastChild: false
+bindings:
+  - memberPath: blendParameter
+    variable: FlightPitchBlend
+children:
+  - generator: MSG_Flight_Default_Flap
+    weight: 0.000000
+    worldFromModelWeight: 1.000000
+  - generator: BLD_Flight_Default_Flap_Ascend
+    weight: 1.000000
+    worldFromModelWeight: 1.000000

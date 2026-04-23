@@ -1,0 +1,11 @@
+class: hkbModifierList
+name: ML_Flight_Kill_Grab_Enter
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bTweenUpdate
+  - BSModifyOnceModifier_SetTweenEntryDirectionFlightKillGrab
+  - EEM_TweenEntryDirectionFlightKillGrab
+  - EEM_TweenEntryDirectionPrev
+  - BSInterpValueModifier_TweenEntryDirectonFlightKillGrab
+  - BSTweenerModifier_FlightGrab
+  - BSEventOnDeactivateModifier_ResetTween

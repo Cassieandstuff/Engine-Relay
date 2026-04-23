@@ -1,0 +1,5 @@
+class: hkbStateMachine
+name: BHR_Ground_Mount
+startStateId: 0
+states:
+  - ST_Ground_Mount_Default

@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Ground_Mount_Actor
+animationName: ..\SharedKillMoves\Human&Dragon\Paired_DragonCallMount.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000

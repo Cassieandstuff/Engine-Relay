@@ -1,0 +1,5 @@
+class: BSEventOnDeactivateModifier
+name: BSEventOnDeactivateModifier_KilllMoveEnd
+userData: 3
+event:
+  event: KillMoveEnd

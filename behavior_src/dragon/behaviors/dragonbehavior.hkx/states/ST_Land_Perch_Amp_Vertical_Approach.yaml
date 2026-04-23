@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Perch_Amp_Vertical_Approach
+stateId: 0
+generator: BLD_Land_Injured_Vertical_Approach
+transitions:
+  - event: BeginLand
+    toState: ST_Land_Perch_Amp_Vertical_Touchdown
+    transition: BTE_Land_Approach_to_Land_Touchdown

@@ -1,0 +1,11 @@
+class: hkbExpressionDataArray
+name: EEM_Reset_Lip
+expressionsData:
+  - expression: "LipBigAahDamped = 0"
+  - expression: "LipDSTDamped = 0"
+  - expression: "LipEeeDamped = 0"
+  - expression: "LipFVDamped = 0"
+  - expression: "LipKDamped = 0"
+  - expression: "LipLDamped = 0"
+  - expression: "LipRDamped = 0"
+  - expression: "LipThDamped = 0"

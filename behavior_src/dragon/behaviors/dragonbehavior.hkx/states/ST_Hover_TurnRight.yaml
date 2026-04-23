@@ -1,0 +1,11 @@
+class: hkbStateMachineStateInfo
+name: ST_Hover_TurnRight
+stateId: 1
+generator: MG_Hover_TurnRight
+transitions:
+  - event: turnStop
+    toState: ST_Hover_Idle_Default
+    transition: defaultTransitionEffect
+  - event: turnLeft
+    toState: ST_Hover_TurnLeft
+    transition: defaultTransitionEffect

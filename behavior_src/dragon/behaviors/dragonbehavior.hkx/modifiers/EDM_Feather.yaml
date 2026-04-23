@@ -1,0 +1,6 @@
+class: hkbEventDrivenModifier
+name: EDM_Feather
+userData: 1
+modifier: DecelerationModifier
+activateEvent: FeatherBegin
+deactivateEvent: FeatherEnd

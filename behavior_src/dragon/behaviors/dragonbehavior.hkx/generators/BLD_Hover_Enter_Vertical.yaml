@@ -1,0 +1,23 @@
+class: hkbBlenderGenerator
+name: BLD_Hover_Enter_Vertical
+flags: 49
+subtractLastChild: false
+bindings:
+  - memberPath: blendParameter
+    variable: TweenEntryDirection
+children:
+  - generator: CLIP_Hover_Enter_Vertical_Default
+    weight: 0.000000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Hover_Enter_Vertical_Right90
+    weight: 0.250000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Hover_Enter_Vertical_Right180
+    weight: 0.499000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Hover_Enter_Vertical_Left180
+    weight: 0.500000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Hover_Enter_Vertical_Left90
+    weight: 0.750000
+    worldFromModelWeight: 1.000000

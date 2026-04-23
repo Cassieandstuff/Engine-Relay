@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_BleedOut2_Exit
+stateId: 2
+generator: CLIP_BleedOut2_Exit

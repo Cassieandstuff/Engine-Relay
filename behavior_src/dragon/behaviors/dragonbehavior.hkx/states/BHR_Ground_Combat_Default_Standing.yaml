@@ -1,0 +1,8 @@
+class: hkbStateMachine
+name: BHR_Ground_Combat_Default_Standing
+startStateId: 1
+states:
+  - ST_Ground_Combat_Default_Standing_Turn_Right_State
+  - ST_Ground_Combat_Default_Standing_Idle
+  - ST_Ground_Combat_Default_Standing_Turn_Left_State
+  - ST_Ground_Combat_Default_Standing_Shout

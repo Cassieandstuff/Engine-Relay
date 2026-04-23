@@ -1,0 +1,14 @@
+class: hkbBlenderGenerator
+name: BLD_Flight_Default_Glide
+flags: 16
+subtractLastChild: false
+bindings:
+  - memberPath: blendParameter
+    variable: FlightPitchBlend
+children:
+  - generator: MSG_Flight_Default_Glide
+    weight: 0.000000
+    worldFromModelWeight: 1.000000
+  - generator: BLD_Flight_Default_Glide_Dive
+    weight: 1.000000
+    worldFromModelWeight: 1.000000

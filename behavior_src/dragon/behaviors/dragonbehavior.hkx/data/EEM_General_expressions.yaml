@@ -1,0 +1,6 @@
+class: hkbExpressionDataArray
+name: EEM_General
+expressionsData:
+  - expression: "bFullyMotionDriven = (!bAnimationDriven) && (!bIsSynced)"
+  - expression: "DirectionDamped = cond(bFullyMotionDriven, Direction, 0)"
+  - expression: "bFootIK = (IsOnGround) && (!bNoFootIK)"

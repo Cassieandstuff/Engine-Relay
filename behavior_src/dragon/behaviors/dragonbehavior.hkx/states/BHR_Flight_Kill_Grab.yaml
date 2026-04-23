@@ -1,0 +1,16 @@
+class: hkbStateMachine
+name: BHR_Flight_Kill_Grab
+startStateId: 1
+transitions:
+  - event: to_Flight_Kill_Grab_Action
+    toState: ST_Flight_Kill_Grab_Action
+    transition: BTE_FlightGrab_EnterToExit
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+  - event: to_Flight_Kill_Grab_Action_Failed
+    toState: ST_Flight_Kill_Grab_Failed
+    transition: BTE_FlightGrab_EnterToExit
+    flags: FLAG_IS_LOCAL_WILDCARD|FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+states:
+  - ST_Flight_Kill_Grab_Action
+  - ST_Flight_Kill_Grab_Enter
+  - ST_Flight_Kill_Grab_Failed

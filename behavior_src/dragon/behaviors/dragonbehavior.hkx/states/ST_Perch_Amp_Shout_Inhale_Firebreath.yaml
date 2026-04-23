@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_Amp_Shout_Inhale_Firebreath
+stateId: 0
+generator: CLIP_Perch_Amp_Shout_Inhale_Firebreath
+transitions:
+  - event: shoutRelease
+    toState: ST_Perch_Amp_Shout_Exhale_Firebreath
+    transition: BTE_Shout_InhaleToExhale

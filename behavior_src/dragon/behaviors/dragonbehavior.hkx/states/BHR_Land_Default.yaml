@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Land_Default
+startStateId: 1
+states:
+  - ST_Land_Default_TouchDown
+  - ST_Land_Default_Approach

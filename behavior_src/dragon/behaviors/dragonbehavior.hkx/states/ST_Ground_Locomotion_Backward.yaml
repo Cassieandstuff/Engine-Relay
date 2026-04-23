@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Locomotion_Backward
+stateId: 0
+generator: MG_Ground_Locomotion_Backward
+transitions:
+  - event: moveStartForward
+    toState: ST_Ground_Locomotion_Forward
+    transition: defaultTransitionEffect

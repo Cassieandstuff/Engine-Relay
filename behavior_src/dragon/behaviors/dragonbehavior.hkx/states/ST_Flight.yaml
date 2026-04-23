@@ -1,0 +1,96 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight
+stateId: 1
+generator: MG_Flight
+enterNotifyEvents:
+  - event: FlightCruising
+transitions:
+  - event: HoverStart
+    toState: ST_Hover
+    transition: TE_CruiseToHoverEnter
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1
+  - event: HoverStartSafe
+    toState: ST_Hover
+    transition: TE_CruiseToHoverEnter
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 2
+  - event: FlyStopDefault
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+  - event: FlyStopDefaultSafe
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1
+  - event: FlyStopInjured
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 2
+  - event: FlyStopInjuredSafe
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 3
+  - event: FlyStopCrash
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 6
+  - event: FlyStopHasty
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 5
+  - event: FlyStopPerchTower
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 10
+  - event: FlyStopHastyVertical
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 9
+  - event: to_Flight_Kill_Grab_Enter
+    toState: ST_Flight_Kill_Grab
+    transition: BTE_FlightToFlightKill
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1
+  - event: FlyStopPerchTowerAttack
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 11
+  - event: FlyStopPerchAmp
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 12
+  - event: FlyStopPerchRockL02
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 13
+  - event: FlyStopPerchTowerVertical
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 8
+  - event: FlyStopPerchAmpVertical
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 14
+  - event: FlyStopPerchRockL02Vertical
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 15
+  - event: FlyStopPerchLakeDive
+    toState: ST_Land
+    transition: TE_CruiseToLand
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 16

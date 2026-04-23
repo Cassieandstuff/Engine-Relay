@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_Amp_Stagger
+stateId: 3
+generator: MG_Perch_Amp_Stagger
+transitions:
+  - event: staggerStop
+    toState: ST_Perch_Amp_Idle
+    transition: shortTransitionEffect

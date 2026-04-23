@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Death_Agony_End
+stateId: 1
+generator: CLIP_Death_Agony_End

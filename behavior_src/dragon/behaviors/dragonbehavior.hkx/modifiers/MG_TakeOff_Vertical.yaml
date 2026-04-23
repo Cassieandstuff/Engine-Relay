@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_TakeOff_Vertical
+userData: 1
+modifier: ML_TakeOff_Ground
+generator: CLIP_TakeOff_Vertical_Ground

@@ -1,0 +1,13 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_KillMove
+stateId: 15
+generator: MG_Ground_KillMove
+transitions:
+  - event: PairEnd
+    toState: ST_Ground_Idle
+    transition: defaultTransitionEffect
+    condition: "iCombat == 0"
+  - event: PairEnd
+    toState: ST_Ground_Combat
+    transition: defaultTransitionEffect
+    condition: "iCombat == 1"

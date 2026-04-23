@@ -1,0 +1,10 @@
+class: hkbStateMachineStateInfo
+name: ST_Hover
+stateId: 9
+generator: BHR_Hover
+enterNotifyEvents:
+  - event: FlightHovering
+transitions:
+  - event: HoverToCruise
+    toState: ST_Flight
+    transition: TE_HoverToCruise

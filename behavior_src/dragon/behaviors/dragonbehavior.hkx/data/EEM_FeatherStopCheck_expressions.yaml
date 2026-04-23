@@ -1,0 +1,7 @@
+class: hkbExpressionDataArray
+name: EEM_FeatherStopCheck
+expressionsData:
+  - expression: "FlightCruiseToFeatherStop if (HasTweenSpeed) && (TweenSpeed < 5) && (DistToGoal < 2048) && (Speed > 500)"
+    eventMode: EVENT_MODE_SEND_ON_FALSE_TO_TRUE
+  - expression: "FlightFeatherStopToCruise if (!HasTweenSpeed) || (TweenSpeed >= 5) || (DistToGoal >= 2048)"
+    eventMode: EVENT_MODE_SEND_ON_FALSE_TO_TRUE

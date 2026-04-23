@@ -1,0 +1,6 @@
+class: hkbExpressionDataArray
+name: EEM_bVoiceReady
+expressionsData:
+  - expression: "bVoiceReady = (!IsShouting) && (!IsBusy)"
+  - expression: "BeginCastVoice if ( bWantCastVoice && bVoiceReady )"
+    eventMode: EVENT_MODE_SEND_ON_FALSE_TO_TRUE

@@ -1,0 +1,6 @@
+class: hkbStateMachineStateInfo
+name: ST_TakeOff_Default_Air
+stateId: 1
+generator: MG_TakeOff_Default_Air
+enterNotifyEvents:
+  - event: FlightTakeOff

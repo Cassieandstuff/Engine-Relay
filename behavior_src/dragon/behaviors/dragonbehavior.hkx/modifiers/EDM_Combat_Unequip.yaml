@@ -1,0 +1,6 @@
+class: hkbEventDrivenModifier
+name: EDM_Combat_Unequip
+userData: 1
+modifier: EEM_Unequip
+activateEvent: unequip
+deactivateEvent: equip

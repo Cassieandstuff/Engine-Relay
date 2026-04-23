@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_TakeOff_Default_Air
+userData: 1
+modifier: BSTweenerModifier_TakeOff_Default_Air
+generator: CLIP_TakeOff_Default

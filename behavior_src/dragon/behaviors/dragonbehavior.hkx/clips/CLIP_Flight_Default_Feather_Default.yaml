@@ -1,0 +1,14 @@
+class: hkbClipGenerator
+name: CLIP_Flight_Default_Feather_Default
+animationName: Animations\MTFeatherSlow.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.013000
+    event: FlapThrustEnd
+  - localTime: 0.067000
+    event: FeatherBegin
+  - localTime: 0.667000
+    event: AllowFeatherExit_End
+  - localTime: 0.667000
+    event: AllowFeatherExit_Begin

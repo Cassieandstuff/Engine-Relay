@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_BleedOut1_Enter
+stateId: 0
+generator: CLIP_BleedOut1_Enter
+transitions:
+  - event: startBleedOutIdle
+    toState: ST_BleedOut1_Idle
+    transition: null

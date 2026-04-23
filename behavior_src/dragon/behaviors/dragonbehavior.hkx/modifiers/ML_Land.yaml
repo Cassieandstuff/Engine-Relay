@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Land
+userData: 1
+modifiers:
+  - EEM_iState_Flight
+  - EEM_DisableLookAtTarget
+  - BSIsActiveModifier_bAnimationDriven
+  - BSIsActiveModifier_IsBusy

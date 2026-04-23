@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_Drag
+expressionsData:
+  - expression: "Speed = clamp(Speed - (0.5 * (Speed * Speed) * (Drag * 0.00001) * TimeStep), 0, Speed)"

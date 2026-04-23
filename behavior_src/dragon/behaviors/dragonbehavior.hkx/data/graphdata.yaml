@@ -1,0 +1,948 @@
+variables:
+  - name: Pitch
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: TurnDelta
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: iSyncIdleLocomotion
+    type: VARIABLE_TYPE_INT32
+    value: 0
+  - name: defaultBlend
+    type: VARIABLE_TYPE_REAL
+    value: 1058642330
+  - name: bHeadTracking
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: Direction
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: fMinSpeed
+    type: VARIABLE_TYPE_REAL
+    value: 1036831949
+  - name: Speed
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: TargetSpeed
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: TurnMin
+    type: VARIABLE_TYPE_REAL
+    value: 1036831949
+  - name: MaxAcc
+    type: VARIABLE_TYPE_REAL
+    value: 1153474560
+  - name: MaxDec
+    type: VARIABLE_TYPE_REAL
+    value: 1163411456
+  - name: PitchDeltaDampedGain
+    type: VARIABLE_TYPE_REAL
+    value: 1033476506
+  - name: TargetSpeedThresholdMax
+    type: VARIABLE_TYPE_REAL
+    value: 1066192077
+  - name: TargetSpeedThresholdMin
+    type: VARIABLE_TYPE_REAL
+    value: 1063675494
+  - name: Drag
+    type: VARIABLE_TYPE_REAL
+    value: 1084227584
+  - name: TargetSpeedMaxScale
+    type: VARIABLE_TYPE_REAL
+    value: 1065353216
+  - name: TurnDeltaDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: PitchDeltaDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: TurnDeltaDampedGain
+    type: VARIABLE_TYPE_REAL
+    value: 1033476506
+  - name: MinSpeed
+    type: VARIABLE_TYPE_REAL
+    value: 1159479296
+  - name: MaxSpeed
+    type: VARIABLE_TYPE_REAL
+    value: 1172987904
+  - name: PathAngleThreshold
+    type: VARIABLE_TYPE_REAL
+    value: 1103626240
+  - name: TargetSpeedDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: MaxSpeedDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: bAnimationDriven
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: bVoiceReady
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: iInjured
+    type: VARIABLE_TYPE_INT32
+    value: 0
+  - name: Injured
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: bWantCastVoice
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: InjuredScale
+    type: VARIABLE_TYPE_REAL
+    value: 1061158912
+  - name: InjuredScaleCurrent
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: MaxSpeedCurrent
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: IsAttackReady
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: IsShouting
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: iCombat
+    type: VARIABLE_TYPE_INT32
+    value: 0
+  - name: LookAtHeadingMaxAngle
+    type: VARIABLE_TYPE_REAL
+    value: 1123024896
+  - name: IsIdle
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: IsMoving
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: bSpeedSynced
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: iSyncTurnState
+    type: VARIABLE_TYPE_INT32
+    value: 1
+  - name: iDirectionForward
+    type: VARIABLE_TYPE_INT32
+    value: 0
+  - name: IsOnGround
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: bAllowRotation
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: m_errorOut
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: m_worldFromModelFeedbackGain
+    type: VARIABLE_TYPE_REAL
+    value: 1036831949
+  - name: FlightPitchBlend
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: TargetLocation
+    type: VARIABLE_TYPE_VECTOR4
+    value: 0
+  - name: iState
+    type: VARIABLE_TYPE_INT32
+    value: 0
+  - name: iState_DragonDefault
+    type: VARIABLE_TYPE_INT32
+    value: 0
+  - name: iState_DragonFlying
+    type: VARIABLE_TYPE_INT32
+    value: 1
+  - name: iState_DragonHovering
+    type: VARIABLE_TYPE_INT32
+    value: 2
+  - name: bLookAtTarget
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: bCanLookAtTarget
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: TweenEntryDirection
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: FlightHitInjuredSpeedMin
+    type: VARIABLE_TYPE_REAL
+    value: 1157234688
+  - name: FlightHitInjuredDecGain
+    type: VARIABLE_TYPE_REAL
+    value: 1059481190
+  - name: m_rearMinAnkleHeightMS
+    type: VARIABLE_TYPE_REAL
+    value: -1015021568
+  - name: m_rearMaxAnkleHeightMS
+    type: VARIABLE_TYPE_REAL
+    value: 1132462080
+  - name: m_frontMinAnkleHeightMS
+    type: VARIABLE_TYPE_REAL
+    value: -1015021568
+  - name: m_frontMaxAnkleHeightMS
+    type: VARIABLE_TYPE_REAL
+    value: 1140850688
+  - name: m_frontFootRaisedAnkleHeightMS
+    type: VARIABLE_TYPE_REAL
+    value: 1120403456
+  - name: m_frontFootPlantedAnkleHeightMS
+    type: VARIABLE_TYPE_REAL
+    value: 1098907648
+  - name: m_rearFootRaisedAnkleHeightMS
+    type: VARIABLE_TYPE_REAL
+    value: 1112014848
+  - name: m_rearFootPlantedAnkleHeightMS
+    type: VARIABLE_TYPE_REAL
+    value: 1098907648
+  - name: bEquipOK
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: LipBigAah
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipDST
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipEee
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipFV
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipK
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipL
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipR
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipTh
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: PhonemeBlend
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: InvPhonemeBlend
+    type: VARIABLE_TYPE_REAL
+    value: 1065353216
+  - name: IsBusy
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: camerafromx
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: camerafromy
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: camerafromz
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipAcc
+    type: VARIABLE_TYPE_REAL
+    value: 1092616192
+  - name: LipBigAahDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipDSTDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipEeeDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipFVDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipKDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipLDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipRDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: LipThDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: iState_DragonPerching
+    type: VARIABLE_TYPE_INT32
+    value: 3
+  - name: bIsSynced
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: PitchDelta
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: MovementDirection
+    type: VARIABLE_TYPE_VECTOR4
+    value: 1
+  - name: IsFeathering
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: IsFlapping
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: IsGliding
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: TweenPosition
+    type: VARIABLE_TYPE_VECTOR4
+    value: 2
+  - name: TweenRotation
+    type: VARIABLE_TYPE_QUATERNION
+    value: 3
+  - name: DistToGoal
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: TweenSpeed
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: HasTweenSpeed
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: TweenSpeedMin
+    type: VARIABLE_TYPE_REAL
+    value: 1153138688
+  - name: TweenSpeedDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: IsTurningLeft
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: IsTurningRight
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: IsMovingBackward
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: IsMovingForward
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: PathAngle
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: BSLookAtModifier_m_onGain_Combat
+    type: VARIABLE_TYPE_REAL
+    value: 1033476506
+  - name: BSLookAtModifier_m_offGain_Combat
+    type: VARIABLE_TYPE_REAL
+    value: 1028443341
+  - name: BSLookAtModifier_m_onGain_Default
+    type: VARIABLE_TYPE_REAL
+    value: 1028443341
+  - name: BSLookAtModifier_m_offGain_Default
+    type: VARIABLE_TYPE_REAL
+    value: 1028443341
+  - name: BSLookAtModifier_m_onGain
+    type: VARIABLE_TYPE_REAL
+    value: 1028443341
+  - name: BSLookAtModifier_m_offGain
+    type: VARIABLE_TYPE_REAL
+    value: 1028443341
+  - name: BSLookAtModifier_CanLookOutsideLimit
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: TurnDeltaScale
+    type: VARIABLE_TYPE_REAL
+    value: 1112014848
+  - name: PickNewIdleTimer
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: PickNewIdleTime
+    type: VARIABLE_TYPE_REAL
+    value: 1073741824
+  - name: BSLookAtModifier_m_onGain_Shouting
+    type: VARIABLE_TYPE_REAL
+    value: 1048576000
+  - name: BSLookAtModifier_m_offGain_Shouting
+    type: VARIABLE_TYPE_REAL
+    value: 1028443341
+  - name: TimeStep
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: MoveDirZ
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: FlightPitchBlendGain
+    type: VARIABLE_TYPE_REAL
+    value: 1033476506
+  - name: m_raycastDistanceDown
+    type: VARIABLE_TYPE_REAL
+    value: 1140850688
+  - name: m_raycastDistanceUp
+    type: VARIABLE_TYPE_REAL
+    value: 1140850688
+  - name: m_errorOutTranslation
+    type: VARIABLE_TYPE_VECTOR4
+    value: 4
+  - name: m_alignWithGroundRotation
+    type: VARIABLE_TYPE_QUATERNION
+    value: 5
+  - name: bFullyMotionDriven
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: DirectionDamped
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: bNoFootIK
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: bFootIK
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: m_ankeOrientationGain
+    type: VARIABLE_TYPE_REAL
+    value: 1017370378
+  - name: m_alignWorldFromModelGain
+    type: VARIABLE_TYPE_REAL
+    value: 1036831949
+  - name: m_rearMaxAnkleAngleDegrees
+    type: VARIABLE_TYPE_REAL
+    value: 1106247680
+  - name: m_useAlignWithGroundRotation
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: IsTrailer
+    type: VARIABLE_TYPE_INT32
+    value: 0
+  - name: LookAtOutOfRange
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: TurnDeltaTarget
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: PitchDeltaTarget
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: FlightPitchBlendTarget
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: bFlightKillGrabAction
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: bAllowFlightKillGrabTween
+    type: VARIABLE_TYPE_BOOL
+    value: 1
+  - name: bAllowFlightGrabTweenDefault
+    type: VARIABLE_TYPE_BOOL
+    value: 1
+  - name: iGetUpType
+    type: VARIABLE_TYPE_INT8
+    value: 0
+  - name: TweenEntryDirectionPrev
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: TweenEntryDirectionFlightKillGrab
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: ConstraintOffset
+    type: VARIABLE_TYPE_VECTOR4
+    value: 6
+  - name: TweenEntryDirectionCur
+    type: VARIABLE_TYPE_REAL
+    value: 0
+  - name: bTweenUpdate
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: LipGain
+    type: VARIABLE_TYPE_REAL
+    value: 1028443341
+  - name: PhonemeBlendTarget
+    type: VARIABLE_TYPE_REAL
+    value: 1065353216
+  - name: bDisableInterp
+    type: VARIABLE_TYPE_BOOL
+    value: 0
+  - name: fPhonemeDefaultWeight
+    type: VARIABLE_TYPE_REAL
+    value: 0
+
+events:
+  - name: FlapThrustBegin
+    flags: FLAG_SYNC_POINT
+  - name: FlapThrustEnd
+    flags: FLAG_SYNC_POINT
+  - name: TakeOff
+  - name: Glide
+  - name: Flap
+  - name: moveStop
+  - name: moveStart
+  - name: turnStop
+  - name: TakeOff_to_WingState
+  - name: LandEnd
+  - name: turnLeft
+  - name: turnRight
+  - name: Feather
+  - name: shoutStart
+  - name: shoutStop
+  - name: endGroundAttack
+  - name: equip
+  - name: unequip
+  - name: attackStartBite
+  - name: FeatherBegin
+  - name: FeatherEnd
+  - name: Voice_SpellFire_Event
+  - name: shoutRelease
+  - name: Hit
+  - name: SoundPlay.NPCDragonWingFlap
+  - name: SoundPlay.NPCDragonWingFlapTakeoff
+  - name: staggerStart
+  - name: BeginCastVoice
+  - name: FlightTakeOffEffect
+  - name: FlightLandingEffect
+  - name: SoundPlay.NPCDragonLand
+  - name: attackStartTail
+  - name: WeaponDraw
+  - name: WeaponSheathe
+  - name: FootLeft
+  - name: FootRight
+  - name: HitFrame
+  - name: preHitFrame
+  - name: attackStop
+  - name: FootFront
+  - name: FlightCrashLandStart
+  - name: FlightCrashLandEnd
+  - name: SoundPlay.NPCDragonLandCrashLong
+  - name: SoundPlay.NPCDragonLandCrashLong2D
+  - name: SoundPlay.NPCDragonLandCrashShort
+  - name: SoundPlay.NPCDragonLandCrashShort2D
+  - name: HoverStart
+  - name: HoverStop
+  - name: SoundPlay.NPCDragonAttackTailWhip
+  - name: SoundPlay.NPCDragonAttackTail
+  - name: SoundPlay.NPCDragonAttackTail2D
+  - name: FlyStartCruise
+  - name: FlightHovering
+  - name: FlightLanding
+  - name: FlightTakeOff
+  - name: FlyStartHover
+  - name: attackStartTailLeft
+  - name: attackStartTailRight
+  - name: moveStartBack
+  - name: moveStartForward
+  - name: HoverIdle
+  - name: HoverToCruise
+  - name: HoverStartSafe
+  - name: InterruptCast
+  - name: FlightCruising
+  - name: attackStartWingRight
+  - name: attackStartWingLeft
+  - name: FlyStopDefault
+  - name: FlyStopDefaultSafe
+  - name: FlyStopInjured
+  - name: FlyStopInjuredSafe
+  - name: FlyStopCrash
+  - name: FlyStopHasty
+  - name: roarStart
+  - name: roarStop
+  - name: attackStartBiteLeft
+  - name: attackStartBiteRight
+  - name: SoundPlay.NPCDragonFlightRoar
+  - name: SoundPlay.NPCDragonAttackWing
+  - name: SoundPlay.NPCDragonAttackBite
+  - name: BeginLand
+  - name: TakeOff_Vertical
+  - name: HoverStopVertical
+  - name: PerchLandEnd
+  - name: FlyStopPerch
+  - name: EnterPerchAmpInstant
+  - name: FlightForcefulLandStart
+  - name: PickNewIdle
+  - name: SoundPlay.NPCDragonInjuredFlight
+  - name: staggerStop
+  - name: deathStart
+  - name: Func
+  - name: shoutStartFireball
+  - name: injureStart
+  - name: injureStop
+  - name: FlyStopHastyVertical
+  - name: IdleBase
+  - name: deathStop
+  - name: SoundPlay.NPCDragonInjured
+  - name: SoundPlay.NPCDragonDeathAnim
+  - name: startBleedOutIdle
+  - name: bleedOutStart
+  - name: bleedOutStop
+  - name: To_Crash_Land_Recover
+  - name: NPCPairedStop
+  - name: 2_KillActor
+  - name: PairEnd
+  - name: KillMoveDragonA
+  - name: to_Perch_Amp_Idle
+  - name: idleChairSitting
+  - name: FlightLanded
+  - name: pairedStop
+  - name: KillActor
+  - name: DragonLandEffect
+  - name: DragonForcefulLandEffect
+  - name: DragonTakeoffEffect
+  - name: DragonBiteEffect
+  - name: DragonTailAttackEffect
+  - name: DragonLeftWingAttackEffect
+  - name: DragonRightWingAttackEffect
+  - name: DragonPassByEffect
+  - name: DragonKnockbackEvent
+  - name: FlightCruiseToFeatherStop
+  - name: weaponSwing
+  - name: ST Flight Default FeatherStop_to_ST Flight Default Cruise
+  - name: FlightFeatherStopToCruise
+  - name: ST Perch Amp Idle_to_ST Perch Amp Shout
+  - name: ST Perch Amp Idle_to_ST Perch Amp Shout00
+  - name: ST Perch Amp Shout_to_ST Perch Amp Idle
+  - name: FlightPerching
+  - name: KillMoveDragonB
+  - name: to_ST Ground Combat KillMove
+  - name: pa_KillMoveDragonB
+  - name: ST Ground Combat KillMove00_to_ST Ground Idle
+  - name: ST Ground Combat KillMove00_to_ST Ground Idle00
+  - name: to_Perch_Tower_Idle
+  - name: ST Perch Tower Enter_to_ST Perch Tower Idle
+  - name: to_ST Perch Tower
+  - name: EnterPerchTowerInstant
+  - name: to_ST Perch Tower00
+  - name: PerchTowerLandEnd
+  - name: ST Perch Tower_to_ST TakeOff
+  - name: to_ST Perch Tower2
+  - name: to_ST Perch Tower200
+  - name: to_ST Perch Amp2
+  - name: to_ST Perch Amp200
+  - name: to_ST Perch
+  - name: to_ST Perch Amp Idle
+  - name: to_ST Perch00
+  - name: to_ST Perch Tower Idle
+  - name: to_ST Perch Amp
+  - name: to_ST Perch Tower01
+  - name: to_ST Perch Amp Idle00
+  - name: to_ST Perch Tower Idle00
+  - name: ST Perch Ample Idle Neck Default_to_ST Perch Ample Idle Neck Shout
+  - name: ST Perch Ample Idle Neck Shout_to_ST Perch Ample Idle Neck Default
+  - name: ST Perch Ample Idle Neck Default_to_ST Perch Ample Idle Neck Shout00
+  - name: ST Perch Tower Idle Neck Shout_to_ST Perch Tower Idle Neck Default
+  - name: ST Perch Tower Idle Neck Default_to_ST Perch Tower Idle Neck Shout
+  - name: ST Perch Tower Idle Neck Default_to_ST Perch Tower Idle Neck Shout00
+  - name: ST Furniture Trap Enter_to_ST Furniture Trap Idle
+  - name: to_Furniture_Idle
+  - name: to_ST Furniture
+  - name: to_ST Furniture Trap Idle
+  - name: EnterFurnitureTrapInstant
+  - name: idleChairGetUp
+  - name: IdleFurnitureTrapEnter
+  - name: ST Furniture_to_ST Ground
+  - name: IdleFurnitureExit
+  - name: FlightCrashLandLoadEffect
+  - name: ST TakeOff Ground Default Ground_to_ST TakeOff Ground Default Flight
+  - name: to_TakeOff_Flight
+  - name: ST Ground_to_ST TakeOff Ground Default
+  - name: FlyStartRequest
+  - name: ST TakeOff Ground Vertical Ground_to_ST TakeOff Ground Vertical Flight
+  - name: ST Ground_to_ST TakeOff Ground Vertical
+  - name: ST TakeOff Ground Vertical_to_ST Flight
+  - name: ST TakeOff Ground Default_to_ST Flight
+  - name: ST Perch_to_ST TakeOff
+  - name: FlyStartRequestVertical
+  - name: FlyStartRequestPerch
+  - name: ST TakeOff Vertical Ground_to_ST TakeOff Vertical Air
+  - name: ST TakeOff Default Ground_to_ST TakeOff Default Air
+  - name: FlightLandEnd
+  - name: TrailerSh23
+  - name: TrailerAnimation_to_ST Ground
+  - name: to_TrailerAnimation
+  - name: pa_TrailerSh23
+  - name: TrailerSh27
+  - name: to_TrailerAnimation00
+  - name: TrailerSh16
+  - name: to_TrailerAnimation01
+  - name: TrailerSh19
+  - name: to_TrailerAnimation02
+  - name: TrailerSh24
+  - name: to_TrailerAnimation03
+  - name: TrailerSh12
+  - name: to_TrailerAnimation04
+  - name: TrailerSh22
+  - name: to_TrailerAnimation05
+  - name: to_TrailerAnimation06
+  - name: TrailerSh25
+  - name: to_TrailerAnimation07
+  - name: IdleStop
+  - name: TrailerSh14_to_ST Ground
+  - name: TrailerSh14
+  - name: to_TrailerSh14
+  - name: TrailerSh20
+  - name: to_TrailerAnimation08
+  - name: ST Furniture Trap Idle_to_ST Furniture Trap Exit
+  - name: to_Furniture_Exit
+  - name: TFXDragonTakeOff
+  - name: TFXDragonLanding
+  - name: TFXDragonBreath
+  - name: 2_TFXDragonTakeOff
+  - name: 2_TFXDragonLanding
+  - name: 2_TFXDragonBreath
+  - name: ST Flight Kill Snatch Entry_to_ST Flight Kill Snatch Exit
+  - name: to_Flight_Kill_Exit
+  - name: ST Flight Kill_to_ST Flight
+  - name: Flight_Kill_Snatch_Entry
+  - name: ST Flight Kill_to_ST Flight00
+  - name: to_Flight
+  - name: FlightAction
+  - name: 2_pairedStop
+  - name: ST Flight_to_ST Flight Kill Snatch
+  - name: Flight_Kill_Snatch_Exit
+  - name: Up
+  - name: Down
+  - name: HeadTrackingOff
+  - name: HeadTrackingOn
+  - name: to_ST Ground KillMove
+  - name: ST Ground KillMove_to_ST Ground Idle
+  - name: ST Ground KillMove_to_ST Ground Combat
+  - name: Ground_KillMove_BiteGrapple
+  - name: pa_KillMove_Ground_Bite_Grapple
+  - name: ST Ground KillMove_to_ST Ground Combat00
+  - name: to_Perch_Idle
+  - name: ST Perch RockL02 Idle Neck Shout_to_ST Perch RockL02 Idle Neck Default
+  - name: ST Perch RockL02 Idle Neck Default_to_ST Perch RockL02 Idle Neck Shout
+  - name: ST Perch RockL02 Idle Neck Default_to_ST Perch RockL02 Idle Neck Shout00
+  - name: ST Perch RockL02 Enter_to_ST Perch RockL02 Idle
+  - name: to_ST Perch RockL02 Idle
+  - name: EnterPerchRockL02Instant
+  - name: to_ST Perch01
+  - name: PerchRockL02LandEnd
+  - name: FlightActionEntryEnd
+  - name: ST Perch Tower Shout Inhale Firebreath_to_ST Perch Tower Shout Exhale Firebreath
+  - name: ST Perch Tower Shout Inhale Fireball_to_ST Perch Tower Shout Exhale Fireball
+  - name: ST Perch Tower Idle_to_ST Perch Tower Shout
+  - name: ST Perch Tower Shout_to_ST Perch Tower Idle
+  - name: ST Perch Tower Idle_to_ST Perch Tower Shout00
+  - name: ST Perch RockL02 Shout Inhale Firebreath_to_ST Perch RockL02 Shout Exhale Firebreath
+  - name: ST Perch RockL02 Shout Inhale Fireball_to_ST Perch RockL02 Shout Exhale Fireball
+  - name: ST Perch RockL02 Idle_to_ST Perch RockL02 Shout
+  - name: ST Perch RockL02 Shout_to_ST Perch RockL02 Idle
+  - name: ST Perch RockL02 Idle_to_ST Perch RockL02 Shout00
+  - name: ST Perch Amp Shout Inhale Firebreath_to_ST Perch Amp Shout Exhale Firebreath
+  - name: ST Perch Amp Shout Inhale Fireball_to_ST Perch Amp Exhale Fireball
+  - name: ST Perch Amp Idle_to_ST Perch Amp Shout01
+  - name: ST Perch Amp Shout_to_ST Perch Amp Idle00
+  - name: ST Perch Amp Idle_to_ST Perch Amp Shout02
+  - name: to_ST Flight Kill Snatch Exit
+  - name: ST Perch_to_ST TakeOff00
+  - name: ST Perch_to_ST TakeOff01
+  - name: to_ST Flight Kill Snatch
+  - name: ST Furniture Mound Idle_to_ST Furniture Mound Exit
+  - name: to_ST Furniture Mound Idle
+  - name: EnterFurnitureMoundInstant
+  - name: ST Perch_to_ST TakeOff02
+  - name: ST Perch_to_ST TakeOff03
+  - name: ST Flight_to_ST Land
+  - name: FlyStopPerchVertical
+  - name: ST Hover Shout Inhale Firebreath_to_ST Hover Shout Exhale Firebreath
+  - name: ST Hover Shout Inhale Fireball_to_ST Hover Shout Exhale Fireball
+  - name: ST Flight Shout Inhale Firebreath_to_ST Flight Shout Exhale Firebreath
+  - name: ST Flight Shout Inhale Fireball_to_ST Flight Shout Exhale Fireball
+  - name: ST Flight to ST Flight Kill Grab
+  - name: ST Flight Kill Grab to ST Flight
+  - name: to_Flight_Cruising
+  - name: to_Flight_Kill_Grab
+  - name: ST Furniture Nest Enter to ST Furniture Nest Idle
+  - name: ST Furniture Nest Idle to ST Furniture Nest Exit
+  - name: to ST Furniture Nest Idle
+  - name: EnterFurnitureNestInstant
+  - name: to ST Furniture
+  - name: IdleFurnitureNestEnter
+  - name: ST Flight Kill Grab Enter to ST Flight Kill Grab Action
+  - name: to_Flight_Kill_Grab_Action
+  - name: to_Flight_Kill_Grab_Enter
+  - name: to ST Death
+  - name: deathStartAgony
+  - name: ST Death Agony Start to ST Death Agony End
+  - name: to_Death_End
+  - name: to ST Flight Kill Grab
+  - name: FlightActionGrab
+  - name: FlightActionRelease
+  - name: to ST TakeOff
+  - name: to ST Flight Kill Grab Failed
+  - name: to_Flight_Kill_Grab_Action_Failed
+  - name: to ST Flight Kill Grab00
+  - name: ResetTween
+  - name: EndResetTween
+  - name: AddRagdollToWorld
+  - name: Ragdoll
+  - name: RemoveCharacterControllerFromWorld
+  - name: GetUpBegin
+  - name: AddCharacterControllerToWorld
+  - name: GetUpEnd
+  - name: Reanimated
+  - name: Getup
+  - name: to AnimateToRagdoll
+  - name: DeathAnimation
+  - name: AnimateToRagdoll to FullyRagdoll
+  - name: to FullyRagdoll
+  - name: FullyRagdoll to GetUpFromRagdoll
+  - name: GetUpFromRagdoll to ST Default
+  - name: FlightActionEnd
+  - name: to ST Perch TowerAttack Idle
+  - name: EnterPerchTowerAttackInstant
+  - name: ST Perch to ST TakeOff
+  - name: ST Flight to ST Land
+  - name: to ST Perch
+  - name: Open
+  - name: FlyStopPerchTowerAttack
+  - name: PerchTowerAttackLandEnd
+  - name: to ST FullyRagdoll
+  - name: RagdollInstant
+  - name: GetUpStart
+  - name: AllowFlapExit_End
+  - name: AllowFlapExit_Begin
+  - name: AllowFeatherExit_Begin
+  - name: AllowFeatherExit_End
+  - name: 2_KillMoveStart
+  - name: 2_KillMoveEnd
+  - name: 2_PairEnd
+  - name: 2_DeathEmote
+  - name: KillMoveStart
+  - name: KillMoveStop
+  - name: DeathEmote
+  - name: KillMove1HMDragonRodeoStab
+  - name: KillMove1HMDragonRodeoSlash
+  - name: KillMove2HMDragonSlash
+  - name: KillMove2HWDragonSlash
+  - name: to ST TimeTravel
+  - name: to_TimeTravel
+  - name: SoundPlay.NPCDragonAttackTalonEnter
+  - name: SoundPlay.NPCDragonAttackTalonExit
+  - name: to ST Ground Mount
+  - name: to_Ground_Mount
+  - name: Ground_Mount_Dragon
+  - name: ST BleedOut2 Enter to ST BleedOut2 Idle
+  - name: to_BleedOut_Idle
+  - name: ST BleedOut2 Idle to ST BleedOut2 Exit
+  - name: to_BleedOut_Exit
+  - name: ST BleedOut2 to ST Ground Default
+  - name: to ST BleedOut2
+  - name: bleedOutStartSpecial
+  - name: 2_SoundPlay.NPCDragonAttackBiteThrow
+  - name: 2_SoundPlay
+  - name: SoundPlay.NPCDragonAttackBiteThrow
+  - name: ST Land Perch Tower Approach to ST Land Perch Tower Touchdown
+  - name: to ST Perch01
+  - name: FlyStopPerchTower
+  - name: to ST Perch02
+  - name: to ST Land
+  - name: FlyStopPerchAmp
+  - name: to ST Perch03
+  - name: FlyStopPerchRockL02
+  - name: to ST Perch04
+  - name: ST Land Perch Tower Vertical Approach to ST Land Perch Tower Vertical Touchdown
+  - name: to ST Perch05
+  - name: to ST Perch06
+  - name: FlyStopPerchTowerVertical
+  - name: to ST Perch07
+  - name: FlyStopPerchAmpVertical
+  - name: to ST Perch08
+  - name: to ST Perch09
+  - name: FlyStopPerchRockL02Vertical
+  - name: to ST Perch10
+  - name: to ST Perch11
+  - name: to ST Perch Amp Stagger
+  - name: ST Perch Amp Stagger to ST Perch Amp Shout
+  - name: to ST Perch Tower Stagger
+  - name: ST Perch Tower Stagger to ST Perch Tower Idle
+  - name: to ST Perch RockL02 Stagger
+  - name: ST Perch RockL02 Stagger to ST Perch RockL02 Idle
+  - name: KillMove1HMDragonRodeoStabShort
+  - name: KillMove2HWDragonRodeoSlash
+  - name: Reset
+  - name: to ST Default
+  - name: to ST Ground
+  - name: to ST Ground Idle
+  - name: to ST Ground Idle Default Standing Default
+  - name: KillMoveEnd
+  - name: EnableBumper
+  - name: DisableBumper
+  - name: ST Perch TowerAttack Shout Inhale Firebreath to ST Perch TowerAttack Shout Exhale Firebreath
+  - name: ST Perch TowerAttack Idle to ST Perch TowerAttack Shout
+  - name: ST Perch TowerAttack Shout to ST Perch TowerAttack Idle
+  - name: to ST Perch TowerAttack Idle00
+  - name: ST Perch TowerAttack Idle to ST Perch TowerAttack SmashBite
+  - name: PerchTowerAttackSmashBite
+  - name: ST Perch TowerAttack SmashBite to ST Perch TowerAttack Idle
+  - name: ST Perch Tower Stagger to ST Perch Tower Roar
+  - name: to_Perch_Roar
+  - name: ST Perch Tower Roar to ST Perch Tower Stagger
+  - name: ST Perch Tower Roar to ST Perch Tower Shout
+  - name: ST Perch Tower Roar to ST Perch Tower Shout00
+  - name: ST Perch RockL02 Idle to ST Perch RockL02 Roar
+  - name: ST Perch RockL02 Roar to ST Perch RockL02 Idle
+  - name: ST Perch RockL02 Roar to ST Perch RockL02 Shout
+  - name: ST Perch RockL02 Roar to ST Perch RockL02 Shout00
+  - name: ST Ground Mount to ST Ground Default
+  - name: Ground_Dismount_Dragon
+  - name: End_Tower_Smash
+  - name: MTState
+  - name: ST Furniture Trap Shout Inhale Firebreath to ST Furniture Trap Shout Exhale Firebreath
+  - name: ST Furniture Trap Shout Inhale Fireball to ST Furniture Trap Shout Exhale Fireball
+  - name: ST Furniture Trap Shout to ST Furniture Trap Idle
+  - name: ST Furniture Trap Idle to ST Furniture Trap Shout
+  - name: ST Furniture Trap Idle to ST Furniture Trap Shout00
+  - name: ST Furniture Trap Idle Default to ST Furniture Trap Idle Shout
+  - name: ST Furniture Trap Idle Default to ST Furniture Trap Idle Shout00
+  - name: ST Furniture Trap Idle Shout to ST Furniture Trap Idle Default
+  - name: ST Furniture Trap Idle Neck Shout to ST Furniture Trap Idle Neck Default
+  - name: ST Furniture Trap Idle Neck Default to ST Furniture Trap Idle Neck Shout
+  - name: ST Furniture Trap Idle Neck Default to ST Furniture Trap Idle Neck Shout00
+  - name: TowerLandImpact
+  - name: SoundPlay
+  - name: 2_SoundPlay.NPCDragonKillRoarB
+  - name: 2_SoundPlay.NPCDragonKillRoarA
+  - name: 2_SoundPlay.NPCDragonInjuredSD
+  - name: 2_SoundPlay.FSTDirtJumpUpSD
+  - name: 2_SoundPlay.NPCDragonAttackBiteSD
+  - name: 2_SoundPlay.NPCDragonKillRoarC
+  - name: 2_SoundPlay.FSTDirtJumpDownSD
+  - name: SoundPlay.NPCDragonKillRoarB
+  - name: SoundPlay.NPCDragonKillRoarA
+  - name: SoundPlay.NPCDragonInjuredSD
+  - name: SoundPlay.FSTDirtJumpUpSD
+  - name: SoundPlay.NPCDragonAttackBiteSD
+  - name: SoundPlay.NPCDragonKillRoarC
+  - name: SoundPlay.FSTDirtJumpDownSD
+  - name: 2_SoundPlay.NPCDragonWingFlapTakeoff
+  - name: 2_NPCDragonWingFlap
+  - name: 2_SoundPlay.NPCDragonWingFlap
+  - name: 2_DragonTakeoffEffect
+  - name: 2_SoundPlay.NPCDragonDeathSD
+  - name: SoundPlay.NPCDragonDeathSD
+  - name: 2_SoundPlay.NPCKillStruggle
+  - name: SoundPlay.NPCDragonFlightRoarDistantBSD
+  - name: NPCDragonFlightRoarTag
+  - name: NPCDragonFlightRoarPaarthurnaxTag
+  - name: Summon State to ST Ground
+  - name: summonStop
+  - name: to Summon State
+  - name: summonStart
+  - name: to Summon State00
+  - name: dispelStart
+  - name: EnterPerchLakeDiveInstant
+  - name: ST Perch to ST TakeOff00
+  - name: ST Perch to ST TakeOff01
+  - name: ST Flight to ST Land00
+  - name: FlyStopPerchLakeDive
+  - name: ST Land to ST Perch
+  - name: to ST Ground Mount Actor
+  - name: pa_DragonMountEnter
+  - name: ST Ground Mount Actor to ST Ground Default
+  - name: to ST Ground Dismount Actor
+  - name: pa_DragonMountExit
+  - name: ST Ground Dismount Actor to ST Ground Default
+  - name: to ST Summon
+  - name: to ST Summon00
+  - name: ST Summon to ST Ground Default
+  - name: to_Ground_Default
+  - name: DiveSplashStart
+  - name: DiveSplashEnd
+  - name: SoundPlay.NPCIceDragonDive
+  - name: SoundPlay.NPCIceDragonUnderwaterPass
+  - name: SoundPlay.NPCIceAbovePass
+  - name: SoundPlay.NPCIceDragonExit
+  # ── Behavior Switchboard entry ───────────────────────────────────────────
+  - name: BSB_DragonEnter

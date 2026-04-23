@@ -1,0 +1,6 @@
+class: BSIsActiveModifier
+name: BSIsActiveModifier_Feather
+userData: 2
+bindings:
+  - memberPath: bIsActive0
+    variable: IsFeathering

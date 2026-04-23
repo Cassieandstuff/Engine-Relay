@@ -1,0 +1,9 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight_Stagger
+stateId: 11
+generator: MG_Flight_Stagger
+transitions:
+  - event: staggerStop
+    toState: ST_Flight_Default
+    transition: shortTransitionEffect
+    flags: FLAG_DISABLE_CONDITION|FLAG_DELAY_STATE_CHANGE

@@ -1,0 +1,11 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Idle
+stateId: 0
+generator: BHR_Ground_Idle
+enterNotifyEvents:
+  - event: WeaponSheathe
+  - event: MTState
+transitions:
+  - event: equip
+    toState: ST_Ground_Combat
+    transition: defaultTransitionEffect

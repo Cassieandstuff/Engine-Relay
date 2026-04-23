@@ -1,0 +1,8 @@
+class: hkbManualSelectorGenerator
+name: MSG_Flight_Default_Glide
+bindings:
+  - memberPath: selectedGeneratorIndex
+    variable: iInjured
+generators:
+  - BLD_Flight_Default_Glide_Default
+  - BLD_Flight_Default_Glide_Injured

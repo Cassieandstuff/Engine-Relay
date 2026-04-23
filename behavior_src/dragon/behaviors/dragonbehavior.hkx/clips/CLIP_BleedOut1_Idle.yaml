@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_BleedOut1_Idle
+animationName: Animations\Ground_BleedOutIdle.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

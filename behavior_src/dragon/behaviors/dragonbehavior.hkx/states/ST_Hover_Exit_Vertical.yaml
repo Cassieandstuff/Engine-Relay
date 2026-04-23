@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Hover_Exit_Vertical
+stateId: 4
+generator: MG_Hover_Exit_Vertical

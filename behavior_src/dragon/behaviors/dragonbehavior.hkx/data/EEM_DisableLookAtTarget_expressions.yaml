@@ -1,0 +1,6 @@
+class: hkbExpressionDataArray
+name: EEM_DisableLookAtTarget
+expressionsData:
+  - expression: "bCanLookAtTarget = 0"
+  - expression: "BSLookAtModifier_m_onGain = 0.25"
+  - expression: "BSLookAtModifier_m_offGain = 0.25"

@@ -1,0 +1,10 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Trap_Idle
+stateId: 1
+generator: MG_Furniture_Trap_Idle
+enterNotifyEvents:
+  - event: idleChairSitting
+transitions:
+  - event: to_Furniture_Exit
+    toState: ST_Furniture_Trap_Exit
+    transition: shortTransitionEffect

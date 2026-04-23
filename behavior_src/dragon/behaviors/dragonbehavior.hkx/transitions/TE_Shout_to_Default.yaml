@@ -1,0 +1,7 @@
+class: hkbBlendingTransitionEffect
+name: TE_Shout_to_Default
+selfTransitionMode: SELF_TRANSITION_MODE_CONTINUE
+duration: 0.000000
+bindings:
+  - memberPath: duration
+    variable: defaultBlend

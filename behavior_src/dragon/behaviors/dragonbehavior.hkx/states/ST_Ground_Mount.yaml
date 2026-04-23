@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Mount
+stateId: 3
+generator: MG_Ground_Mount
+transitions:
+  - event: Ground_Dismount_Dragon
+    toState: ST_Ground_Default
+    transition: null

@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Hover_Exit_Default
+userData: 1
+modifiers:
+  - EEM_iState_Flight
+  - EEM_DisableLookAtTarget
+  - BSIsActiveModifier_IsBusy
+  - BSIsActiveModifier_bIsSynced

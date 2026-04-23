@@ -1,0 +1,16 @@
+class: hkbPoweredRagdollControlsModifier
+name: PoweredRagdoll No Matching
+userData: 1
+controlData:
+  - maxForce: 0.000000
+    tau: 0.800000
+    damping: 1.000000
+    proportionalRecoveryVelocity: 2.000000
+    constantRecoveryVelocity: 1.000000
+bones: null
+worldFromModelModeData:
+  - poseMatchingBone0: 0
+    poseMatchingBone1: 14
+    poseMatchingBone2: 13
+    mode: WORLD_FROM_MODEL_MODE_RAGDOLL
+boneWeights: null

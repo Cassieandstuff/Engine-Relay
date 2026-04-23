@@ -1,0 +1,16 @@
+class: BSInterpValueModifier
+name: BSInterpValueModifier_PitchDeltaDamped
+userData: 2
+bindings:
+  - memberPath: source
+    variable: PitchDeltaDamped
+  - memberPath: target
+    variable: PitchDeltaTarget
+  - memberPath: result
+    variable: PitchDeltaDamped
+  - memberPath: gain
+    variable: PitchDeltaDampedGain
+source: 0.000000
+target: 0.000000
+result: 0.000000
+gain: 0.000000

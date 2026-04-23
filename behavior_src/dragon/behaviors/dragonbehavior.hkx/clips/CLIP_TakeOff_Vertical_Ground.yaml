@@ -1,0 +1,8 @@
+class: hkbClipGenerator
+name: CLIP_TakeOff_Vertical_Ground
+animationName: Animations\MTTakeOffVertical.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.700000
+    event: to_TakeOff_Flight

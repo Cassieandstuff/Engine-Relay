@@ -1,0 +1,56 @@
+class: hkbStateMachineStateInfo
+name: ST_Land
+stateId: 10
+generator: MG_Land
+enterNotifyEvents:
+  - event: FlightLanding
+transitions:
+  - event: LandEnd
+    toState: ST_Ground
+    transition: TE_FlightToLand
+  - event: PerchLandEnd
+    toState: ST_Perch
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 10
+  - event: PerchLandEnd
+    toState: ST_Perch
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 12
+    toNestedStateId: 1
+  - event: PerchLandEnd
+    toState: ST_Perch
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 13
+    toNestedStateId: 2
+  - event: PerchLandEnd
+    toState: ST_Perch
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 8
+  - event: PerchLandEnd
+    toState: ST_Perch
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 14
+    toNestedStateId: 1
+  - event: PerchLandEnd
+    toState: ST_Perch
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 15
+    toNestedStateId: 2
+  - event: PerchLandEnd
+    toState: ST_Perch
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 11
+    toNestedStateId: 3
+  - event: PerchLandEnd
+    toState: ST_Perch
+    transition: null
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_FROM_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    fromNestedStateId: 16
+    toNestedStateId: 4

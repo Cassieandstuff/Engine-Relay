@@ -1,0 +1,8 @@
+class: hkbExpressionDataArray
+name: EEM_EnableLookAtTarget_Default
+expressionsData:
+  - expression: "bCanLookAtTarget = 1"
+  - expression: "BSLookAtModifier_m_onGain = cond(IsShouting, BSLookAtModifier_m_onGain_Shouting, BSLookAtModifier_m_onGain_Default)"
+  - expression: "BSLookAtModifier_m_offGain = cond(IsShouting, BSLookAtModifier_m_offGain_Shouting, BSLookAtModifier_m_offGain_Default)"
+  - expression: "BSLookAtModifier_CanLookOutsideLimit = 0"
+  - expression: "LookAtHeadingMaxAngle = 120"

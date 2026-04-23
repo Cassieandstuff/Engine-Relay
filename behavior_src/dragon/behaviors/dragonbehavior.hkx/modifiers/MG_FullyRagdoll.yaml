@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_FullyRagdoll
+userData: 1
+modifier: ML_FullyRagdoll
+generator: MSG_PoseMatching

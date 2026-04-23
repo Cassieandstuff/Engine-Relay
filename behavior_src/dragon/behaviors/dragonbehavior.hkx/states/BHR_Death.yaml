@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Death
+startStateId: 0
+states:
+  - ST_Death_Default
+  - ST_Death_Agony

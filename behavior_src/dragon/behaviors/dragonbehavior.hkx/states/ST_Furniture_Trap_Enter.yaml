@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Trap_Enter
+stateId: 0
+generator: CLIP_Furniture_Trap_Enter
+transitions:
+  - event: to_Furniture_Idle
+    toState: ST_Furniture_Trap_Idle
+    transition: null

@@ -1,0 +1,6 @@
+class: hkbStateMachineStateInfo
+name: KillMove2HWDragonRodeoSlash
+stateId: 7
+generator: KillMove2HWDragonRodeoSlash
+enterNotifyEvents:
+  - event: HeadTrackingOff

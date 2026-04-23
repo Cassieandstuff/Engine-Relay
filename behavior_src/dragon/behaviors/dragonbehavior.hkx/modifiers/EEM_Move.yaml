@@ -1,0 +1,5 @@
+class: hkbEvaluateExpressionModifier
+name: EEM_Move
+userData: 2
+enable: false
+expressions: null

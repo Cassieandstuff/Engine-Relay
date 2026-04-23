@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Furniture_Trap_Shout
+userData: 1
+modifiers:
+  - ML_Shout

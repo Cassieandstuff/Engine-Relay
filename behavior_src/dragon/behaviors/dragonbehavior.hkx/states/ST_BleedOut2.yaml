@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_BleedOut2
+stateId: 4
+generator: MG_BleedOut2
+transitions:
+  - event: to_BleedOut_Exit
+    toState: ST_Ground_Default
+    transition: defaultTransitionEffect

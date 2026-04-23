@@ -1,0 +1,11 @@
+class: hkbStateMachine
+name: BHR_Perch_Amp_Shout
+startStateId: 0
+bindings:
+  - memberPath: isActive
+    variable: IsShouting
+states:
+  - ST_Perch_Amp_Shout_Inhale_Firebreath
+  - ST_Perch_Amp_Shout_Inhale_Fireball
+  - ST_Perch_Amp_Shout_Exhale_Firebreath
+  - ST_Perch_Amp_Exhale_Fireball

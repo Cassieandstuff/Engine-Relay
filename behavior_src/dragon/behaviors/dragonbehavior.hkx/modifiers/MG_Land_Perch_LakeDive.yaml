@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Land_Perch_LakeDive
+userData: 1
+modifier: ML_Land_Perch
+generator: BLD_Land_Perch_LakeDive

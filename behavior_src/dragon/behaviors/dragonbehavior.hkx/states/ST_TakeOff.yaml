@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_TakeOff
+stateId: 4
+generator: MG_TakeOff
+transitions:
+  - event: TakeOff_to_WingState
+    toState: ST_Flight
+    transition: TakeOffTransitionEffect

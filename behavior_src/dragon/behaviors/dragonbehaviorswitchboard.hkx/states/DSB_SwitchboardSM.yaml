@@ -1,0 +1,18 @@
+# Root state machine for DragonBehaviorSwitchboard.hkb.
+#
+# State 0: DSB_IdleState — permanent neutral state. The SM starts here.
+#
+# Sub-behavior states and their wildcard transitions are NOT declared here.
+# They are generated dynamically at runtime by BehaviorGenerator, based
+# on BSB_API registrations for "DragonBehaviorSwitchboard.hkb", and
+# incorporated into the generated HKX served via BehaviorFileInterceptor.
+#
+# This YAML represents the empty fallback shell compiled into the deployed
+# dragonbehaviorswitchboard.hkx.  If HKBuild generation fails at runtime,
+# Havok loads this fallback instead.
+class: hkbStateMachine
+name: DSB_SwitchboardSM
+startStateId: 0
+selfTransitionMode: SELF_TRANSITION_MODE_NO_TRANSITION
+states:
+  - DSB_IdleState

@@ -1,0 +1,11 @@
+class: hkbClipGenerator
+name: CLIP_Land_Crash_Recover
+animationName: Animations\MTLand_CrashLongGetUp.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: FlightLandEnd
+  - localTime: 0.000000
+    event: LandEnd
+    relativeToEndOfClip: true

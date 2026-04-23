@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Furniture
+userData: 1
+modifier: ML_Furniture
+generator: BHR_Furniture

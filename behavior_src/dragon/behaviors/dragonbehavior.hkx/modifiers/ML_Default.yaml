@@ -1,0 +1,18 @@
+class: hkbModifierList
+name: ML_Default
+userData: 1
+modifiers:
+  - BSGetTimeStepModifier
+  - EEM_General
+  - EEM_bEquipOK
+  - EEM_Injured
+  - EEM_IsAttackReady
+  - EEM_bVoiceReady
+  - EDM_Combat_Equip
+  - EDM_Combat_Unequip
+  - EDM_ResetTween
+  - EEM_Direction
+  - EEM_LipSync
+  - EEM_LookAt
+  - FootIKModifier
+  - BSLookAtModifier

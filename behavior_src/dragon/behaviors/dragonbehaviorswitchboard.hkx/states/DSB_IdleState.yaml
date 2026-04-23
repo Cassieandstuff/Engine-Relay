@@ -1,0 +1,6 @@
+# Permanent idle state for DSB_SwitchboardSM.
+# No sub-behavior is active while in this state.
+class: hkbStateMachineStateInfo
+name: DSB_IdleState
+stateId: 0
+generator: DSB_Idle

@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_KillMove
+userData: 1
+modifier: ML_Ground_KillMove
+generator: BHR_Ground_KillMove

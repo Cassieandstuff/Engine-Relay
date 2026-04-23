@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Default_Vertical_Approach
+stateId: 1
+generator: MG_Land_Default_Vertical_Approach
+transitions:
+  - event: BeginLand
+    toState: ST_Land_Default_Vertical_TouchDown
+    transition: null

@@ -1,0 +1,11 @@
+class: hkbStateMachine
+name: BHR_Hover
+startStateId: 1
+states:
+  - ST_Hover_Idle
+  - ST_Hover_Enter_Default
+  - ST_Hover_Enter_Vertical
+  - ST_Hover_Exit_Default
+  - ST_Hover_Exit_Vertical
+  - ST_Hover_Injured
+  - ST_Hover_Stagger

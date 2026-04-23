@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Hover_Injured
+userData: 1
+modifier: ML_Hover_Injured
+generator: CLIP_Hover_Injured

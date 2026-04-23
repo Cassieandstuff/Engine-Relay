@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Furniture_Mound
+animationName: Animations\Special_ResurrectionExit.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 0.000000

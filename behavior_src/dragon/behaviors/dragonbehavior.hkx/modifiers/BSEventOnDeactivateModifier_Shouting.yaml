@@ -1,0 +1,5 @@
+class: BSEventOnDeactivateModifier
+name: BSEventOnDeactivateModifier_Shouting
+userData: 3
+event:
+  event: InterruptCast

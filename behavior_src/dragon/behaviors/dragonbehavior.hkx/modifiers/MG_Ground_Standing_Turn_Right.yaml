@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_Standing_Turn_Right
+userData: 1
+modifier: ML_Ground_Standing_Turn_Right
+generator: MSG_Ground_Standing_Turn_Right

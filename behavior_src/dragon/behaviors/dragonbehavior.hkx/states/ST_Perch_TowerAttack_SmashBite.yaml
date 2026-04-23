@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Perch_TowerAttack_SmashBite
+stateId: 4
+generator: MG_Perch_TowerAttack_SmashBite
+transitions:
+  - event: to_Perch_Idle
+    toState: ST_Perch_TowerAttack_Idle
+    transition: defaultTransitionEffect

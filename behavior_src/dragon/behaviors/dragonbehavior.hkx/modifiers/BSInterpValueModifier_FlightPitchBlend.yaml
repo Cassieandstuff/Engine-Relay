@@ -1,0 +1,16 @@
+class: BSInterpValueModifier
+name: BSInterpValueModifier_FlightPitchBlend
+userData: 2
+bindings:
+  - memberPath: source
+    variable: FlightPitchBlend
+  - memberPath: target
+    variable: FlightPitchBlendTarget
+  - memberPath: result
+    variable: FlightPitchBlend
+  - memberPath: gain
+    variable: FlightPitchBlendGain
+source: 0.000000
+target: 0.000000
+result: 0.000000
+gain: 0.000000

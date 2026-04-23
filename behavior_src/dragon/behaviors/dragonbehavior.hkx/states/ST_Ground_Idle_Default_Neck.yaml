@@ -1,0 +1,15 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Idle_Default_Neck
+stateId: 0
+generator: BHR_Ground_Idle_Default
+transitions:
+  - event: shoutStart
+    toState: ST_Ground_Idle_Default_Neck_Shout
+    transition: defaultTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1
+  - event: shoutStartFireball
+    toState: ST_Ground_Idle_Default_Neck_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 2

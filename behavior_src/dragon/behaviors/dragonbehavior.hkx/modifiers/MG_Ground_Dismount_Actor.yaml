@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_Dismount_Actor
+userData: 1
+modifier: ML_Ground_Dismount_Actor
+generator: pa_DragonMountExit

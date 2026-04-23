@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Perch_Tower_Shout_Inhale_Firebreath
+animationName: Animations\Shout_TowerInhale.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000

@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Tweening_Landing
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bIsSynced
+  - BSTweenerModifier_Tweening
+  - BSIsActiveModifier_IsBusy
+  - BSEventOnDeactivateModifier_ResetTween

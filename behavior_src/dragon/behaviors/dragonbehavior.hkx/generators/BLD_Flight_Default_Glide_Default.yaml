@@ -1,0 +1,17 @@
+class: hkbBlenderGenerator
+name: BLD_Flight_Default_Glide_Default
+flags: 17
+subtractLastChild: false
+bindings:
+  - memberPath: blendParameter
+    variable: TurnDeltaDamped
+children:
+  - generator: CLIP_Flight_Default_Glide_Default_Right
+    weight: -45.000000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Flight_Default_Glide_Default
+    weight: 0.000000
+    worldFromModelWeight: 1.000000
+  - generator: CLIP_Flight_Default_Glide_Default_Left
+    weight: 45.000000
+    worldFromModelWeight: 1.000000

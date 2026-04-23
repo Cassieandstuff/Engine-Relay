@@ -1,0 +1,20 @@
+class: hkbStateMachineStateInfo
+name: Flight_Default_Cruise_Neck_Idle
+stateId: 0
+generator: MG_Flight_Default_Cruise_Neck_Idle
+transitions:
+  - event: shoutStart
+    toState: Flight_Default_Cruise_Neck_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+  - event: roarStart
+    toState: Flight_Default_Cruise_Neck_Roar
+    transition: shortTransitionEffect
+  - event: shoutStartFireball
+    toState: Flight_Default_Cruise_Neck_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1
+  - event: IdleBase
+    toState: Flight_Default_Cruise_Neck_Idle
+    transition: null

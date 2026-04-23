@@ -1,0 +1,16 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground
+stateId: 3
+generator: MG_Ground
+enterNotifyEvents:
+  - event: EnableBumper
+transitions:
+  - event: TakeOff
+    toState: ST_TakeOff
+    transition: TE_Ground_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+  - event: TakeOff_Vertical
+    toState: ST_TakeOff
+    transition: TE_Ground_To_TakeOff
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1

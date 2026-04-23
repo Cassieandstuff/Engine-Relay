@@ -1,0 +1,6 @@
+class: hkbModifierList
+name: ML_Perch
+userData: 1
+modifiers:
+  - EEM_iState_Perching
+  - BSIsActiveModifier_bAnimationDriven

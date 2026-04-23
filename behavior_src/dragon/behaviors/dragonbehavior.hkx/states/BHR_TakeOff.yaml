@@ -1,0 +1,13 @@
+class: hkbStateMachine
+name: BHR_TakeOff
+startStateId: 0
+states:
+  - ST_TakeOff_Default
+  - ST_TakeOff_Vertical
+  - ST_TakeOff_Perch_Amp
+  - ST_TakeOff_Vertical_Perch_RockL02
+  - ST_TakeOff_Perch_Tower
+  - ST_TakeOff_Perch_Amp_Vertical
+  - ST_TakeOff_Perch_Tower_Vertical
+  - ST_TakeOff_Perch_TowerAttack
+  - ST_TakeOff_Perch_LakeDive

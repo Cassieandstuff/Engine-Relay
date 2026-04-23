@@ -1,0 +1,5 @@
+class: hkbStateMachine
+name: BHR_Ground_KillMove
+startStateId: 0
+states:
+  - ST_KillMove_Ground_Bite_Grapple

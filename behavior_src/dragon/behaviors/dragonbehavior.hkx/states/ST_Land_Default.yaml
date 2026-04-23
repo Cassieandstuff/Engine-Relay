@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Default
+stateId: 0
+generator: BHR_Land_Default

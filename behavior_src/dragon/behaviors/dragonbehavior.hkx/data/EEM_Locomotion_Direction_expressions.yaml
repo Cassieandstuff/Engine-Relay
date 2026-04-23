@@ -1,0 +1,7 @@
+class: hkbExpressionDataArray
+name: EEM_Locomotion_Direction
+expressionsData:
+  - expression: "moveStartForward if (iDirectionForward) && (!IsMovingForward)"
+    eventMode: EVENT_MODE_SEND_ON_TRUE
+  - expression: "moveStartBack if (!iDirectionForward) && (!IsMovingBackward)"
+    eventMode: EVENT_MODE_SEND_ON_TRUE

@@ -1,0 +1,10 @@
+class: hkbStateMachine
+name: BHR_Perch_LakeDive
+startStateId: 2
+transitions:
+  - event: EnterPerchLakeDiveInstant
+    toState: ST_Perch_LakeDive_Idle
+    transition: null
+    flags: FLAG_IS_GLOBAL_WILDCARD|FLAG_DISABLE_CONDITION
+states:
+  - ST_Perch_LakeDive_Idle

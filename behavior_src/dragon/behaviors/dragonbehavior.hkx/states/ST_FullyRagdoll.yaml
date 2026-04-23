@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_FullyRagdoll
+stateId: 28
+generator: MG_FullyRagdoll
+enterNotifyEvents:
+  - event: AddRagdollToWorld
+  - event: RemoveCharacterControllerFromWorld
+  - event: InterruptCast

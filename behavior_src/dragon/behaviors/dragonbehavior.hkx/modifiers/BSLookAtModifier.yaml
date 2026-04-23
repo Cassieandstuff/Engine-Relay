@@ -1,0 +1,102 @@
+class: BSLookAtModifier
+name: BSLookAtModifier
+bindings:
+  - memberPath: lookAtTarget
+    variable: bLookAtTarget
+  - memberPath: bones:0/onGain
+    variable: BSLookAtModifier_m_onGain
+  - memberPath: bones:0/offGain
+    variable: BSLookAtModifier_m_offGain
+  - memberPath: bones:1/onGain
+    variable: BSLookAtModifier_m_onGain
+  - memberPath: bones:1/offGain
+    variable: BSLookAtModifier_m_offGain
+  - memberPath: bones:3/onGain
+    variable: BSLookAtModifier_m_onGain
+  - memberPath: bones:3/offGain
+    variable: BSLookAtModifier_m_offGain
+  - memberPath: bones:4/onGain
+    variable: BSLookAtModifier_m_onGain
+  - memberPath: bones:4/offGain
+    variable: BSLookAtModifier_m_offGain
+  - memberPath: bones:5/onGain
+    variable: BSLookAtModifier_m_onGain
+  - memberPath: bones:5/offGain
+    variable: BSLookAtModifier_m_offGain
+  - memberPath: limitAngleDegrees
+    variable: LookAtHeadingMaxAngle
+  - memberPath: continueLookOutsideOfLimit
+    variable: BSLookAtModifier_CanLookOutsideLimit
+  - memberPath: onGain
+    variable: BSLookAtModifier_m_onGain
+  - memberPath: offGain
+    variable: BSLookAtModifier_m_offGain
+  - memberPath: targetLocation
+    variable: TargetLocation
+  - memberPath: targetOutsideLimits
+    variable: LookAtOutOfRange
+  - memberPath: lookAtCameraX
+    variable: camerafromx
+  - memberPath: lookAtCameraY
+    variable: camerafromy
+  - memberPath: lookAtCameraZ
+    variable: camerafromz
+lookAtTarget: true
+bones:
+  - index: 57
+    fwdAxisLS: (0.999988 -0.004890 0.000000 0.000000)
+    limitAngleDegrees: 180.000000
+    onGain: 0.050000
+    offGain: 0.050000
+    enabled: true
+  - index: 58
+    fwdAxisLS: (0.992976 0.118318 0.000000 0.000000)
+    limitAngleDegrees: 180.000000
+    onGain: 0.050000
+    offGain: 0.050000
+    enabled: true
+  - index: 59
+    fwdAxisLS: (0.897446 -0.441124 0.000000 0.000000)
+    limitAngleDegrees: 180.000000
+    onGain: 0.050000
+    offGain: 0.050000
+    enabled: true
+  - index: 60
+    fwdAxisLS: (0.985299 -0.170840 0.000000 0.000000)
+    limitAngleDegrees: 180.000000
+    onGain: 0.050000
+    offGain: 0.050000
+    enabled: true
+  - index: 61
+    fwdAxisLS: (0.983452 0.181170 0.000000 0.000000)
+    limitAngleDegrees: 180.000000
+    onGain: 0.050000
+    offGain: 0.050000
+    enabled: true
+  - index: 63
+    fwdAxisLS: (0.993884 0.110431 0.000000 0.000000)
+    limitAngleDegrees: 45.000000
+    onGain: 0.050000
+    offGain: 0.050000
+    enabled: true
+eyeBones:
+  - index: 82
+    fwdAxisLS: (0.000000 1.000000 0.000000 0.000000)
+    limitAngleDegrees: 10.000000
+    onGain: 1.000000
+    offGain: 1.000000
+    enabled: true
+limitAngleDegrees: 90.000000
+limitAngleThresholdDegrees: 20.000000
+continueLookOutsideOfLimit: false
+onGain: 0.050000
+offGain: 0.050000
+useBoneGains: true
+targetLocation: (0.000000 0.000000 0.000000 0.000000)
+targetOutsideLimits: false
+targetOutOfLimitEvent:
+  id: -1
+lookAtCamera: false
+lookAtCameraX: 0.000000
+lookAtCameraY: 0.000000
+lookAtCameraZ: 0.000000

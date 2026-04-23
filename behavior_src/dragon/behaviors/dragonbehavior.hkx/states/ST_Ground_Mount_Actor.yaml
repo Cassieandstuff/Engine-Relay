@@ -1,0 +1,10 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Mount_Actor
+stateId: 5
+generator: MG_Ground_Mount_Actor
+enterNotifyEvents:
+  - event: IdleStop
+transitions:
+  - event: PairEnd
+    toState: ST_Ground_Default
+    transition: defaultTransitionEffect

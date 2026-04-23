@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Shout_Inhale_Fireball
+stateId: 2
+generator: CLIP_Shout_Inhale_Fireball
+transitions:
+  - event: shoutRelease
+    toState: ST_Shout_Exhale_Fireball
+    transition: BTE_Shout_InhaleToExhale

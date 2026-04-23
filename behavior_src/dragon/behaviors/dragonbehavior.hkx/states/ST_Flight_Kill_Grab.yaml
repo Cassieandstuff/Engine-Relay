@@ -1,0 +1,12 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight_Kill_Grab
+stateId: 18
+generator: MG_Flight_Kill_Grab
+enterNotifyEvents:
+  - event: FlightAction
+exitNotifyEvents:
+  - event: FlightActionEnd
+transitions:
+  - event: to_Flight_Cruising
+    toState: ST_Flight
+    transition: BTE_FlightKillToFlight

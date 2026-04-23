@@ -1,0 +1,6 @@
+class: BSIsActiveModifier
+name: BSIsActiveModifier_bTweenUpdate
+userData: 2
+bindings:
+  - memberPath: bIsActive0
+    variable: bTweenUpdate

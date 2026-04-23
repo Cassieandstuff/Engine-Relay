@@ -1,0 +1,10 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Combat_Attack_Tail
+stateId: 2
+generator: MG_Ground_Combat_Attack_Tail
+exitNotifyEvents:
+  - event: attackStop
+transitions:
+  - event: endGroundAttack
+    toState: ST_Ground_Combat_Default
+    transition: defaultTransitionEffect

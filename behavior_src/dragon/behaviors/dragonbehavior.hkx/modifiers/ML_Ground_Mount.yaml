@@ -1,0 +1,9 @@
+class: hkbModifierList
+name: ML_Ground_Mount
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bIsSynced
+  - BSIsActiveModifier_bAnimationDriven
+  - BSIsActiveModifier_IsBusy
+  - EEM_DisableLookAtTarget
+  - BSIsActiveModifier_bNoFootIK

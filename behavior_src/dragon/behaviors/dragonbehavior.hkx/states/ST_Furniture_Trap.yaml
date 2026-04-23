@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Trap
+stateId: 0
+generator: MG_Furniture_Trap

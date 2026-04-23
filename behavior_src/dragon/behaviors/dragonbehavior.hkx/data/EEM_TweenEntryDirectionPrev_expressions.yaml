@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_TweenEntryDirectionPrev
+expressionsData:
+  - expression: "TweenEntryDirectionPrev = cond( bAllowFlightKillGrabTween, TweenEntryDirection, TweenEntryDirectionPrev )"

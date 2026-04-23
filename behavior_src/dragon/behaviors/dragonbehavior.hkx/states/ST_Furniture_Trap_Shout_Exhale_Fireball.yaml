@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Trap_Shout_Exhale_Fireball
+stateId: 3
+generator: CLIP_Furniture_Trap_Shout_Exhale_Fireball

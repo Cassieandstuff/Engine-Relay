@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Summon
+userData: 1
+modifier: ML_Summon
+generator: BHR_Summon

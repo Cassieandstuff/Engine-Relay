@@ -1,0 +1,6 @@
+class: hkbModifierList
+name: ML_Furniture
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bAnimationDriven
+  - BSEventOnDeactivateModifier_Furniture

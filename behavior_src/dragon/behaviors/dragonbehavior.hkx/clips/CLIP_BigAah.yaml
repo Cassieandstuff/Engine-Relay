@@ -1,0 +1,8 @@
+class: hkbClipGenerator
+name: CLIP_BigAah
+animationName: Animations\Phoneme_BigAah.HKX
+mode: MODE_USER_CONTROLLED
+playbackSpeed: 1.000000
+bindings:
+  - memberPath: userControlledTimeFraction
+    variable: LipBigAah

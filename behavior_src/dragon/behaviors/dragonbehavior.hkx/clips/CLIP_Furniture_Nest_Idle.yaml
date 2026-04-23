@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Furniture_Nest_Idle
+animationName: Animations\Special_LayingSpeechPerch.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

@@ -1,0 +1,4 @@
+class: hkbBlendingTransitionEffect
+name: TE_Ground_To_TakeOff
+duration: 0.500000
+flags: FLAG_IGNORE_FROM_WORLD_FROM_MODEL

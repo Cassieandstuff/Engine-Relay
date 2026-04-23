@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_TimeTravel
+stateId: 2
+generator: MG_TimeTravel

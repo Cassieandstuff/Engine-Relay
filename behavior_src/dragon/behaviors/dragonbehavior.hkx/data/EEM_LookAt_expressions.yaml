@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_LookAt
+expressionsData:
+  - expression: "bLookAtTarget = bHeadTracking && bCanLookAtTarget"

@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Perch_Tower
+stateId: 10
+generator: MG_Land_Perch_Tower

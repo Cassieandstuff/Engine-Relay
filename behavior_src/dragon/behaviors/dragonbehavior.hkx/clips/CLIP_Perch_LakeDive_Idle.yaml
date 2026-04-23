@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Perch_LakeDive_Idle
+animationName: Animations\DLC01\Special_WaterDiveIdle.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

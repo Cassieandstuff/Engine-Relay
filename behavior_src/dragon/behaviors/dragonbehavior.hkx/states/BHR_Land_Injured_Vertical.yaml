@@ -1,0 +1,6 @@
+class: hkbStateMachine
+name: BHR_Land_Injured_Vertical
+startStateId: 1
+states:
+  - ST_Land_Injured_Vertical_TouchDown
+  - ST_Land_Injured_Vertical_Approach

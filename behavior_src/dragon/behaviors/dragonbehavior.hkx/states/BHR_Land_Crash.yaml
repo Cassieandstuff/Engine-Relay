@@ -1,0 +1,7 @@
+class: hkbStateMachine
+name: BHR_Land_Crash
+startStateId: 0
+states:
+  - ST_Land_Crash_Approach
+  - ST_Land_Crash_Slide
+  - ST_Land_Crash_Recover

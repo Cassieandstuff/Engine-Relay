@@ -1,0 +1,25 @@
+class: hkbPoseMatchingGenerator
+name: PMG_Reanimate
+referencePoseWeightThreshold: 0.000000
+blendParameter: 0.000000
+minCyclicBlendParameter: 0.000000
+maxCyclicBlendParameter: 1.000000
+indexOfSyncMasterChild: -1
+flags: 0
+subtractLastChild: false
+children:
+  - generator: CLIP_Reanimate
+    weight: 1.000000
+    worldFromModelWeight: 1.000000
+worldFromModelRotation: (0.000000 0.000000 0.000000 1.000000)
+blendSpeed: 1.000000
+minSpeedToSwitch: 0.200000
+minSwitchTimeNoError: 0.200000
+minSwitchTimeFullError: 0.000000
+startPlayingEvent: GetUpStart
+startMatchingEvent: Ragdoll
+rootBoneIndex: 0
+otherBoneIndex: 14
+anotherBoneIndex: 13
+pelvisIndex: 0
+mode: MODE_MATCH

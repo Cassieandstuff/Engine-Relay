@@ -1,0 +1,10 @@
+class: hkbStateMachineStateInfo
+name: ST_KeyframeToRagdoll
+stateId: 27
+generator: MG_AnimateToRagdoll
+enterNotifyEvents:
+  - event: AddRagdollToWorld
+transitions:
+  - event: Ragdoll
+    toState: ST_FullyRagdoll
+    transition: RagdollBlendingTransition

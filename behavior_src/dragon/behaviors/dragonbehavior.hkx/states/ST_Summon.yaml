@@ -1,0 +1,10 @@
+class: hkbStateMachineStateInfo
+name: ST_Summon
+stateId: 7
+generator: MG_Summon
+exitNotifyEvents:
+  - event: summonStop
+transitions:
+  - event: to_Ground_Default
+    toState: ST_Ground_Default
+    transition: defaultTransitionEffect

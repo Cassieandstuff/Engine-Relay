@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Land
+userData: 1
+modifier: ML_Land
+generator: MT_Land_State_Behavior

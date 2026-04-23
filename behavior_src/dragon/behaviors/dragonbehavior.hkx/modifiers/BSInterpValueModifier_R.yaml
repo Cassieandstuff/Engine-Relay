@@ -1,0 +1,16 @@
+class: BSInterpValueModifier
+name: BSInterpValueModifier_R
+userData: 2
+bindings:
+  - memberPath: source
+    variable: LipRDamped
+  - memberPath: target
+    variable: LipR
+  - memberPath: result
+    variable: LipRDamped
+  - memberPath: gain
+    variable: LipGain
+source: 0.000000
+target: 0.000000
+result: 0.000000
+gain: 0.000000

@@ -1,0 +1,11 @@
+class: BSSynchronizedClipGenerator
+name: pa_KillMove_Ground_Bite_Grapple
+pClipGenerator: CLIP_Ground_KillMove_Bite_Grapple
+SyncAnimPrefix: 2_
+bSyncClipIgnoreMarkPlacement: false
+fGetToMarkTime: 0.000000
+fMarkErrorThreshold: 0.500000
+bLeadCharacter: true
+bReorientSupportChar: true
+bApplyMotionFromRoot: true
+sAnimationBindingIndex: -1

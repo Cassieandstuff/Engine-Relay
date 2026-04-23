@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Phoneme
+userData: 1
+modifier: ML_Phenome
+generator: BLD_Phoneme

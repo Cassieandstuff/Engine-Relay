@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Ground_Combat_Default_Standing_Shout
+userData: 1
+modifiers:
+  - EEM_EnableLookAtTarget_Combat_Default

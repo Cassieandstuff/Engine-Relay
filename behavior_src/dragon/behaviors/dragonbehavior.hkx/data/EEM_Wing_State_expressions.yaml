@@ -1,0 +1,9 @@
+class: hkbExpressionDataArray
+name: EEM_Wing_State
+expressionsData:
+  - expression: "Flap if ((Speed < TargetSpeedDamped * TargetSpeedThresholdMin) && (!IsFlapping))"
+    eventMode: EVENT_MODE_SEND_ON_TRUE
+  - expression: "Feather if ((Speed > TargetSpeedDamped * TargetSpeedThresholdMax) && (!IsFeathering))"
+    eventMode: EVENT_MODE_SEND_ON_TRUE
+  - expression: "Glide if ((Speed >= TargetSpeedDamped * TargetSpeedThresholdMin) && (Speed <= TargetSpeedDamped * TargetSpeedThresholdMax) && (!IsGliding) )"
+    eventMode: EVENT_MODE_SEND_ON_TRUE

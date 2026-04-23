@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Furniture_Mound
+userData: 1
+modifier: EEM_DisableLookAtTarget
+generator: BHR_Furniture_Mound

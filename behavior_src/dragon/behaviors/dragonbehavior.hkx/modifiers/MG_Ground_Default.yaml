@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Ground_Default
+userData: 1
+modifier: ML_Ground_Default
+generator: BHR_Ground_Default

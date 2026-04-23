@@ -1,0 +1,5 @@
+class: BSModifyOnceModifier
+name: BSModifyOnceModifier_Reset_Lip
+userData: 3
+pOnActivateModifier: null
+pOnDeactivateModifier: EEM_Reset_Lip

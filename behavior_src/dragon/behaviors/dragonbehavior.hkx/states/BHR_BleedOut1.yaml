@@ -1,0 +1,9 @@
+class: hkbStateMachine
+name: BHR_BleedOut1
+startStateId: 0
+bindings:
+  - memberPath: isActive
+    variable: bAnimationDriven
+states:
+  - ST_BleedOut1_Enter
+  - ST_BleedOut1_Idle

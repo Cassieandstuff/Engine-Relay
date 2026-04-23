@@ -1,0 +1,11 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Combat_Default_Standing_Turn_Left_State
+stateId: 2
+generator: MG_Ground_Standing_Turn_Left
+transitions:
+  - event: turnStop
+    toState: ST_Ground_Combat_Default_Standing_Idle
+    transition: defaultTransitionEffect
+  - event: turnRight
+    toState: ST_Ground_Combat_Default_Standing_Turn_Right_State
+    transition: defaultTransitionEffect

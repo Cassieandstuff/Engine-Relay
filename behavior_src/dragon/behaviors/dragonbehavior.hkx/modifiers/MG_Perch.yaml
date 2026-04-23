@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Perch
+userData: 1
+modifier: ML_Perch
+generator: BHR_Perch

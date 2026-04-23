@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Mound_Exit
+stateId: 1
+generator: CLIP_Furniture_Mound_Exit

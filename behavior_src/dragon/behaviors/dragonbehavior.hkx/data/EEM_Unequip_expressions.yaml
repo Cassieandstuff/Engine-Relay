@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_Unequip
+expressionsData:
+  - expression: "iCombat = 0"

@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Ground_Standing_Injured_Turn_Right
+animationName: Animations\MTTurnRightGround45Injured.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

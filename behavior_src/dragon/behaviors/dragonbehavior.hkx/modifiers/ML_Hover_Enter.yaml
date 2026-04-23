@@ -1,0 +1,10 @@
+class: hkbModifierList
+name: ML_Hover_Enter
+userData: 1
+modifiers:
+  - EEM_iState_Flight
+  - EEM_DisableLookAtTarget
+  - BSIsActiveModifier_bIsSynced
+  - BSTweenerModifier_Tweening
+  - BSIsActiveModifier_IsBusy
+  - BSEventOnDeactivateModifier_ResetTween

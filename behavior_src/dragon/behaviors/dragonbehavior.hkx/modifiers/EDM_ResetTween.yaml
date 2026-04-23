@@ -1,0 +1,6 @@
+class: hkbEventDrivenModifier
+name: EDM_ResetTween
+userData: 1
+modifier: EEM_ResetTweenEntryDirection
+activateEvent: ResetTween
+deactivateEvent: EndResetTween

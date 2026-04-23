@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Flight_Default_Cruise_Neck_Idle
+userData: 1
+modifier: ML_Flight_Default_Cruise_Neck_Idle
+generator: MG_Flight_Default_Cruise

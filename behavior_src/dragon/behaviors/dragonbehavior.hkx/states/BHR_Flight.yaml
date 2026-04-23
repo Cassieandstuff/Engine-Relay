@@ -1,0 +1,7 @@
+class: hkbStateMachine
+name: BHR_Flight
+startStateId: 6
+states:
+  - ST_Flight_Injure
+  - ST_Flight_Default
+  - ST_Flight_Stagger

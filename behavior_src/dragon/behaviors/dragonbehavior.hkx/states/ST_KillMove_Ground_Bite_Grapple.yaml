@@ -1,0 +1,6 @@
+class: hkbStateMachineStateInfo
+name: ST_KillMove_Ground_Bite_Grapple
+stateId: 0
+generator: pa_KillMove_Ground_Bite_Grapple
+enterNotifyEvents:
+  - event: KillMoveStart

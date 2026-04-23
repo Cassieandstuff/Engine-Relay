@@ -1,0 +1,10 @@
+# Placeholder idle clip for DSB_SwitchboardSM's neutral state.
+# The animation path is a stub — Havok will log a missing-file warning
+# but will not crash; the dragon holds its current pose.
+# In practice, BSB_Activate always sets startStateId to a registered
+# sub-behavior before this state is ever entered.
+class: hkbClipGenerator
+name: DSB_Idle
+animationName: Animations\BehaviorSwitchboard\Dragon\DSB_Idle.hkx
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

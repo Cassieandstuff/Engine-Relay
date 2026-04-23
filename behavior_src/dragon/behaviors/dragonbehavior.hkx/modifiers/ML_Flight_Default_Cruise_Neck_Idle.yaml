@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Flight_Default_Cruise_Neck_Idle
+userData: 1
+modifiers:
+  - BSTimerModifier_PickNewIdle

@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Nest_Exit
+stateId: 2
+generator: CLIP_Furniture_Nest_Exit

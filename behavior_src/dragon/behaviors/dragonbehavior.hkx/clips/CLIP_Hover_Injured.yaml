@@ -1,0 +1,9 @@
+class: hkbClipGenerator
+name: CLIP_Hover_Injured
+animationName: Animations\MTIdle_Hover_Stagger.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: HoverIdle
+    relativeToEndOfClip: true

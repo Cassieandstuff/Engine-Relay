@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Land_Perch_TowerAttack
+userData: 1
+modifier: ML_Land_Perch
+generator: CLIP_Land_Perch_TowerAttack

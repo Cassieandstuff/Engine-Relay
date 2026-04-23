@@ -1,0 +1,4 @@
+class: hkbBlendingTransitionEffect
+name: TE_FlightToLand
+duration: 0.660000
+flags: FLAG_IGNORE_TO_WORLD_FROM_MODEL

@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Flight
+userData: 1
+modifiers:
+  - BSIsActiveModifier_bSpeedSynced
+  - EEM_iState_Flight
+  - BSPassByTargetTriggerModifier_Flight
+  - BSModifyOnceModifier_ResetTween

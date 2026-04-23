@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Furniture_Trap_Idle
+userData: 1
+modifier: BSLookAtModifier_Furniture_Trap_Idle
+generator: BLD_Furniture_Trap_Idle

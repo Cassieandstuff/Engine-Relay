@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_FlightPitchBlendTarget
+expressionsData:
+  - expression: "FlightPitchBlendTarget = fabs(MoveDirZ)"

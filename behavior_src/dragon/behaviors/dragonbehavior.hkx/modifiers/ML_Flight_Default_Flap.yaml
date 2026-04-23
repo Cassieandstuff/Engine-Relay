@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Flight_Default_Flap
+userData: 1
+modifiers:
+  - BSIsActiveModifier_Flap

@@ -1,0 +1,6 @@
+class: hkbEventDrivenModifier
+name: EDM_Flap
+userData: 1
+modifier: AccelerationModifier
+activateEvent: FlapThrustBegin
+deactivateEvent: FlapThrustEnd

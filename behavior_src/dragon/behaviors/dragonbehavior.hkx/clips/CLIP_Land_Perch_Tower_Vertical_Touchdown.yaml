@@ -1,0 +1,11 @@
+class: hkbClipGenerator
+name: CLIP_Land_Perch_Tower_Vertical_Touchdown
+animationName: Animations\MTLandVertical_Tower.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: -0.001000
+    event: PerchLandEnd
+    relativeToEndOfClip: true
+  - localTime: 0.399000
+    event: TowerLandImpact

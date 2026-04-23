@@ -1,0 +1,8 @@
+class: hkbModifierList
+name: ML_Hover_Idle
+userData: 1
+modifiers:
+  - EEM_iState_Hovering
+  - EEM_EnableLookAtTarget_Hover
+  - EEM_Turn
+  - BSIsActiveModifier_bAnimationDriven

@@ -1,0 +1,5 @@
+class: hkbExpressionDataArray
+name: EEM_SetTweenEntryDirectionFlightKillGrab
+expressionsData:
+  - expression: "TweenEntryDirectionFlightKillGrab = TweenEntryDirection"
+  - expression: "TweenEntryDirectionPrev = TweenEntryDirection"

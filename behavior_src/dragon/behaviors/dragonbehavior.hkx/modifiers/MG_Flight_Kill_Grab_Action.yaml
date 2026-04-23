@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Flight_Kill_Grab_Action
+userData: 1
+modifier: ML_Flight_Kill_Grab_Action
+generator: CLIP_Flight_Grab

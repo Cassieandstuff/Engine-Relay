@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Crash_Approach
+stateId: 0
+generator: MG_Land_Crash_Approach
+transitions:
+  - event: BeginLand
+    toState: ST_Land_Crash_Slide
+    transition: null

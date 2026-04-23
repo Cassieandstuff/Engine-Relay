@@ -1,0 +1,10 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Mound_Idle
+stateId: 0
+generator: CLIP_Furniture_Mound
+enterNotifyEvents:
+  - event: idleChairSitting
+transitions:
+  - event: to_Furniture_Exit
+    toState: ST_Furniture_Mound_Exit
+    transition: null

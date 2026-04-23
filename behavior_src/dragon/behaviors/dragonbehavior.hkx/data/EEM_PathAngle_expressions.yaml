@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_PathAngle
+expressionsData:
+  - expression: "PathAngle = fabs(TurnDelta) + fabs(PitchDelta)"

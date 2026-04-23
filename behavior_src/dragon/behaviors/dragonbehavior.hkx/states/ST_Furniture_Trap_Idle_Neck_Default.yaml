@@ -1,0 +1,14 @@
+class: hkbStateMachineStateInfo
+name: ST_Furniture_Trap_Idle_Neck_Default
+stateId: 0
+generator: BHR_Furniture_Trap_Idle_Default
+transitions:
+  - event: shoutStart
+    toState: ST_Furniture_Trap_Idle_Neck_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+  - event: shoutStartFireball
+    toState: ST_Furniture_Trap_Idle_Neck_Shout
+    transition: shortTransitionEffect
+    flags: FLAG_TO_NESTED_STATE_ID_IS_VALID|FLAG_DISABLE_CONDITION
+    toNestedStateId: 1

@@ -1,0 +1,24 @@
+class: hkbClipGenerator
+name: Paired_2HWKillMoveDragonSlash
+animationName: ..\SharedKillMoves\Human&Dragon\Paired_2HWKillMoveDragonSlash.hkx
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+triggers:
+  - localTime: 0.000000
+    event: 2_KillMoveStart
+  - localTime: 0.038000
+    event: 2_SoundPlay.NPCDragonKillRoarB
+  - localTime: 0.757000
+    event: 2_SoundPlay.NPCDragonKillRoarA
+  - localTime: 1.518000
+    event: 2_SoundPlay.NPCDragonInjuredSD
+  - localTime: 2.961000
+    event: 2_SoundPlay.FSTDirtJumpUpSD
+  - localTime: 3.005000
+    event: 2_SoundPlay.NPCDragonKillRoarB
+  - localTime: 4.156000
+    event: 2_KillActor
+  - localTime: 4.156000
+    event: 2_KillMoveEnd
+  - localTime: 4.156000
+    event: 2_PairEnd

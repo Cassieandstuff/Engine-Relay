@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_iState_Flight
+expressionsData:
+  - expression: "iState = iState_DragonFlying"

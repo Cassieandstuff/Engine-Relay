@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Hover_Shout
+userData: 1
+modifier: BSEventOnDeactivateModifier_Shouting
+generator: BHR_Hover_Shout

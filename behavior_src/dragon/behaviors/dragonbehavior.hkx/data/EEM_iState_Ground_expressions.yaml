@@ -1,0 +1,4 @@
+class: hkbExpressionDataArray
+name: EEM_iState_Ground
+expressionsData:
+  - expression: "iState = iState_DragonDefault"

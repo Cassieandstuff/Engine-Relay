@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Hasty_Vertical
+stateId: 9
+generator: BHR_Land_Hasty_Vertical

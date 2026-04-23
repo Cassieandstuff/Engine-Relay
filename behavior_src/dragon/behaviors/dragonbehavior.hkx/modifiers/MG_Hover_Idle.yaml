@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Hover_Idle
+userData: 1
+modifier: ML_Hover_Idle
+generator: BLD_Hover

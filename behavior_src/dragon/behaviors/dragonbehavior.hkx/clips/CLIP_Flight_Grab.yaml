@@ -1,0 +1,16 @@
+class: hkbClipGenerator
+name: CLIP_Flight_Grab
+animationName: Animations\Special_TalonGrabExitVert.HKX
+mode: MODE_SINGLE_PLAY
+playbackSpeed: 1.000000
+flags: 1
+triggers:
+  - localTime: 0.000000
+    event: FlightActionGrab
+    payload: NPC RLegFoot
+  - localTime: 0.000000
+    event: to_Flight_Cruising
+    relativeToEndOfClip: true
+  - localTime: 1.067000
+    event: FlightActionRelease
+    payload: NPC RLegFoot

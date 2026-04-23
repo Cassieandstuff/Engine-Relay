@@ -1,0 +1,5 @@
+class: hkbModifierGenerator
+name: MG_Land_Default_Vertical_TouchDown
+userData: 1
+modifier: BSIsActiveModifier_IsOnGround
+generator: CLIP_Land_Default_Vertical_TouchDown

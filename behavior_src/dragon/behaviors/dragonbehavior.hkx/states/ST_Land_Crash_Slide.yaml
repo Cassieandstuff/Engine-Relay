@@ -1,0 +1,10 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Crash_Slide
+stateId: 1
+generator: CLIP_Land_Crash_Slide
+enterNotifyEvents:
+  - event: FlightLanded
+transitions:
+  - event: To_Crash_Land_Recover
+    toState: ST_Land_Crash_Recover
+    transition: null

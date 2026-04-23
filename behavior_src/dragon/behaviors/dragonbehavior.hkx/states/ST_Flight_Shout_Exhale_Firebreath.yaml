@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Flight_Shout_Exhale_Firebreath
+stateId: 2
+generator: CLIP_Flight_Shout_Exhale_Firebreath

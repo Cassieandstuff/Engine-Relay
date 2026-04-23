@@ -1,0 +1,10 @@
+class: hkbStateMachineStateInfo
+name: ST_Ground_Combat
+stateId: 1
+generator: BHR_Ground_Combat
+enterNotifyEvents:
+  - event: WeaponDraw
+transitions:
+  - event: unequip
+    toState: ST_Ground_Idle
+    transition: defaultTransitionEffect

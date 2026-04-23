@@ -1,0 +1,4 @@
+class: hkbStateMachineStateInfo
+name: ST_Land_Crash
+stateId: 6
+generator: BHR_Land_Crash

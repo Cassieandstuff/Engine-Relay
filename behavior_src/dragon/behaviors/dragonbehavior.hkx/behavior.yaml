@@ -1,0 +1,9 @@
+packfile:
+  classversion: 8
+  contentsversion: "hk_2010.2.0-r1"
+
+behavior:
+  name: "DragonBehavior.hkb"
+  variableMode: VARIABLE_MODE_DISCARD_WHEN_INACTIVE
+  rootGenerator: BHR_Master
+  data: graphdata

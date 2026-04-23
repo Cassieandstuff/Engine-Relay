@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Ground_Standing_Turn_Right
+animationName: Animations\MTTurnRightGround45.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

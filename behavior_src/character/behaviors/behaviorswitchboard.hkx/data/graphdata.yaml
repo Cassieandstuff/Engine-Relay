@@ -1,0 +1,15 @@
+# Graph data for BehaviorSwitchboard.hkb
+#
+# Events and variables listed here are compiled into the fallback HKX.
+# At runtime, BehaviorPatcher::BSB_CreateSymbolIdMap appends the actual
+# registered event names to all graphs in the project (including this one),
+# so the event tables stay in sync regardless of what is baked here.
+#
+# The fallback base intentionally declares no events, since all sub-behavior
+# events are injected dynamically. If HKBuild generation fails, the deployed
+# HKX with empty events is loaded — SendEvent still works because
+# AppendEvent runs at CreateSymbolIdMap time.
+
+variables: []
+
+events: []

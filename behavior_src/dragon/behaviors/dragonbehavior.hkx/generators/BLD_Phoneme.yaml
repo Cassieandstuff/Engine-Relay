@@ -1,0 +1,99 @@
+class: hkbBlenderGenerator
+name: BLD_Phoneme
+flags: 0
+subtractLastChild: false
+children:
+  - generator: CLIP_BigAah
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC RUpLip": 1.000000
+  - generator: CLIP_DST
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC RUpLip": 1.000000
+  - generator: CLIP_Eee
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC RUpLip": 1.000000
+  - generator: CLIP_FV
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC RUpLip": 1.000000
+  - generator: CLIP_K
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC RUpLip": 1.000000
+  - generator: CLIP_L
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC RUpLip": 1.000000
+  - generator: CLIP_R
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC RUpLip": 1.000000
+  - generator: CLIP_Th
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC RUpLip": 1.000000
+  - generator: MG_Default
+    weight: 1.000000
+    worldFromModelWeight: 0.000000
+    boneWeights:
+      named:
+        "NPC Jaw": 1.000000
+        "NPC Tongue1": 1.000000
+        "NPC Tongue2": 1.000000
+        "NPC LUpLip": 1.000000
+        "NPC LLBrow": 1.000000
+        "NPC LUBrow": 1.000000
+        "NPC RUpLip": 1.000000
+        "NPC RUBrow": 1.000000
+        "NPC RLBrow": 1.000000

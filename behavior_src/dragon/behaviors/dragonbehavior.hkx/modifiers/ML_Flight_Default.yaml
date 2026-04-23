@@ -1,0 +1,5 @@
+class: hkbModifierList
+name: ML_Flight_Default
+userData: 1
+modifiers:
+  - EEM_FeatherStopCheck

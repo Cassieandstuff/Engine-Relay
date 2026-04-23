@@ -1,0 +1,11 @@
+# Placeholder idle clip for BSB_SwitchboardSM's neutral state (BSB_IdleState).
+# BSB_SwitchboardSM does NOT start here in the Option-B validation build
+# (startStateId is 1, BSB_State_TrueFlight).  This state is only entered
+# after a land-cycle transition returns to BSB_IdleState.
+# The animation path is a stub — Havok will log a missing-file warning
+# but will not crash; the actor holds its current pose.
+class: hkbClipGenerator
+name: BSB_Idle
+animationName: Animations\Cassieandstuff\BehaviorSwitchboard\BSB_Idle.hkx
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

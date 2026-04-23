@@ -1,0 +1,5 @@
+class: hkbClipGenerator
+name: CLIP_Hover_TurnRight
+animationName: Animations\MTFlightHoverTurnRight90.HKX
+mode: MODE_LOOPING
+playbackSpeed: 1.000000

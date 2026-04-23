@@ -1,0 +1,4 @@
+class: hkbBlendingTransitionEffect
+name: RagdollBlendingTransition
+selfTransitionMode: SELF_TRANSITION_MODE_RESET
+duration: 0.200000

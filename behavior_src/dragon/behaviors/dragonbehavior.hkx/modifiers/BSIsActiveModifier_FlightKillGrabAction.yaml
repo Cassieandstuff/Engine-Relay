@@ -1,0 +1,8 @@
+class: BSIsActiveModifier
+name: BSIsActiveModifier_FlightKillGrabAction
+userData: 2
+bindings:
+  - memberPath: bIsActive0
+    variable: bAllowFlightKillGrabTween
+  - memberPath: bInvertActive0
+    variable: bAllowFlightGrabTweenDefault

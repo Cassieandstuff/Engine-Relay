@@ -1,0 +1,8 @@
+class: hkbStateMachineStateInfo
+name: ST_TakeOff_Default_Ground
+stateId: 0
+generator: MG_TakeOff_Default
+transitions:
+  - event: to_TakeOff_Flight
+    toState: ST_TakeOff_Default_Air
+    transition: BTE_TakeOff_GroundToAir
