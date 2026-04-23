@@ -46,3 +46,5 @@ external/CommonLibSSE/
 # OS
 Thumbs.db
 .DS_Store
+
+CMakeUserPresets.json

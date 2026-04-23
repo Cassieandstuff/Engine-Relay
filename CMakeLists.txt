@@ -1,6 +1,6 @@
-# ---------------------------------------------------------------------------
+﻿# ---------------------------------------------------------------------------
 # Engine-Relay (formerly Behavior Switchboard)
-# SKSE plugin — runtime behavior graph augmentation for Skyrim SE/AE
+# SKSE plugin â€” runtime behavior graph augmentation for Skyrim SE/AE
 # C++23, CommonLibSSE-NG
 #
 # Standalone:
@@ -13,9 +13,9 @@
 #   (SHARED_INCLUDE_DIR is set by the workspace root)
 #
 # Dependencies:
-#   CommonLibSSE-NG — set COMMONLIB_SSE_FOLDER env var, or place a clone at
+#   CommonLibSSE-NG â€” set COMMONLIB_SSE_FOLDER env var, or place a clone at
 #                     external/CommonLibSSE
-#   vcpkg           — VCPKG_ROOT env var, or pass -DCMAKE_TOOLCHAIN_FILE
+#   vcpkg           â€” VCPKG_ROOT env var, or pass -DCMAKE_TOOLCHAIN_FILE
 # ---------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.21)
@@ -58,8 +58,10 @@ else()
     endif()
 endif()
 
+if(NOT TARGET CommonLibSSE)
 add_subdirectory("${COMMONLIB_PATH}"
     "${CMAKE_CURRENT_BINARY_DIR}/_deps/clib-build" EXCLUDE_FROM_ALL)
+endif()
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/CommonLibSSE.cmake")
 
 # ---------------------------------------------------------------------------
@@ -115,7 +117,7 @@ target_sources(${PROJECT_NAME} PRIVATE
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
 
-# BSB_EXPORTS — marks BSB_API symbols as dllexport in this build.
+# BSB_EXPORTS â€” marks BSB_API symbols as dllexport in this build.
 # Consumers see dllimport automatically via BSB_API.h.
 target_compile_definitions(${PROJECT_NAME} PRIVATE BSB_EXPORTS)
 
@@ -134,7 +136,7 @@ target_include_directories(${PROJECT_NAME}
         "${SHARED_INCLUDE_DIR}"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/header"
     PUBLIC
-        # Engine-Relay's public API headers — available to workspace consumers
+        # Engine-Relay's public API headers â€” available to workspace consumers
         # that link against EngineRelay (e.g. True-Cinematics).
         "${SHARED_INCLUDE_DIR}"
 )
