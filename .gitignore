@@ -1,0 +1,30 @@
+# Build output
+build/
+install/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+
+# CMake generated
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# vcpkg
+vcpkg_installed/
+
+# Runtime logs
+*.log
+logs/
+
+# Compiled behavior output (generated at runtime, not committed)
+*.hkx
+
+# OS
+.DS_Store
+Thumbs.db
