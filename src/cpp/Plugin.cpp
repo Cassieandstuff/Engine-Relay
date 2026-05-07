@@ -1,9 +1,12 @@
 ﻿#include "PCH.h"
 #include "BehaviorFileInterceptor.h"
 #include "BehaviorPatcher.h"
+#include "Bridge_SmoothCam.h"
+#include "Bridge_TDM.h"
 #include "CameraStateManager.h"
 #include "CharacterStateAllocator.h"
 #include "ConfigLoader.h"
+#include "WildcardGate.h"
 #include <EngineRelay/ER_API.h>
 
 // ============================================================================
@@ -166,7 +169,24 @@ namespace EngineRelay {
         // NotifyAnimationGraph.  ER_Activate fires synchronously inside that
         // call and reads this value to set the switchboard SM's startStateID,
         // routing Havok to the correct pre-baked state instead of IdleState.
-        BehaviorPatcher::SetPendingEREvent(found->eventName);
+        // Keyed on hkbCharacter* so concurrent activations on different actors
+        // don't stomp each other's pending event (H-1 race fix).
+        {
+            RE::BSAnimationGraphManagerPtr graphMgr;
+            actor->GetAnimationGraphManager(graphMgr);
+            RE::hkbCharacter* hkChar = nullptr;
+            if (graphMgr && !graphMgr->graphs.empty()) {
+                auto& activeGraph = graphMgr->graphs[graphMgr->activeGraph];
+                if (activeGraph) hkChar = &activeGraph->characterInstance;
+            }
+            if (hkChar) {
+                BehaviorPatcher::SetPendingEREvent(hkChar, found->eventName);
+            } else {
+                LOG_WARN("ER_API::SendEvent: could not resolve hkbCharacter* for '{}'"
+                         " — startStateID routing disabled (actor may A-pose on entry).",
+                    actor->GetName());
+            }
+        }
 
         // Determine which event to fire on the actor's ROOT behavior graph.
         //
@@ -188,6 +208,26 @@ namespace EngineRelay {
         LOG_INFO("ER_API::SendEvent: NotifyAnimationGraph('{}') on '{}' returned {} "
                  "(pending ER event: '{}').",
             triggerEvt, actor->GetName(), result, found->eventName);
+
+        // If the event fired successfully, set ER_Active=1 to suppress global
+        // wildcard transitions while the actor is inside the sub-behavior.
+        // NotifyAnimationGraph is synchronous — the TF_EnterFlight wildcard has
+        // already fired and transitioned the actor into EngineRelayContainer by
+        // the time we get here. Setting ER_Active=1 now means subsequent events
+        // (equip, sheathe, etc.) will have their global wildcards suppressed by
+        // our ERCondition_isTrue() returning false.
+        //
+        // NOTE: NotifyAnimationGraph returns true if the event reached the graph,
+        // not if a wildcard transition actually fired. In the unlikely case where
+        // the event is delivered but no transition matches, ER_Active gets set to 1
+        // with no sub-behavior active, suppressing wildcards unnecessarily. This
+        // self-heals when Deactivate() is called — it unconditionally resets
+        // ER_Active=0. No structural fix needed since Deactivate() always follows.
+        if (result) {
+            actor->SetGraphVariableBool("ER_Active", true);
+            LOG_DEBUG("ER_API::SendEvent: set ER_Active=1 for wildcard suppression.");
+        }
+
         return result;
     }
 
@@ -543,6 +583,7 @@ namespace EngineRelay {
         }
 
         // ── All checks passed — activate ──────────────────────────────────────
+
         if (entry->physicsHandle) {
             if (!ctrl) ctrl = actor->GetCharController();
             InstallLogicalStateHost(actor);
@@ -551,8 +592,30 @@ namespace EngineRelay {
         if (entry->cameraHandle) {
             CameraStateManager::ActivateLogicalCameraState(*entry->cameraHandle);
         }
+
+        // Acquire TDM control for the now-active registration.
+        //   Physics + camera → full control: disable TDM directional movement so
+        //     the character faces where ER's camera points, not where TDM steers.
+        //   Physics alone → yaw-only: TDM directional movement stays active while
+        //     ER drives character facing via per-tick SetPlayerYaw calls.
+        if (entry->physicsHandle) {
+            if (entry->cameraHandle) {
+                Bridge_TDM::GetSingleton().AcquireFullControl();
+            } else {
+                Bridge_TDM::GetSingleton().AcquireYawOnly();
+            }
+        }
+
         if (entry->hasBehavior) {
+            // SendEvent() sets ER_Active=1 internally after NotifyAnimationGraph
+            // succeeds. We must NOT set it before — the entry wildcard transition
+            // (e.g. TF_EnterFlight) is itself a global wildcard gated by
+            // ERCondition_isTrue(). Setting ER_Active=1 first would suppress it.
             SendEvent(actor, entry->modName);
+        } else {
+            // Non-behavior activations (physics/camera only) still need ER_Active=1
+            // to suppress global wildcards while the logical ER state is active.
+            actor->SetGraphVariableBool("ER_Active", true);
         }
 
         LOG_INFO("ER_API::Activate: '{}' activated on '{}'.",
@@ -575,6 +638,14 @@ namespace EngineRelay {
                 return;
             }
             entry = &s_bsbEntries[handle];
+        }
+
+        actor->SetGraphVariableBool("ER_Active", false);
+
+        // Release TDM before deactivating physics so Bridge_TDM can clean up
+        // while the physics state is still nominally active.
+        if (entry->physicsHandle) {
+            Bridge_TDM::GetSingleton().Release();
         }
 
         if (entry->physicsHandle) {
@@ -917,7 +988,23 @@ namespace EngineRelay {
             if (!actor) return false;
             auto* ctrl = actor->GetCharController();
             if (!ctrl) return false;
-            return CharacterStateAllocator::ActivateLogicalState(ctrl, handle);
+            const bool result = CharacterStateAllocator::ActivateLogicalState(ctrl, handle);
+            if (result) {
+                // Acquire TDM: use full control if a camera state is already active
+                // (character facing driven by camera), yaw-only otherwise.
+                // Note: if caller intends to also activate a camera state immediately
+                // after, the mode will be yaw-only until that camera activation fires.
+                // Callers using ER_API::Activate(ERHandle) get the correct mode
+                // atomically — this path is for standalone ERInterface use.
+                const bool hasCamera =
+                    CameraStateManager::GetActiveLogicalCameraState() != kInvalidERCameraState;
+                if (hasCamera) {
+                    Bridge_TDM::GetSingleton().AcquireFullControl();
+                } else {
+                    Bridge_TDM::GetSingleton().AcquireYawOnly();
+                }
+            }
+            return result;
         }
 
         static void Wrap_DeactivateLogicalState(RE::Actor* actor)
@@ -925,6 +1012,7 @@ namespace EngineRelay {
             if (!actor) return;
             auto* ctrl = actor->GetCharController();
             if (!ctrl) return;
+            Bridge_TDM::GetSingleton().Release();
             CharacterStateAllocator::DeactivateLogicalState(ctrl);
         }
 
@@ -957,19 +1045,50 @@ namespace EngineRelay {
             ctrl->wantState = RE::hkpCharacterStateType::kOnGround;
         }
 
+        // ── Action Gate wrappers (const char* → std::string, safe across DLL) ─
+
+        static void Wrap_SetActionGate(RE::Actor* actor, ActionGate gate, bool suppress)
+        {
+            if (!actor) return;
+            EngineRelay::SetActionGate(actor, gate, suppress);
+        }
+
+        static void Wrap_ClearAllActionGates(RE::Actor* actor)
+        {
+            if (!actor) return;
+            EngineRelay::ClearAllActionGates(actor);
+        }
+
+        static void Wrap_ActivateGates(RE::Actor* actor, const char* modName)
+        {
+            if (!actor || !modName) return;
+            EngineRelay::ActivateGates(actor, std::string(modName));
+        }
+
+        static void Wrap_DeactivateGates(RE::Actor* actor, const char* modName)
+        {
+            if (!actor || !modName) return;
+            EngineRelay::DeactivateGates(actor, std::string(modName));
+        }
+
         static const ERInterface g_interface = {
-            ERInterface::kVersion,
-            &Wrap_RegisterLogicalCameraState,
-            &Wrap_ActivateLogicalCameraState,
-            &Wrap_DeactivateLogicalCameraState,
-            &Wrap_GetActiveLogicalCameraState,
-            &Wrap_RegisterLogicalState,
-            &Wrap_InstallLogicalStateHost,
-            &Wrap_ActivateLogicalState,
-            &Wrap_DeactivateLogicalState,
-            &Wrap_GetActiveLogicalState,
-            &Wrap_EnterPhysicsHost,
-            &Wrap_ExitPhysicsHost,
+            /* version            */ ERInterface::kVersion,
+            /* structSize         */ sizeof(ERInterface),
+            /* RegisterLogicalCameraState  */ &Wrap_RegisterLogicalCameraState,
+            /* ActivateLogicalCameraState  */ &Wrap_ActivateLogicalCameraState,
+            /* DeactivateLogicalCameraState*/ &Wrap_DeactivateLogicalCameraState,
+            /* GetActiveLogicalCameraState */ &Wrap_GetActiveLogicalCameraState,
+            /* RegisterLogicalState        */ &Wrap_RegisterLogicalState,
+            /* InstallLogicalStateHost     */ &Wrap_InstallLogicalStateHost,
+            /* ActivateLogicalState        */ &Wrap_ActivateLogicalState,
+            /* DeactivateLogicalState      */ &Wrap_DeactivateLogicalState,
+            /* GetActiveLogicalState       */ &Wrap_GetActiveLogicalState,
+            /* EnterPhysicsHost            */ &Wrap_EnterPhysicsHost,
+            /* ExitPhysicsHost             */ &Wrap_ExitPhysicsHost,
+            /* SetActionGate               */ &Wrap_SetActionGate,
+            /* ClearAllActionGates         */ &Wrap_ClearAllActionGates,
+            /* ActivateGates               */ &Wrap_ActivateGates,
+            /* DeactivateGates             */ &Wrap_DeactivateGates,
         };
 
     }  // namespace ERInterfaceImpl
@@ -981,6 +1100,11 @@ namespace EngineRelay {
         switch (msg->type) {
             case SKSE::MessagingInterface::kPostLoad:
             {
+                // Initialise optional-dependency bridges.  Both are silent no-ops
+                // if the companion mod (TDM / SmoothCam) is not loaded.
+                Bridge_TDM::GetSingleton().Init();
+                Bridge_SmoothCam::GetSingleton().RegisterListener();
+
                 // Load file-based configs now — other plugins can also
                 // call Register() during kPostLoad via the API.
                 auto configs = ConfigLoader::LoadConfigs();
@@ -1006,12 +1130,24 @@ namespace EngineRelay {
                 break;
             }
 
+            case SKSE::MessagingInterface::kPostPostLoad:
+            {
+                // SmoothCam uses an async request/callback pattern:
+                //   kPostLoad  → RegisterListener (already done above)
+                //   kPostPostLoad → RequestInterface (send the version request)
+                // This two-phase approach guarantees SmoothCam has finished its
+                // own kPostLoad before ER sends the request.
+                Bridge_SmoothCam::GetSingleton().RequestInterface();
+                break;
+            }
+
             case SKSE::MessagingInterface::kPreLoadGame:
             case SKSE::MessagingInterface::kNewGame:
                 // The engine is about to reload behavior graphs.
                 // Clear the patch guard so BSB re-injects on the next
                 // hkbBehaviorGraph::Activate call.
                 BehaviorPatcher::ClearPatchedSet();
+                WildcardGate::ClearGatedSet();
                 // Clear stale per-actor character-state entries so that
                 // InstallLogicalStateHost allocates fresh objects after load.
                 CharacterStateAllocator::ClearActorEntries();
@@ -1034,6 +1170,7 @@ SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 
     EngineRelay::BehaviorFileInterceptor::Install();
     EngineRelay::BehaviorPatcher::Install();
+    EngineRelay::WildcardGate::Install();
     EngineRelay::CameraStateManager::Init();
     EngineRelay::InstallConsoleCommands();
 

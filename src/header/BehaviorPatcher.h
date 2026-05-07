@@ -56,11 +56,13 @@ namespace EngineRelay {
         /// Get the current registration list.
         const std::vector<Registration>& GetRegistrations();
 
-        /// Store the event name that is about to trigger a BSB state transition.
+        /// Store the event name that is about to trigger a BSB state transition,
+        /// keyed on the actor's hkbCharacter so concurrent activations on
+        /// different actors don't stomp each other.
         /// Must be called BEFORE actor->NotifyAnimationGraph() so that ER_Activate
         /// can read it synchronously and set the SM's startStateID to the correct
         /// pre-baked state, avoiding A-pose on first entry.
-        void SetPendingEREvent(const std::string& eventName);
+        void SetPendingEREvent(RE::hkbCharacter* character, const std::string& eventName);
 
     }
 

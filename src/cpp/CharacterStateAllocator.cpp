@@ -1,5 +1,6 @@
 ﻿#include "PCH.h"
 #include "CharacterStateAllocator.h"
+#include "Bridge_TDM.h"
 
 #include <array>
 #include <atomic>
@@ -171,7 +172,45 @@ namespace EngineRelay::CharacterStateAllocator {
         RE::hkpCharacterOutput& output)
     {
         auto* def = GetActiveDef(Self(a_this)->hostData);
-        if (def && def->callbacks.updateFn) {
+        if (!def) return;
+
+        if (def->callbacks.updateProxyFn) {
+            // ── Proxy path ─────────────────────────────────────────────────────
+            // Build an ERPhysicsFrame, invoke the author's callback, then
+            // translate the filled frame into the Havok character output and
+            // drive TDM yaw on the author's behalf.
+            ERPhysicsFrame frame{};
+            frame.version = kERPhysicsFrameVersion;
+            frame.exiting = false;  // TODO: implement pending-exit notification
+            frame.dt      = input.stepInfo.deltaTime;
+            // velocity, yaw, gravityScale, yawMultiplier all zero-initialised:
+            //   velocity = (0,0,0)  — no movement unless author sets it
+            //   gravityScale = 0.f  — weightless unless author opts in
+            //   yaw = 0.f, yawMultiplier = 0.f
+
+            def->callbacks.updateProxyFn(frame, def->callbacks.userData);
+
+            // Translate author-supplied velocity + optional gravity into the
+            // Havok character output.  input.characterGravity is the per-frame
+            // gravity acceleration vector (world-space, m/s²); scaling by dt
+            // gives the per-tick velocity contribution.
+            const float gScale = frame.gravityScale * frame.dt;
+            output.velocity.quad.m128_f32[0] =
+                frame.velocity.x + input.characterGravity.quad.m128_f32[0] * gScale;
+            output.velocity.quad.m128_f32[1] =
+                frame.velocity.y + input.characterGravity.quad.m128_f32[1] * gScale;
+            output.velocity.quad.m128_f32[2] =
+                frame.velocity.z + input.characterGravity.quad.m128_f32[2] * gScale;
+            output.velocity.quad.m128_f32[3] = 0.f;
+
+            // Drive TDM yaw and rotation speed on the author's behalf.
+            // Bridge_TDM guards against no-ops (not acquired, multiplier unchanged).
+            auto& tdm = Bridge_TDM::GetSingleton();
+            tdm.SetPlayerYaw(frame.yaw);
+            tdm.SetYawMultiplier(frame.yawMultiplier);
+
+        } else if (def->callbacks.updateFn) {
+            // ── Raw Havok path — pass inputs directly ──────────────────────────
             def->callbacks.updateFn(ctx, input, output, def->callbacks.userData);
         }
     }
@@ -243,8 +282,11 @@ namespace EngineRelay::CharacterStateAllocator {
                                              const ERPhysicsCallbacks& callbacks,
                                              std::uint32_t priority)
     {
-        if (!callbacks.updateFn || !callbacks.changeFn) {
-            LOG_ERROR("CharacterStateAllocator: '{}' — updateFn and changeFn are required.",
+        // Accept either the high-level proxy path (updateProxyFn alone is sufficient)
+        // or the raw Havok path (requires both updateFn AND changeFn).
+        if (!callbacks.updateProxyFn && (!callbacks.updateFn || !callbacks.changeFn)) {
+            LOG_ERROR("CharacterStateAllocator: '{}' — must provide either updateProxyFn "
+                      "or both updateFn and changeFn (raw Havok path).",
                 modName);
             return kInvalidERState;
         }

@@ -25,6 +25,9 @@ logs/
 # Compiled behavior output (generated at runtime, not committed)
 *.hkx
 
+# Pandora plugin standalone-build reference DLLs (CMake supplies them via FetchContent)
+pandora/*/lib/
+
 # OS
 .DS_Store
 Thumbs.db

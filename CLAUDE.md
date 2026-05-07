@@ -24,10 +24,10 @@ Engine-Relay/
 ├── src/
 │   ├── cpp/                     # Implementation (.cpp files)
 │   └── header/                  # Private headers
-├── include/
-│   └── EngineRelay/
-│       ├── ER_API.h             # Public consumer API (direct DLL link)
-│       └── ERInterface.h        # Flat fn-ptr table (SKSE message consumers)
+├── include/                     # Engine Relay's own internal headers (PCH, etc.)
+│                                # ER's PUBLIC API headers (ERInterface.h, ER_API.h)
+│                                # live in ../SDK/EngineRelay/ — Engine Relay
+│                                # consumes its own API from the SDK like everyone else.
 ├── behavior_src/
 │   ├── character/               # Humanoid YAML behavior sources
 │   └── dragon/                  # Dragon YAML behavior sources
@@ -78,10 +78,11 @@ Engine Relay uses **Option-B file interception** to serve a dynamically-generate
 
 ## Public API
 
-### Path A — SKSE Messaging (no compile-time link)
+### Path A — SKSE Messaging (the canonical pattern)
 
-Include `include/EngineRelay/ERInterface.h` and listen for the `"EngineRelay"` SKSE
-message type. ER dispatches `ERInterface*` during its own `kPostLoad` handler.
+Consumer mods include `EngineRelay/ERInterface.h` (resolved from `../SDK/` or wherever
+`SCT_SDK_FOLDER` points) and listen for the `"EngineRelay"` SKSE message type. ER
+dispatches `ERInterface*` during its own `kPostLoad` handler.
 
 ```cpp
 static const EngineRelay::ERInterface* g_er = nullptr;
@@ -93,10 +94,15 @@ SKSE::GetMessagingInterface()->RegisterListener("EngineRelay",
     });
 ```
 
-### Path B — Direct DLL Link
+This is the **only supported integration pattern** for consumer mods. No `.lib`
+linking against `EngineRelay.dll`. Same approach a third-party mod author would
+use to depend on Engine Relay.
 
-Include `include/EngineRelay/ER_API.h` and link `EngineRelay.lib`.
-Used by first-party mods built alongside Engine Relay.
+### Path B — Direct DLL Link (deprecated for consumers)
+
+`SDK/EngineRelay/ER_API.h` exists for Engine Relay's own internal use — the producer
+needs symbol-level access to its own implementation. External consumers should
+NOT use this path; use Path A (SKSE messaging) instead.
 
 ---
 
@@ -114,7 +120,8 @@ cmake --build build/release
 ```
 
 Env vars:
-- `SKYRIM_MODS_FOLDER` — deploy `EngineRelay.dll` to `<MODS>/Engine Relay/SKSE/Plugins/`
+- `SKYRIM_MODS_FOLDER` — deploy `EngineRelay.dll` to `<MODS>/EngineRelay/SKSE/Plugins/`
+- `SKYRIM_OWRT_FOLDER` — also deploy to overwrite/output folder if set
 - `COMMONLIB_SSE_FOLDER` — override the CommonLibSSE submodule with a local clone
 
 ---
@@ -141,6 +148,47 @@ Behavior graph bool variables injected by ER to suppress vanilla actions:
 | `WeaponSheathe` | `ER_Gate_WeaponSheathe` |
 | `WeaponEquip` | `ER_Gate_WeaponEquip` |
 | `CutsceneActions` | `ER_Gate_CutsceneActions` |
+
+---
+
+## Wildcard Gating (Runtime C++ — WildcardGate.cpp)
+
+Havok's `hkbStateMachine` evaluates parent wildcard transitions BEFORE child
+generators see events. Without gating, global wildcards in the root SM (0_master)
+yank actors out of ER sub-behaviors before the sub-behavior can handle events
+internally.
+
+**Solution:** Pure C++ runtime patching in `WildcardGate.cpp`. Hooks
+`RE::Character::InitHavok` (vtable slot 0x66), which fires after the behavior
+system is fully loaded and linked. Walks the entire generator tree and assigns a
+custom `ERCondition` object to every unguarded `FLAG_IS_GLOBAL_WILDCARD`
+transition, then clears `FLAG_DISABLE_CONDITION` so Havok evaluates it.
+
+`ERCondition` is a custom vtable-patched condition object (NOT `hkbExpressionCondition`
+— that requires expression linking which crashes post-link injection). Its `isTrue()`
+reads `ER_Active` directly from `hkbBehaviorGraph::variableValueSet` at offset
+`0xD8`. When `ER_Active==0` (normal gameplay) it returns `true` — wildcards fire.
+When `ER_Active==1` (actor inside a sub-behavior) it returns `false` — wildcards
+are suppressed and events fall through to the active sub-behavior.
+
+| Component | File | Purpose |
+|---|---|---|
+| Runtime gate | `WildcardGate.cpp` | Hook + walk + patch all global wildcards |
+| Variable set | `Plugin.cpp:SendEvent()` | `SetGraphVariableBool("ER_Active", true)` after `NotifyAnimationGraph` succeeds |
+| Variable clear | `Plugin.cpp:Deactivate()` | `SetGraphVariableBool("ER_Active", false)` |
+
+**Key details:**
+- No Pandora/Nemesis dependency — works with any mod setup
+- Only `FLAG_IS_GLOBAL_WILDCARD` (0x0400) transitions are gated; local wildcards untouched
+- Transitions already conditioned (`t.condition != nullptr`) are skipped — no double-gating
+- `FLAG_DISABLE_CONDITION` is cleared on patched transitions so Havok evaluates the condition
+- `ER_Active` is set AFTER `NotifyAnimationGraph` returns — the entry wildcard fires while
+  `ER_Active==0` (condition TRUE), then subsequent events are suppressed
+- `Deactivate()` resets `ER_Active=0` BEFORE firing the exit event — the exit wildcard fires normally
+- Generator walk covers: `hkbStateMachine`, `hkbModifierGenerator`, `hkbBlenderGenerator`,
+  `BSCyclicBlendTransitionGenerator`, `hkbManualSelectorGenerator`, `BSiStateTaggingGenerator`,
+  `BSOffsetAnimationGenerator`, `BSBoneSwitchGenerator`
+- Graphs without `ER_Active` declared (non-humanoid creatures) are skipped automatically
 
 ---
 

@@ -72,20 +72,29 @@ namespace EngineRelay::BehaviorPatcher {
     // ER's SM startStateID to the matching pre-baked state so the character
     // enters the correct state instead of A-posing in ER_IdleState.
     // -----------------------------------------------------------------------
-    static std::mutex  s_pendingEventMutex;
-    static std::string s_pendingEREvent;
+    static std::mutex s_pendingEventMutex;
+    // Keyed on hkbCharacter* so two actors entering sub-behaviors concurrently
+    // don't stomp each other's pending event string (H-1 race fix).
+    static std::unordered_map<RE::hkbCharacter*, std::string> s_pendingEvents;
 
-    static std::string GetAndClearPendingEREvent()
+    static std::string GetAndClearPendingEREvent(RE::hkbCharacter* a_char)
     {
+        if (!a_char) return {};
         std::lock_guard lock(s_pendingEventMutex);
-        return std::exchange(s_pendingEREvent, std::string{});
+        auto it = s_pendingEvents.find(a_char);
+        if (it == s_pendingEvents.end()) return {};
+        std::string evt = std::move(it->second);
+        s_pendingEvents.erase(it);
+        return evt;
     }
 
-    void SetPendingEREvent(const std::string& eventName)
+    void SetPendingEREvent(RE::hkbCharacter* a_char, const std::string& eventName)
     {
+        if (!a_char) return;
         std::lock_guard lock(s_pendingEventMutex);
-        s_pendingEREvent = eventName;
-        LOG_DEBUG("BehaviorPatcher: pending ER event set to '{}'.", eventName);
+        s_pendingEvents[a_char] = eventName;
+        LOG_DEBUG("BehaviorPatcher: pending ER event '{}' set for character {:p}.",
+            eventName, static_cast<void*>(a_char));
     }
 
     /// Returns the start index into s_registrations for pending injections,
@@ -1085,10 +1094,22 @@ namespace EngineRelay::BehaviorPatcher {
                 // we know which event triggered this activation.  Find its 1-based index
                 // among ER registrations and pin startStateID to that state so Havok
                 // starts the SM in the correct state rather than A-posing in IdleState.
+                //
+                // IMPORTANT: rootSM lives inside hkbBehaviorGraphData (shared across all
+                // character instances that use the same packfile).  A previous session may
+                // have written a non-zero startStateID (e.g. stateId=1 for TrueFlight) and
+                // that value persists in memory across save/load.  Always reset to 0 first
+                // so a post-load activation with no pending event safely enters ER_IdleState
+                // instead of re-entering a sub-behavior state with no supporting
+                // physics/camera context.
                 {
-                    const std::string pendingEvt = GetAndClearPendingEREvent();
+                    auto* rootSM = GetRootStateMachine(a_this);
+                    if (rootSM) {
+                        rootSM->startStateID = 0;  // reset to ER_IdleState; overridden below if a pending event matches
+                    }
+
+                    const std::string pendingEvt = GetAndClearPendingEREvent(a_context.character);
                     if (!pendingEvt.empty()) {
-                        auto* rootSM = GetRootStateMachine(a_this);
                         if (rootSM) {
                             int32_t matchStateId = 0;
                             {
@@ -1112,8 +1133,8 @@ namespace EngineRelay::BehaviorPatcher {
                                     matchStateId, pendingEvt);
                             } else {
                                 LOG_WARN("BehaviorPatcher: option-B — no ER registration "
-                                         "matched pending event '{}' — startStateID stays {}.",
-                                    pendingEvt, rootSM->startStateID);
+                                         "matched pending event '{}' — startStateID reset to 0.",
+                                    pendingEvt);
                             }
                         } else {
                             LOG_WARN("BehaviorPatcher: option-B — rootSM null, cannot "
@@ -1121,7 +1142,7 @@ namespace EngineRelay::BehaviorPatcher {
                         }
                     } else {
                         LOG_DEBUG("BehaviorPatcher: option-B — no pending ER event "
-                                  "(startStateID stays at default).");
+                                  "(startStateID reset to 0 / ER_IdleState).");
                     }
                 }
 

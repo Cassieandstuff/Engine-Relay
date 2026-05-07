@@ -542,7 +542,7 @@ std::vector<std::uint8_t> WriteToMemory(const std::vector<Registration>& registr
         // BODY = 0x110 = 272 bytes. 272 % 16 = 0 → no padding needed.
 
         static constexpr const char kAnimPath[] =
-            "Animations\\Cassieandstuff\\EngineRelay\\ER_Idle.hkx";
+            "Animations\\EngineRelay\\ER_Idle.hkx";
         d.align(16);
         const auto nodeNameStrOff = WriteStr(d, "ER_Idle");
         const auto animNameStrOff = WriteStr(d, kAnimPath);

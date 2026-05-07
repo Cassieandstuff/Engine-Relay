@@ -1,5 +1,6 @@
 ﻿#include "PCH.h"
 #include "CameraStateManager.h"
+#include "Bridge_SmoothCam.h"
 
 #include <atomic>
 #include <mutex>
@@ -417,6 +418,10 @@ namespace EngineRelay::CameraStateManager {
             }
         }
 
+        // Suppress SmoothCam while ERCameraState is active.  Idempotent if
+        // already owned (camera-to-camera transition without going through vanilla).
+        Bridge_SmoothCam::GetSingleton().RequestCameraControl();
+
         LOG_INFO("CameraStateManager: logical camera state handle {} activated "
                  "(priority={}).", handle, incomingPriority);
         return true;
@@ -484,6 +489,12 @@ namespace EngineRelay::CameraStateManager {
         // RestoreVanillaTPS → SetState → ERCameraState::End() fires, but
         // s_activeHandle is now kInvalidERCameraState so it is a no-op.
         RestoreVanillaTPS();
+
+        // Return SmoothCam control now that vanilla TPS is back in place.
+        // sendToGoal = true: SmoothCam smoothly interpolates to its computed
+        // goal position rather than snapping, matching the TPS camera handoff.
+        Bridge_SmoothCam::GetSingleton().ReleaseCameraControl(true);
+
         LOG_INFO("CameraStateManager: logical camera state deactivated.");
     }
 
@@ -504,6 +515,10 @@ namespace EngineRelay::CameraStateManager {
         }
 
         s_savedTPS = {};  // next session will re-capture at ActivateLogicalCameraState
+
+        // Release SmoothCam if we still hold it — game is reloading.
+        // sendToGoal = false: no smooth interpolation needed across a load.
+        Bridge_SmoothCam::GetSingleton().ReleaseCameraControl(false);
 
         // Restore vanilla TPS if ERCameraState is currently installed.
         RestoreVanillaTPS();

@@ -64,6 +64,21 @@ find_path(CLIB_UTIL_INCLUDE_DIRS     "ClibUtil/utils.hpp"     REQUIRED)
 find_path(CLIB_UTILS_QTR_INCLUDE_DIRS "ClibUtilsQTR/utils.hpp" REQUIRED)
 find_package(ryml CONFIG REQUIRED)
 
+# ── SCT SDK (shared API headers) ─────────────────────────────────────────────
+# Engine Relay PRODUCES the headers in SDK/EngineRelay/ — its own implementation
+# consumes them from the canonical SDK location like any other consumer.
+# Lookup order: SCT_SDK_FOLDER env var → ./sdk/ (git submodule) → ../SDK/ (sibling).
+
+if(DEFINED ENV{SCT_SDK_FOLDER})
+    set(SCT_SDK_PATH "$ENV{SCT_SDK_FOLDER}")
+elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/sdk")
+    set(SCT_SDK_PATH "${CMAKE_CURRENT_SOURCE_DIR}/sdk")
+elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../SDK")
+    set(SCT_SDK_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../SDK")
+else()
+    message(FATAL_ERROR "SCT SDK not found. Set SCT_SDK_FOLDER, place at ./sdk/, or as ../SDK sibling.")
+endif()
+
 # ── Source files ─────────────────────────────────────────────────────────────
 
 file(GLOB_RECURSE ER_SOURCES "src/cpp/*.cpp")
@@ -114,6 +129,7 @@ target_include_directories(${PROJECT_NAME}
     PRIVATE
     ${CLIB_UTIL_INCLUDE_DIRS}
     ${CLIB_UTILS_QTR_INCLUDE_DIRS}
+    ${SCT_SDK_PATH}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/src/header
 )
@@ -122,20 +138,6 @@ target_link_libraries(${PROJECT_NAME}
     PRIVATE
     ryml::ryml
 )
-
-# Deploy DLL to MO2 mods folder on build (set SKYRIM_MODS_FOLDER env var).
-if(DEFINED ENV{SKYRIM_MODS_FOLDER} AND IS_DIRECTORY "$ENV{SKYRIM_MODS_FOLDER}")
-    set(ER_MOD_FOLDER "$ENV{SKYRIM_MODS_FOLDER}/Engine Relay")
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory
-            "${ER_MOD_FOLDER}/SKSE/Plugins"
-        COMMAND ${CMAKE_COMMAND} -E copy
-            "$<TARGET_FILE:${PROJECT_NAME}>"
-            "${ER_MOD_FOLDER}/SKSE/Plugins/${PROJECT_NAME}.dll"
-        COMMENT "Deploying EngineRelay.dll → ${ER_MOD_FOLDER}"
-        VERBATIM
-    )
-endif()
 
 automaticGameFolderOutput()
 
@@ -208,3 +210,4 @@ endif()
 if(DEFINED HKBUILD_EXE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/behavior_src/CMakeLists.txt")
     add_subdirectory("behavior_src")
 endif()
+

@@ -255,6 +255,88 @@ namespace EngineRelay {
     };
 
     // -----------------------------------------------------------------------
+    // hkbManualSelectorGenerator — array of child generators
+    // Signature: 0xd932fab8  Size: 0x60 (96 bytes)
+    //
+    // Inherits: hkbGenerator (0x48 bytes)
+    //   + generators (hkArray<hkbGenerator*>)  offset 0x48
+    //   + selectedGeneratorIndex (int8)        offset 0x58
+    //   + currentGeneratorIndex (int8)         offset 0x59
+    // -----------------------------------------------------------------------
+    struct ERManualSelectorGen
+    {
+        std::uint8_t      _base[0x48];           // hkbGenerator
+        RE::hkbGenerator** generators_data;      // 0x48
+        std::int32_t       generators_size;      // 0x50
+        std::int32_t       generators_capAndFlags; // 0x54
+    };
+
+    // -----------------------------------------------------------------------
+    // BSiStateTaggingGenerator — single child wrapper with state tag
+    // Signature: 0xf0826fc1  Size: 0x60 (96 bytes)
+    //
+    // Inherits: hkbGenerator (0x48 bytes)
+    //   + pad (8 bytes)                         offset 0x48
+    //   + pDefaultGenerator (hkbGenerator*)     offset 0x50
+    //   + iStateToSetAs (int32)                 offset 0x58
+    //   + iPriority (int32)                     offset 0x5C
+    // -----------------------------------------------------------------------
+    struct ERiStateTaggingGen
+    {
+        std::uint8_t      _base[0x50];           // hkbGenerator + 8-byte pad
+        RE::hkbGenerator* pDefaultGenerator;     // 0x50
+    };
+
+    // -----------------------------------------------------------------------
+    // BSOffsetAnimationGenerator — two child generators
+    // Signature: 0xb8571122  Size: 0xB0 (176 bytes)
+    //
+    // Inherits: hkbGenerator (0x48 bytes)
+    //   + pad (8 bytes)                         offset 0x48
+    //   + pDefaultGenerator (hkbGenerator*)     offset 0x50
+    //   + pad (8 bytes)                         offset 0x58
+    //   + pOffsetClipGenerator (hkbGenerator*)  offset 0x60
+    // -----------------------------------------------------------------------
+    struct EROffsetAnimGen
+    {
+        std::uint8_t      _base[0x50];           // hkbGenerator + 8-byte pad
+        RE::hkbGenerator* pDefaultGenerator;     // 0x50
+        std::uint8_t      _pad58[0x08];          // 0x58
+        RE::hkbGenerator* pOffsetClipGenerator;  // 0x60
+    };
+
+    // -----------------------------------------------------------------------
+    // BSBoneSwitchGenerator — default generator + bone-switched children
+    // Signature: 0xf33d3eea  Size: 0x70 (112 bytes)
+    //
+    // Inherits: hkbGenerator (0x48 bytes)
+    //   + pad (8 bytes)                         offset 0x48
+    //   + pDefaultGenerator (hkbGenerator*)     offset 0x50
+    //   + ChildrenA (hkArray<BoneData*>)        offset 0x58
+    // -----------------------------------------------------------------------
+    struct ERBoneSwitchGen
+    {
+        std::uint8_t      _base[0x50];           // hkbGenerator + 8-byte pad
+        RE::hkbGenerator* pDefaultGenerator;     // 0x50
+        void**            childrenA_data;        // 0x58
+        std::int32_t      childrenA_size;        // 0x60
+        std::int32_t      childrenA_capAndFlags; // 0x64
+    };
+
+    // -----------------------------------------------------------------------
+    // BSBoneSwitchGeneratorBoneData — inherits hkbBindable (0x30)
+    // Signature: 0xc1215be6  Size: 0x40 (64 bytes)
+    //
+    //   + pGenerator (hkbGenerator*)            offset 0x30
+    //   + spBoneWeight (hkbBoneWeightArray*)    offset 0x38
+    // -----------------------------------------------------------------------
+    struct ERBoneSwitchBoneData
+    {
+        std::uint8_t      _base[0x30];           // hkbBindable
+        RE::hkbGenerator* pGenerator;            // 0x30
+    };
+
+    // -----------------------------------------------------------------------
     // hkbEventInfo
     // This type is only forward-declared in CommonLib. The real layout is:
     //   struct hkbEventInfo { uint32_t flags; };

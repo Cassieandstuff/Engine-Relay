@@ -1,6 +1,6 @@
 ﻿# ---------------------------------------------------------------------------
 set(BEHAVIOR_TARGET "EngineRelayBehaviors")
-set(MOD_FOLDER_NAME "Engine Relay")
+set(MOD_FOLDER_NAME "${PRODUCT_NAME}")
 
 # ============================================================================
 # Creature-type loop
@@ -12,7 +12,20 @@ set(MOD_FOLDER_NAME "Engine Relay")
 #
 # To add a new creature type, append its directory name to this list.
 # ============================================================================
-set(_bsb_creatures character dragon)
+set(_bsb_creatures
+    # Vanilla
+    character dragon
+    bear chaurus cow deer dog draugr
+    dwarvencenturion dwarvensphere dwarvenspider
+    falmer fox frostbitespider giant goat hagraven hawk
+    horse horker icewraith mammoth mudcrab rabbit
+    sabrecat skeever spriggan troll
+    vampirelord werewolf witchlight wolf
+    # DLC1 — Dawnguard
+    deathhound gargoyle
+    # DLC2 — Dragonborn
+    ashhopper boartusk lurker netch riekling scrib seeker
+)
 
 # Parallel lists that accumulate one entry per compiled behavior.
 set(_all_hkx_outputs "")   # full path in binary dir (creature-prefixed)
