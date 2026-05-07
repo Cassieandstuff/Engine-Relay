@@ -5,27 +5,6 @@
 
 namespace EngineRelay::CharacterStateAllocator {
 
-    // ── Legacy multi-slot API (deprecated, kept for compatibility) ──────────
-
-    /// Register a custom character state. Assigns the next free kUserState slot.
-    /// Returns the assigned hkpCharacterStateType, or kTotal on failure.
-    /// @deprecated Use RegisterLogicalState + ActivateLogicalState instead.
-    RE::hkpCharacterStateType Register(const std::string& modName,
-                                       const ERPhysicsCallbacks& callbacks);
-
-    /// Check if a character state is registered for a mod.
-    bool IsRegistered(const std::string& modName);
-
-    /// Get the assigned slot for a mod, or kTotal if not registered.
-    RE::hkpCharacterStateType GetSlot(const std::string& modName);
-
-    /// Install all registered character states into a character's state manager.
-    /// @deprecated Use InstallLogicalStateHost instead.
-    void InstallStates(RE::bhkCharacterController* controller);
-
-    /// Get the number of registered character states (legacy + logical combined).
-    size_t GetCount();
-
     // ── Logical state API ───────────────────────────────────────────────────
 
     /// Register a logical state. Returns a handle or kInvalidERState.

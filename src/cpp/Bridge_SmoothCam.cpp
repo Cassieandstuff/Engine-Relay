@@ -33,7 +33,7 @@ namespace EngineRelay {
 
         // Request V2 for SendToGoalPosition support.  Falls back gracefully if
         // only V1 is available — the callback stores whichever version responds.
-        SmoothCamAPI::RequestInterface(msg, SmoothCamAPI::InterfaceVersion::V2);
+        (void)SmoothCamAPI::RequestInterface(msg, SmoothCamAPI::InterfaceVersion::V2);
     }
 
     bool Bridge_SmoothCam::IsCameraEnabled() const noexcept

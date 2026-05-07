@@ -88,23 +88,6 @@ namespace EngineRelay::CharacterStateAllocator {
     static std::vector<void*> s_allocations;
 
     // =========================================================================
-    // Legacy registration storage (deprecated multi-slot path)
-    //
-    // Kept so that old consumers calling RegisterCharacterState still compile
-    // and return kUserState1.  The callbacks they provide are forwarded as
-    // logical state registrations.
-    // =========================================================================
-
-    struct LegacySlotEntry {
-        std::string               modName;
-        ERStateHandle        logicalHandle{ kInvalidERState };
-        RE::hkpCharacterStateType slot{ RE::hkpCharacterStateType::kTotal };
-    };
-
-    static std::mutex                 s_legacyMutex;
-    static std::vector<LegacySlotEntry> s_legacyEntries;
-
-    // =========================================================================
     // Custom vtable (shared by all BSBHostStateObj instances)
     //
     // Trampolines: look up ActorHostData.activeHandle, find the LogicalStateDef,
@@ -555,72 +538,6 @@ namespace EngineRelay::CharacterStateAllocator {
         // called after the next game load.
         s_actorEntries.clear();
         LOG_INFO("CharacterStateAllocator: per-actor entries cleared.");
-    }
-
-    // =========================================================================
-    // Public interface — legacy multi-slot API (compatibility shim)
-    //
-    // RegisterCharacterState callers receive kUserState1 (the fixed host slot)
-    // and their callbacks are forwarded to RegisterLogicalState.  The caller's
-    // ctrl->wantState = slot usage continues to work unchanged because the host
-    // is always at kUserState1.
-    // =========================================================================
-
-    RE::hkpCharacterStateType Register(const std::string& modName,
-                                        const ERPhysicsCallbacks& callbacks)
-    {
-        // Forward to logical state registration.
-        const ERStateHandle handle =
-            ::EngineRelay::CharacterStateAllocator::RegisterLogicalState(modName, callbacks);
-        if (handle == kInvalidERState) {
-            return RE::hkpCharacterStateType::kTotal;
-        }
-
-        std::lock_guard lock(s_legacyMutex);
-
-        // Already have a legacy entry?
-        for (const auto& le : s_legacyEntries) {
-            if (le.modName == modName) return le.slot;
-        }
-
-        LegacySlotEntry le;
-        le.modName      = modName;
-        le.logicalHandle = handle;
-        le.slot          = RE::hkpCharacterStateType::kUserState1;
-        s_legacyEntries.push_back(le);
-
-        LOG_INFO("CharacterStateAllocator (legacy): '{}' mapped to logical handle {} "
-                 "— returning kUserState1 for backward compatibility.", modName, handle);
-        return RE::hkpCharacterStateType::kUserState1;
-    }
-
-    bool IsRegistered(const std::string& modName)
-    {
-        return IsLogicalStateRegistered(modName);
-    }
-
-    RE::hkpCharacterStateType GetSlot(const std::string& modName)
-    {
-        std::lock_guard lock(s_legacyMutex);
-        for (const auto& le : s_legacyEntries) {
-            if (le.modName == modName) return le.slot;
-        }
-        // If registered via new API only, still return kUserState1.
-        if (IsLogicalStateRegistered(modName))
-            return RE::hkpCharacterStateType::kUserState1;
-        return RE::hkpCharacterStateType::kTotal;
-    }
-
-    void InstallStates(RE::bhkCharacterController* controller)
-    {
-        // Delegate to the new host-installation path.
-        InstallLogicalStateHost(controller);
-    }
-
-    size_t GetCount()
-    {
-        std::lock_guard lk(s_logicalMutex);
-        return s_logicalStates.size();
     }
 
 }  // namespace EngineRelay::CharacterStateAllocator

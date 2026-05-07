@@ -61,7 +61,7 @@ namespace EngineRelay::WildcardGate {
     /// vtable[0], which would read past our 0x18-byte allocation and corrupt
     /// memory (or crash) trying to destroy a string field that doesn't exist.
     ///
-    /// Our condition objects are owned by s_allocations and live for the game
+    /// Our condition objects are allocated with std::calloc and live for the game
     /// session. We intentionally skip destruction here. Havok must not free them
     /// via its allocator either since they were allocated with std::calloc.
     ///
@@ -106,7 +106,6 @@ namespace EngineRelay::WildcardGate {
 
     static std::mutex                                     s_mutex;
     static std::unordered_set<RE::hkbBehaviorGraphData*> s_gatedGraphs;
-    static std::vector<void*>                            s_allocations;
 
     // =======================================================================
     // Cached vtable addresses for generator type identification
@@ -150,7 +149,6 @@ namespace EngineRelay::WildcardGate {
     static T* Alloc()
     {
         auto* obj = static_cast<T*>(std::calloc(1, sizeof(T)));
-        if (obj) s_allocations.push_back(obj);
         return obj;
     }
 

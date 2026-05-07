@@ -1,7 +1,6 @@
 ﻿#include "PCH.h"
 #include "ConfigLoader.h"
 
-#include <SimpleIni.h>
 #include <c4/yml/yml.hpp>
 #include <c4/yml/std/std.hpp>
 #include <filesystem>
@@ -175,113 +174,6 @@ namespace EngineRelay::ConfigLoader {
     }
 
     // ────────────────────────────────────────────────────────────────────────
-    // Legacy INI loader (deprecated — kept for backward compatibility)
-    // ────────────────────────────────────────────────────────────────────────
-
-    static std::optional<Registration> LoadIni(const std::filesystem::path& path)
-    {
-        LOG_WARN("ConfigLoader: '{}' uses the deprecated .ini format. "
-                 "Please migrate to YAML (.yml) — .ini support will be removed "
-                 "in a future version. See the ER documentation for the new format.",
-            path.filename().string());
-
-        CSimpleIniA ini;
-        ini.SetUnicode();
-        if (ini.LoadFile(path.string().c_str()) < 0) {
-            LOG_WARN("ConfigLoader: failed to load '{}'", path.string());
-            return std::nullopt;
-        }
-
-        Registration reg;
-        reg.modName      = ini.GetValue("General", "modName",    "");
-        reg.behaviorPath = ini.GetValue("General", "behavior",   "");
-        reg.eventName    = ini.GetValue("General", "event",      "");
-        reg.graphName    = ini.GetValue("General", "graphName",  "");
-        reg.projectPath  = ini.GetValue("General", "projectPath","");
-
-        if (reg.modName.empty() || reg.behaviorPath.empty() ||
-            reg.eventName.empty() || reg.graphName.empty())
-        {
-            LOG_WARN("ConfigLoader: '{}' missing required fields "
-                     "(modName, behavior, event, graphName) — skipping.",
-                path.filename().string());
-            return std::nullopt;
-        }
-
-        // Animations: semicolon-delimited list.
-        std::string animList = ini.GetValue("General", "animations", "");
-        if (!animList.empty()) {
-            size_t pos = 0;
-            while (pos < animList.size()) {
-                auto next = animList.find(';', pos);
-                if (next == std::string::npos) next = animList.size();
-                auto anim = animList.substr(pos, next - pos);
-                const auto start = anim.find_first_not_of(" \t");
-                const auto end   = anim.find_last_not_of(" \t");
-                if (start != std::string::npos)
-                    reg.animations.push_back(anim.substr(start, end - start + 1));
-                pos = next + 1;
-            }
-        }
-
-        // Variables: semicolon-delimited name:Type:value entries.
-        std::string varList = ini.GetValue("General", "variables", "");
-        if (!varList.empty()) {
-            size_t pos = 0;
-            while (pos < varList.size()) {
-                auto next = varList.find(';', pos);
-                if (next == std::string::npos) next = varList.size();
-                std::string entry = varList.substr(pos, next - pos);
-                const auto s = entry.find_first_not_of(" \t");
-                const auto e = entry.find_last_not_of(" \t");
-                if (s == std::string::npos) { pos = next + 1; continue; }
-                entry = entry.substr(s, e - s + 1);
-
-                const auto colon1 = entry.find(':');
-                const auto colon2 = (colon1 != std::string::npos)
-                    ? entry.find(':', colon1 + 1) : std::string::npos;
-                if (colon1 == std::string::npos || colon2 == std::string::npos) {
-                    LOG_WARN("ConfigLoader: invalid variable entry '{}' in '{}' — "
-                             "expected name:Type:initialValue.",
-                        entry, reg.modName);
-                    pos = next + 1;
-                    continue;
-                }
-
-                Variable var;
-                var.name = entry.substr(0, colon1);
-                const std::string typeName = entry.substr(colon1 + 1, colon2 - colon1 - 1);
-                const std::string valueStr  = entry.substr(colon2 + 1);
-
-                if (!ParseVariableType(typeName, var.type)) {
-                    LOG_WARN("ConfigLoader: unknown variable type '{}' for '{}' in '{}' — "
-                             "valid types: Bool, Int8, Int16, Int32, Float.",
-                        typeName, var.name, reg.modName);
-                    pos = next + 1;
-                    continue;
-                }
-
-                try { var.initialValue = std::stoi(valueStr); }
-                catch (...) {
-                    LOG_WARN("ConfigLoader: invalid initial value '{}' for variable '{}' "
-                             "in '{}' — defaulting to 0.",
-                        valueStr, var.name, reg.modName);
-                    var.initialValue = 0;
-                }
-
-                reg.variables.push_back(std::move(var));
-                pos = next + 1;
-            }
-        }
-
-        LOG_INFO("ConfigLoader: loaded '{}' — behavior='{}', event='{}', "
-                 "{} animation(s), {} variable(s).",
-            reg.modName, reg.behaviorPath, reg.eventName,
-            reg.animations.size(), reg.variables.size());
-        return reg;
-    }
-
-    // ────────────────────────────────────────────────────────────────────────
     // Public entry point
     // ────────────────────────────────────────────────────────────────────────
 
@@ -299,14 +191,8 @@ namespace EngineRelay::ConfigLoader {
             if (!dirEntry.is_regular_file()) continue;
             const auto ext = dirEntry.path().extension().string();
 
-            std::optional<Registration> reg;
-            if (ext == ".yml" || ext == ".yaml") {
-                reg = LoadYaml(dirEntry.path());
-            } else if (ext == ".ini") {
-                reg = LoadIni(dirEntry.path());
-            } else {
-                continue;
-            }
+            if (ext != ".yml" && ext != ".yaml") continue;
+            std::optional<Registration> reg = LoadYaml(dirEntry.path());
 
             if (reg.has_value())
                 results.push_back(std::move(*reg));

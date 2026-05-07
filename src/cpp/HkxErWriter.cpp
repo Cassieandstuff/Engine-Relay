@@ -832,7 +832,7 @@ std::vector<std::uint8_t> WriteToMemory(const std::vector<Registration>& registr
                             std::uint32_t er, std::uint32_t ir, std::uint32_t endr)
     {
         char tb[20]{};
-        std::strncpy(tb, tag, 19);
+        strncpy_s(tb, sizeof(tb), tag, 19);
         out.bytes(tb, 19);
         out.u8(0xFF);         // separator
         out.u32(absStart);

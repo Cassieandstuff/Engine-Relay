@@ -29,12 +29,6 @@ namespace EngineRelay {
     ///       type:  Float
     ///       value: 0
     ///
-    /// ── Legacy format: INI (.ini) — DEPRECATED ──────────────────────────
-    ///
-    ///   .ini files are still accepted but will emit a deprecation warning.
-    ///   Migrate to YAML — the .ini format will be removed in a future
-    ///   version. See the BSB reference documentation for migration details.
-    ///
     namespace ConfigLoader {
 
         /// Scan the config directory and return all parsed registrations.

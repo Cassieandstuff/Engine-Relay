@@ -40,19 +40,6 @@ namespace EngineRelay::BehaviorPatcher {
     static std::mutex                                               s_patchedMutex;
     static std::unordered_map<RE::hkbBehaviorGraphData*, uint32_t> s_patchedVersions;
 
-    // ANIM-DIAG dedup: only dump the animation list once per character string
-    // data pointer per session.  Multiple NPC instances sharing the same
-    // hkbCharacterData share the same stringData, so the list is identical
-    // for every activation after the first.
-    static std::mutex                                                   s_animDiagMutex;
-    static std::unordered_set<RE::hkbCharacterStringData*>              s_animDiagReported;
-
-    // GRAPH-DUMP dedup: dump the full root SM state once per unique graphData*.
-    // Keyed on graphData so that all NPC instances sharing the same archetype
-    // only produce one dump (they'd be identical after the first injection).
-    static std::mutex                                                   s_graphDumpMutex;
-    static std::unordered_set<RE::hkbBehaviorGraphData*>                s_graphDumpReported;
-
     // Maps hkbCharacter* → captured switchboard graph for that character.
     // Populated when a switchboard graph activates (option-B path).
     // Used by the sub-behavior node ID fix-up to find the correct parent graph
@@ -121,14 +108,6 @@ namespace EngineRelay::BehaviorPatcher {
             std::lock_guard lock(s_switchboardGraphsMutex);
             s_switchboardGraphs.clear();
         }
-        {
-            std::lock_guard lock(s_animDiagMutex);
-            s_animDiagReported.clear();
-        }
-        {
-            std::lock_guard lock(s_graphDumpMutex);
-            s_graphDumpReported.clear();
-        }
         LOG_INFO("BehaviorPatcher: patch guard cleared — graphs will be re-injected on next Activate.");
     }
 
@@ -143,16 +122,6 @@ namespace EngineRelay::BehaviorPatcher {
         if (!obj) {
             LOG_ERROR("BehaviorPatcher: failed to allocate {} bytes", sizeof(T));
         }
-        return obj;
-    }
-
-    static std::vector<void*> s_allocations;
-
-    template <typename T>
-    static T* AllocAndTrack()
-    {
-        auto* obj = AllocHavokObject<T>();
-        if (obj) s_allocations.push_back(obj);
         return obj;
     }
 
@@ -196,7 +165,6 @@ namespace EngineRelay::BehaviorPatcher {
                 newCap * sizeof(T));
             return nullptr;
         }
-        s_allocations.push_back(newData);
 
         if (dataPtr && oldSize > 0) {
             std::memcpy(newData, dataPtr, oldSize * sizeof(T));
@@ -300,7 +268,7 @@ namespace EngineRelay::BehaviorPatcher {
         const char* behaviorPath, const char* nodeName,
         std::uint16_t nodeId)
     {
-        auto* ref = AllocAndTrack<ERBehaviorReferenceGenerator>();
+        auto* ref = AllocHavokObject<ERBehaviorReferenceGenerator>();
         if (!ref) return nullptr;
 
         REL::Relocation<void*> behavRefVtable{ RE::VTABLE_hkbBehaviorReferenceGenerator[0] };
@@ -327,7 +295,7 @@ namespace EngineRelay::BehaviorPatcher {
     static ERTransitionInfoArray* BuildWildcardTransitions(
         int32_t eventId, int32_t toStateId)
     {
-        auto* tia = AllocAndTrack<ERTransitionInfoArray>();
+        auto* tia = AllocHavokObject<ERTransitionInfoArray>();
         if (!tia) return nullptr;
 
         REL::Relocation<void*> tiaVtable{ RE::VTABLE_hkbStateMachine__TransitionInfoArray[0] };
@@ -335,7 +303,7 @@ namespace EngineRelay::BehaviorPatcher {
         tia->memSizeAndFlags = 0x20;
         tia->referenceCount  = 1;
 
-        auto* trans = AllocAndTrack<ERTransitionInfo>();
+        auto* trans = AllocHavokObject<ERTransitionInfo>();
         if (!trans) return nullptr;
 
         trans->triggerInterval  = { -1, -1, 0.0f, 0.0f };
@@ -359,7 +327,7 @@ namespace EngineRelay::BehaviorPatcher {
     static ERStateInfo* BuildStateInfo(
         RE::hkbGenerator* generator, const char* stateName, int32_t stateId)
     {
-        auto* state = AllocAndTrack<ERStateInfo>();
+        auto* state = AllocHavokObject<ERStateInfo>();
         if (!state) return nullptr;
 
         REL::Relocation<void*> stateInfoVtable{ RE::VTABLE_hkbStateMachine__StateInfo[0] };
@@ -404,7 +372,6 @@ namespace EngineRelay::BehaviorPatcher {
 
         auto** newArray = static_cast<RE::hkbStateMachine::StateInfo**>(
             std::calloc(newSize, sizeof(RE::hkbStateMachine::StateInfo*)));
-        s_allocations.push_back(newArray);
 
         if (dataPtr && oldSize > 0) {
             std::memcpy(newArray, dataPtr, oldSize * sizeof(RE::hkbStateMachine::StateInfo*));
@@ -447,7 +414,6 @@ namespace EngineRelay::BehaviorPatcher {
         int32_t newCap = oldSize + 1;
         auto* newData = static_cast<ERTransitionInfo*>(
             std::calloc(newCap, sizeof(ERTransitionInfo)));
-        s_allocations.push_back(newData);
 
         if (existingTIA->transitions_data && oldSize > 0) {
             std::memcpy(newData, existingTIA->transitions_data,
@@ -481,30 +447,6 @@ namespace EngineRelay::BehaviorPatcher {
         std::string_view graphName)
     {
         return !reg.graphName.empty() && reg.graphName == graphName;
-    }
-
-    /// Check if a registration should have its events/variables/animations
-    /// injected for the given Havok project path.
-    ///
-    /// If reg.projectPath is empty, the registration matches ALL projects
-    /// (safe backward-compatible default — all injection helpers are idempotent).
-    /// Otherwise the comparison is case-insensitive.
-    static bool RegistrationMatchesProject(const Registration& reg,
-        const char* projectPath)
-    {
-        if (reg.projectPath.empty()) return true;  // match all projects
-        if (!projectPath)            return false;
-
-        const std::string_view regPath(reg.projectPath);
-        const std::string_view projPath(projectPath);
-        if (regPath.size() != projPath.size()) return false;
-
-        return std::equal(regPath.begin(), regPath.end(),
-                          projPath.begin(),
-                          [](char a, char b) {
-                              return std::tolower(static_cast<unsigned char>(a)) ==
-                                     std::tolower(static_cast<unsigned char>(b));
-                          });
     }
 
     // -----------------------------------------------------------------------
@@ -557,7 +499,7 @@ namespace EngineRelay::BehaviorPatcher {
 
     /// Inject the structural parts of all pending registrations
     /// (indices [startIndex, regCount)) that target graphName.
-    static void InjectRegistrations(RE::hkbBehaviorGraph* graph, const RE::hkbContext& ctx,
+    static void InjectRegistrations(RE::hkbBehaviorGraph* graph,
         std::string_view graphName, uint32_t startIndex)
     {
         std::lock_guard lock(s_regMutex);
@@ -656,7 +598,6 @@ namespace EngineRelay::BehaviorPatcher {
                 continue;
             }
             std::memcpy(nodeNameBuf, nodeNameStr.c_str(), nodeNameStr.size() + 1);
-            s_allocations.push_back(nodeNameBuf);
 
             auto* behaviorRef = BuildBehaviorRef(
                 reg.behaviorPath.c_str(), nodeNameBuf, nextNodeId++);
@@ -674,7 +615,6 @@ namespace EngineRelay::BehaviorPatcher {
                 continue;
             }
             std::memcpy(stateNameBuf, stateNameStr.c_str(), stateNameStr.size() + 1);
-            s_allocations.push_back(stateNameBuf);
 
             auto* stateInfo = BuildStateInfo(
                 reinterpret_cast<RE::hkbGenerator*>(behaviorRef),
@@ -741,107 +681,6 @@ namespace EngineRelay::BehaviorPatcher {
         LOG_INFO("BehaviorPatcher: structural injection complete — {}/{} pending "
                  "registrations applied, {} total states in graph.",
             injectedCount, regCount - startIndex, rootSM->states.size());
-    }
-
-    // -----------------------------------------------------------------------
-    // Full graph dump — called once per unique graphData* after Activate
-    // -----------------------------------------------------------------------
-
-    /// Dumps the complete root-SM state to the log.
-    /// Fires once per unique graphData* per session (deduplicated by caller).
-    /// charName is the character name at the time of first activation —
-    /// used purely for context so male vs female entries can be distinguished.
-    static void DumpGraphState(RE::hkbBehaviorGraph* graph, const char* charName)
-    {
-        auto* graphData = graph->data.get();
-        auto* strData   = graphData ? graphData->stringData.get() : nullptr;
-
-        LOG_INFO("GRAPH-DUMP ===== graph='{}' char='{}' numStaticNodes={} nextUniqueID={} "
-                 "isLinked={} isActive={} =====",
-            graph->name.data() ? graph->name.data() : "?",
-            charName,
-            graph->numStaticNodes,
-            graph->nextUniqueID,
-            graph->isLinked,
-            graph->isActive);
-
-        // ── Root SM metadata ──
-        auto* rootSM = GetRootStateMachine(graph);
-        if (!rootSM) {
-            LOG_INFO("GRAPH-DUMP   rootSM: <null or non-SM root generator>");
-        } else {
-            LOG_INFO("GRAPH-DUMP   rootSM: startStateID={} currentStateID={} stateCount={}",
-                rootSM->startStateID,
-                rootSM->currentStateID,
-                rootSM->states.size());
-
-            // ── All SM states ──
-            LOG_INFO("GRAPH-DUMP   states({}):", rootSM->states.size());
-            for (int32_t i = 0; i < rootSM->states.size(); ++i) {
-                auto* si = reinterpret_cast<ERStateInfo*>(rootSM->states[i]);
-                if (!si) {
-                    LOG_INFO("GRAPH-DUMP     [{}] <null>", i);
-                    continue;
-                }
-                const char* sname = si->name.data() ? si->name.data() : "<null>";
-                // hkbNode::name is at offset 0x38 inside the generator object.
-                const char* gname = "<null>";
-                if (si->generator) {
-                    const auto* namePtr = reinterpret_cast<const RE::hkStringPtr*>(
-                        reinterpret_cast<const std::byte*>(si->generator) + 0x38);
-                    if (namePtr->data()) gname = namePtr->data();
-                }
-                LOG_INFO("GRAPH-DUMP     [{}] stateId={} '{}' gen='{}'",
-                    i, si->stateId, sname, gname);
-            }
-
-            // ── Wildcard transitions ──
-            if (!rootSM->wildcardTransitions) {
-                LOG_INFO("GRAPH-DUMP   wildcardTransitions: <none>");
-            } else {
-                auto* tia = reinterpret_cast<ERTransitionInfoArray*>(
-                    rootSM->wildcardTransitions.get());
-                LOG_INFO("GRAPH-DUMP   wildcardTransitions({}):", tia->transitions_size);
-                for (int32_t i = 0; i < tia->transitions_size; ++i) {
-                    const auto& t = tia->transitions_data[i];
-                    const char* evtName = "<unknown>";
-                    if (strData && t.eventId >= 0 &&
-                        t.eventId < static_cast<int32_t>(strData->eventNames.size())) {
-                        const char* n = strData->eventNames[t.eventId].data();
-                        if (n) evtName = n;
-                    }
-                    LOG_INFO("GRAPH-DUMP     [{}] event={}('{}') → stateId={} flags=0x{:04X}",
-                        i, t.eventId, evtName, t.toStateId,
-                        static_cast<uint16_t>(t.flags));
-                }
-            }
-        }
-
-        // ── Events — count + any ER/TF events ──
-        if (strData) {
-            const int32_t evtCount = static_cast<int32_t>(strData->eventNames.size());
-            LOG_INFO("GRAPH-DUMP   events: total={}", evtCount);
-            for (int32_t i = 0; i < evtCount; ++i) {
-                const char* n = strData->eventNames[i].data();
-                if (n && (std::strncmp(n, "ER_", 3) == 0 ||
-                          std::strncmp(n, "TF_",  3) == 0)) {
-                    LOG_INFO("GRAPH-DUMP     event[{}] '{}'", i, n);
-                }
-            }
-
-            // ── Variables — count + any ER/TF variables ──
-            const int32_t varCount = static_cast<int32_t>(strData->variableNames.size());
-            LOG_INFO("GRAPH-DUMP   variables: total={}", varCount);
-            for (int32_t i = 0; i < varCount; ++i) {
-                const char* n = strData->variableNames[i].data();
-                if (n && (std::strncmp(n, "ER_", 3) == 0 ||
-                          std::strncmp(n, "TF_",  3) == 0)) {
-                    LOG_INFO("GRAPH-DUMP     var[{}] '{}'", i, n);
-                }
-            }
-        }
-
-        LOG_INFO("GRAPH-DUMP ===== end =====");
     }
 
     // -----------------------------------------------------------------------
@@ -1152,7 +991,7 @@ namespace EngineRelay::BehaviorPatcher {
                     LOG_INFO("BehaviorPatcher: Activate hook fired for '{}' "
                              "(graph={}, name='{}', pending=[{}..{})).",
                         charName, (void*)a_this, graphName, pendingStart, regCount);
-                    InjectRegistrations(a_this, a_context,
+                    InjectRegistrations(a_this,
                         graphName ? std::string_view(graphName) : std::string_view{},
                         static_cast<uint32_t>(pendingStart));
                 } else {
@@ -1166,80 +1005,6 @@ namespace EngineRelay::BehaviorPatcher {
         // Call the original Activate — Havok builds stateIDToIndexMap,
         // eventIDMap, variableIDMap etc. with our data already in place.
         s_originalActivate(a_this, a_context);
-
-        // -----------------------------------------------------------------
-        // Diagnostic: dump TrueFlight animation indices from the character's
-        // animation list.  Only logs once per unique charStrData pointer so
-        // that multiple NPC instances sharing the same graphData don't flood
-        // the log with identical entries.
-        // -----------------------------------------------------------------
-        if (character && character->behaviorGraph.get() == a_this) {
-            auto* charSetup   = character->setup.get();
-            auto* charData    = charSetup ? charSetup->data.get() : nullptr;
-            auto* charStrData = charData ? charData->stringData.get() : nullptr;
-            if (charStrData) {
-                std::lock_guard diagLock(s_animDiagMutex);
-                const bool firstTime = s_animDiagReported.insert(charStrData).second;
-                if (firstTime) {
-                    int32_t animCount = static_cast<int32_t>(charStrData->animationNames.size());
-                    LOG_DEBUG("BehaviorPatcher: ANIM-DIAG graph='{}' — {} total animations.",
-                        graphName, animCount);
-
-                    // Dump all TrueFlight animations and their indices.
-                    for (int32_t i = 0; i < animCount; ++i) {
-                        const char* name = charStrData->animationNames[i].data();
-                        if (name && (std::strstr(name, "TrueFlight") ||
-                                     std::strstr(name, "Hover") ||
-                                     std::strstr(name, "Flight")))
-                        {
-                            LOG_DEBUG("BehaviorPatcher: ANIM-DIAG  [{}] {}", i, name);
-                        }
-                    }
-                }
-            }
-        }
-
-        // Post-Activate diagnostic: verify the graph was linked and scan for ER events.
-        if (a_this->isLinked) {
-            auto* gd = a_this->data.get();
-            auto* sd = gd ? gd->stringData.get() : nullptr;
-            if (sd) {
-                const int32_t eventCount = static_cast<int32_t>(sd->eventNames.size());
-                std::lock_guard lock(s_regMutex);
-                for (const auto& reg : s_registrations) {
-                    for (int32_t i = 0; i < eventCount; ++i) {
-                        if (sd->eventNames[i].data() &&
-                            std::strcmp(sd->eventNames[i].data(), reg.eventName.c_str()) == 0) {
-                            LOG_INFO("BehaviorPatcher: POST-ACTIVATE '{}' event '{}' "
-                                     "confirmed at stringData index {} (of {}). "
-                                     "isLinked={}, isActive={}.",
-                                graphName, reg.eventName, i, eventCount,
-                                a_this->isLinked, a_this->isActive);
-                            break;
-                        }
-                    }
-                }
-            }
-        } else {
-            LOG_DEBUG("BehaviorPatcher: POST-ACTIVATE graph '{}' is NOT linked!",
-                graphName);
-        }
-
-        // -----------------------------------------------------------------
-        // GRAPH-DUMP: dump the full root-SM state once per unique graphData*
-        // so we can diff male vs female graphs and spot injected-state
-        // collisions, wrong wildcard flags, or corrupt startStateID.
-        // -----------------------------------------------------------------
-        {
-            auto* graphData = a_this->data.get();
-            if (graphData) {
-                std::lock_guard dumpLock(s_graphDumpMutex);
-                const bool firstTime = s_graphDumpReported.insert(graphData).second;
-                if (firstTime) {
-                    DumpGraphState(a_this, charName);
-                }
-            }
-        }
     }
 
     // -----------------------------------------------------------------------

@@ -231,40 +231,6 @@ namespace EngineRelay {
         return result;
     }
 
-    // ── Character State Allocator API implementation ──
-
-    RE::hkpCharacterStateType RegisterCharacterState(
-        const std::string& modName,
-        const ERPhysicsCallbacks& callbacks)
-    {
-        return CharacterStateAllocator::Register(modName, callbacks);
-    }
-
-    bool IsCharacterStateRegistered(const std::string& modName)
-    {
-        return CharacterStateAllocator::IsRegistered(modName);
-    }
-
-    RE::hkpCharacterStateType GetCharacterStateSlot(const std::string& modName)
-    {
-        return CharacterStateAllocator::GetSlot(modName);
-    }
-
-    void InstallCharacterStates(RE::Actor* actor)
-    {
-        if (!actor) {
-            LOG_WARN("ER_API::InstallCharacterStates: null actor.");
-            return;
-        }
-        auto* ctrl = actor->GetCharController();
-        if (!ctrl) {
-            LOG_WARN("ER_API::InstallCharacterStates: actor '{}' has no character controller.",
-                actor->GetName());
-            return;
-        }
-        CharacterStateAllocator::InstallStates(ctrl);
-    }
-
     // ── Logical State API implementation ──────────────────────────────────────
 
     ERStateHandle RegisterLogicalState(const std::string& modName,
@@ -662,97 +628,6 @@ namespace EngineRelay {
             entry->modName, actor->GetName());
     }
 
-    void EnterPhysicsState(RE::Actor* actor, ERHandle handle)
-    {
-        if (!actor) {
-            LOG_WARN("ER_API::EnterPhysicsState: null actor.");
-            return;
-        }
-
-        const EREntry* entry = nullptr;
-        {
-            std::lock_guard lock(s_bsbMutex);
-            if (handle >= s_bsbEntries.size()) {
-                LOG_WARN("ER_API::EnterPhysicsState: handle {} out of range.", handle);
-                return;
-            }
-            entry = &s_bsbEntries[handle];
-        }
-
-        if (!entry->physicsHandle) {
-            LOG_WARN("ER_API::EnterPhysicsState: '{}' has no physics component.", entry->modName);
-            return;
-        }
-
-        auto* ctrl = actor->GetCharController();
-        if (!ctrl) {
-            LOG_WARN("ER_API::EnterPhysicsState: actor '{}' has no character controller.",
-                actor->GetName());
-            return;
-        }
-
-        const auto hostSlot = CharacterStateAllocator::GetHostSlot();
-
-        // No-op if already in the BSB host state — covers the hover→flight transition
-        // where physics is already active and only the camera changes.
-        if (ctrl->context.currentState == hostSlot) {
-            LOG_INFO("ER_API::EnterPhysicsState: '{}' — actor '{}' already in host state, no-op.",
-                entry->modName, actor->GetName());
-            return;
-        }
-
-        // Ensure the host state is installed before requesting the transition.
-        CharacterStateAllocator::InstallLogicalStateHost(ctrl);
-        ctrl->wantState = hostSlot;
-
-        LOG_INFO("ER_API::EnterPhysicsState: '{}' — wantState → host on '{}'.",
-            entry->modName, actor->GetName());
-    }
-
-    void ExitPhysicsState(RE::Actor* actor, ERHandle handle)
-    {
-        if (!actor) {
-            LOG_WARN("ER_API::ExitPhysicsState: null actor.");
-            return;
-        }
-
-        const EREntry* entry = nullptr;
-        {
-            std::lock_guard lock(s_bsbMutex);
-            if (handle >= s_bsbEntries.size()) {
-                LOG_WARN("ER_API::ExitPhysicsState: handle {} out of range.", handle);
-                return;
-            }
-            entry = &s_bsbEntries[handle];
-        }
-
-        if (!entry->physicsHandle) {
-            LOG_WARN("ER_API::ExitPhysicsState: '{}' has no physics component.", entry->modName);
-            return;
-        }
-
-        auto* ctrl = actor->GetCharController();
-        if (!ctrl) {
-            LOG_WARN("ER_API::ExitPhysicsState: actor '{}' has no character controller.",
-                actor->GetName());
-            return;
-        }
-
-        const auto hostSlot = CharacterStateAllocator::GetHostSlot();
-
-        // No-op if not currently in the BSB host state.
-        if (ctrl->context.currentState != hostSlot) {
-            LOG_INFO("ER_API::ExitPhysicsState: '{}' — actor '{}' not in host state, no-op.",
-                entry->modName, actor->GetName());
-            return;
-        }
-
-        ctrl->wantState = RE::hkpCharacterStateType::kOnGround;
-
-        LOG_INFO("ER_API::ExitPhysicsState: '{}' — wantState → kOnGround on '{}'.",
-            entry->modName, actor->GetName());
-    }
-
     // ── Logical Camera State API implementation ───────────────────────────────
 
     ERCameraHandle RegisterLogicalCameraState(const std::string& modName,
@@ -1111,7 +986,7 @@ namespace EngineRelay {
                 for (auto& cfg : configs) {
                     Register(std::move(cfg));
                 }
-                LOG_INFO("Switchboard: {} total registrations after config load.",
+                LOG_INFO("ER: {} total registrations after config load.",
                     GetRegistrationCount());
 
                 // Broadcast the inter-plugin interface to all listeners that

@@ -94,7 +94,7 @@ namespace EngineRelay {
             LOG_WARN("Bridge_TDM::SetYawMultiplier: reacquire failed (result={}) — "
                      "attempting recovery with previous multiplier {:.2f}.",
                 static_cast<int>(result), m_yawMultiplier);
-            api->RequestYawControl(handle, m_yawMultiplier);
+            (void)api->RequestYawControl(handle, m_yawMultiplier);
         }
     }
 
