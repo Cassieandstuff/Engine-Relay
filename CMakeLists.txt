@@ -34,25 +34,30 @@ add_custom_command(
 add_custom_target(Resource ALL DEPENDS ${RESOURCE_OUTPUT})
 
 # ── CommonLibSSE ─────────────────────────────────────────────────────────────
+# Guard: workspace root adds CommonLibSSE once before add_subdirectory()'ing
+# plugins. The guard makes this plugin safe in both standalone and workspace
+# builds without any change to behaviour in either context.
 
 set(SKYRIM_SUPPORT_AE ON CACHE BOOL " " FORCE)
 set(BUILD_TESTS       OFF CACHE BOOL " " FORCE)
 
-if(DEFINED ENV{COMMONLIB_SSE_FOLDER})
-    set(COMMONLIB_PATH "$ENV{COMMONLIB_SSE_FOLDER}")
-    add_subdirectory("${COMMONLIB_PATH}"
-        ${CMAKE_CURRENT_BINARY_DIR}/_deps/clib-build EXCLUDE_FROM_ALL)
-else()
-    include(FetchContent)
-    FetchContent_Declare(CommonLibSSE
-        GIT_REPOSITORY https://github.com/powerof3/CommonLibSSE.git
-        GIT_TAG        aad6fb7dc9cd39754a28742b3b709ae29dd20843
-        SOURCE_DIR     "${CMAKE_CURRENT_BINARY_DIR}/_deps/commonlibsse-src"
-        BINARY_DIR     "${CMAKE_CURRENT_BINARY_DIR}/_deps/clib-build"
-        EXCLUDE_FROM_ALL
-    )
-    FetchContent_MakeAvailable(CommonLibSSE)
-    set(COMMONLIB_PATH "${commonlibsse_SOURCE_DIR}")
+if(NOT TARGET CommonLibSSE::CommonLibSSE)
+    if(DEFINED ENV{COMMONLIB_SSE_FOLDER})
+        set(COMMONLIB_PATH "$ENV{COMMONLIB_SSE_FOLDER}")
+        add_subdirectory("${COMMONLIB_PATH}"
+            ${CMAKE_CURRENT_BINARY_DIR}/_deps/clib-build EXCLUDE_FROM_ALL)
+    else()
+        include(FetchContent)
+        FetchContent_Declare(CommonLibSSE
+            GIT_REPOSITORY https://github.com/powerof3/CommonLibSSE.git
+            GIT_TAG        aad6fb7dc9cd39754a28742b3b709ae29dd20843
+            SOURCE_DIR     "${CMAKE_CURRENT_BINARY_DIR}/_deps/commonlibsse-src"
+            BINARY_DIR     "${CMAKE_CURRENT_BINARY_DIR}/_deps/clib-build"
+            EXCLUDE_FROM_ALL
+        )
+        FetchContent_MakeAvailable(CommonLibSSE)
+        set(COMMONLIB_PATH "${commonlibsse_SOURCE_DIR}")
+    endif()
 endif()
 
 get_target_property(COMMONLIB_SRC_DIR CommonLibSSE SOURCE_DIR)
@@ -95,7 +100,7 @@ set(ALL_SOURCES ${ER_SOURCES} ${extra_sources})
 
 source_group(
     TREE ${CMAKE_CURRENT_SOURCE_DIR}
-    FILES ${ER_HEADERS} ${ALL_SOURCES}
+    FILES ${ER_HEADERS} ${ER_SOURCES}
 )
 
 # ── EngineRelay plugin target ─────────────────────────────────────────────────
@@ -142,17 +147,21 @@ target_link_libraries(${PROJECT_NAME}
 automaticGameFolderOutput()
 
 # ── HKBuild — C# YAML→HKX compiler ───────────────────────────────────────────
-# Fetched at configure time into build/_deps/ (not tracked in the source tree).
-# Publishes a single-file self-contained win-x64 exe into build/hkbuild_sc/.
+# Lookup order: HKBUILD_FOLDER env var → FetchContent (git clone fallback).
+# In workspace builds set HKBUILD_FOLDER to repos/libraries/HKBuild/ via presets.
 
-include(FetchContent)
-FetchContent_Declare(HKBuild
-    GIT_REPOSITORY       https://github.com/Cassieandstuff/HKBuild.git
-    GIT_TAG              a9a286216fbe0f5d2fa61de1723007db0c6ed946
-    GIT_SUBMODULES_RECURSE TRUE
-    SOURCE_DIR           "${CMAKE_CURRENT_BINARY_DIR}/_deps/hkbuild-src"
-)
-FetchContent_Populate(HKBuild)
+if(DEFINED ENV{HKBUILD_FOLDER})
+    set(hkbuild_SOURCE_DIR "$ENV{HKBUILD_FOLDER}")
+else()
+    include(FetchContent)
+    FetchContent_Declare(HKBuild
+        GIT_REPOSITORY       https://github.com/Cassieandstuff/HKBuild.git
+        GIT_TAG              a9a286216fbe0f5d2fa61de1723007db0c6ed946
+        GIT_SUBMODULES_RECURSE TRUE
+        SOURCE_DIR           "${CMAKE_CURRENT_BINARY_DIR}/_deps/hkbuild-src"
+    )
+    FetchContent_Populate(HKBuild)
+endif()
 
 set(_hkbuild_sc_dir "${CMAKE_BINARY_DIR}/hkbuild_sc")
 set(HKBUILD_EXE "${_hkbuild_sc_dir}/HKBuild${CMAKE_EXECUTABLE_SUFFIX}"
