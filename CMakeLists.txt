@@ -31,7 +31,7 @@ add_custom_command(
     COMMAND rc /fo ${RESOURCE_OUTPUT} ${RESOURCE_FILE}
     DEPENDS ${RESOURCE_FILE}
 )
-add_custom_target(Resource ALL DEPENDS ${RESOURCE_OUTPUT})
+add_custom_target(${PROJECT_NAME}_Resource ALL DEPENDS ${RESOURCE_OUTPUT})
 
 # ── CommonLibSSE ─────────────────────────────────────────────────────────────
 # Guard: workspace root adds CommonLibSSE once before add_subdirectory()'ing
@@ -191,21 +191,22 @@ if(_hkbuild_csproj)
         "${_hkbuild_csproj}"
     )
 
-    add_custom_command(
-        OUTPUT  "${HKBUILD_EXE}"
-        COMMAND dotnet publish "${_hkbuild_csproj}"
-                -c Release
-                -r win-x64
-                --self-contained true
-                -p:PublishSingleFile=true
-                -o "${_hkbuild_sc_dir}"
-        DEPENDS ${_hkbuild_sources}
-        WORKING_DIRECTORY "${hkbuild_SOURCE_DIR}"
-        COMMENT "Building HKBuild (single-file self-contained → hkbuild_sc/HKBuild.exe)"
-        VERBATIM
-    )
-
-    add_custom_target(HKBuild DEPENDS "${HKBUILD_EXE}")
+    if(NOT TARGET HKBuild)
+        add_custom_command(
+            OUTPUT  "${HKBUILD_EXE}"
+            COMMAND dotnet publish "${_hkbuild_csproj}"
+                    -c Release
+                    -r win-x64
+                    --self-contained true
+                    -p:PublishSingleFile=true
+                    -o "${_hkbuild_sc_dir}"
+            DEPENDS ${_hkbuild_sources}
+            WORKING_DIRECTORY "${hkbuild_SOURCE_DIR}"
+            COMMENT "Building HKBuild (single-file self-contained → hkbuild_sc/HKBuild.exe)"
+            VERBATIM
+        )
+        add_custom_target(HKBuild DEPENDS "${HKBUILD_EXE}")
+    endif()
 
     file(TO_CMAKE_PATH "${HKBUILD_EXE}" _hkbuild_cmake_path)
     target_compile_definitions(${PROJECT_NAME} PRIVATE
